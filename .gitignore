@@ -1,0 +1,28 @@
+# Unreal Engine generated files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/Receipts/
+
+# IDE and local tooling
+.vs/
+.vscode/
+.idea/
+*.VC.db
+*.VC.opendb
+*.suo
+*.sln
+*.sdf
+*.opensdf
+*.pdb
+
+# OS artifacts
+Thumbs.db
+.DS_Store
+
+# Local temporary files
+*.tmp
+*.bak
+
+# NOTE: .uasset/.umap must be tracked with Git LFS after Unreal project bootstrap.

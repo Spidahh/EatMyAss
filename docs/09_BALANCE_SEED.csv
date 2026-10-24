@@ -1,0 +1,11 @@
+wave,threat_budget,max_alive,walker_weight,runner_weight,armored_weight,saboteur_weight,boss_count,base_team_reward,sector_event,design_intent,status
+1,12,12,100,0,0,0,0,80,none,learn_shooting,SEED_NOT_TESTED
+2,18,15,90,10,0,0,0,95,none,learn_repair,SEED_NOT_TESTED
+3,25,18,75,25,0,0,0,115,offer_workshop,first_tactical_choice,SEED_NOT_TESTED
+4,34,22,70,20,10,0,0,135,workshop_if_open,first_armored,SEED_NOT_TESTED
+5,43,25,55,30,10,5,0,155,none,first_sabotage,SEED_NOT_TESTED
+6,55,28,55,25,12,8,0,180,offer_warehouse,pressure_second_front,SEED_NOT_TESTED
+7,69,32,45,32,13,10,0,210,warehouse_if_open,defense_and_movement,SEED_NOT_TESTED
+8,84,36,45,30,15,10,0,240,offer_roof,high_pressure,SEED_NOT_TESTED
+9,100,40,40,30,20,10,0,270,roof_if_open,prepare_boss,SEED_NOT_TESTED
+10,120,44,35,35,20,10,1,0,boss_stage,finale,SEED_NOT_TESTED

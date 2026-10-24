@@ -1,0 +1,17 @@
+key,scope,cost_or_value,unit,cap_or_limit,dependency,notes,status
+weapon_pistol_t1,player,120,credits,1,weapon_pistol_t0,Damage or magazine choice not both,SEED_NOT_TESTED
+weapon_rifle_t1,player,240,credits,1,weapon_rifle_t0,Accuracy or damage tradeoff,SEED_NOT_TESTED
+weapon_shotgun_t1,player,280,credits,1,weapon_shotgun_t0,Range or reload tradeoff,SEED_NOT_TESTED
+ammo_refill,player,60,credits,per_intermission,weapon_owned,Emergency consumption,SEED_NOT_TESTED
+barricade_buy,team,100,funds,per_socket,sector_open,First slot,SEED_NOT_TESTED
+barricade_repair,team,45,funds,up_to_max_hp,barricade_exists,No overrepair,SEED_NOT_TESTED
+sentry_buy,team,220,funds,2_per_sector,powered_socket,Anti-walker basic,SEED_NOT_TESTED
+sentry_t1,team,160,funds,1_per_turret,sentry_exists,Range or fire-rate option,SEED_NOT_TESTED
+slowfield_buy,team,180,funds,1_per_sector,sector_open,No hard stun,SEED_NOT_TESTED
+core_t1,team,240,funds,1,core_t0,Max HP + fortification visual,SEED_NOT_TESTED
+core_t2,team,380,funds,1,core_t1,Extra energy and turret slot,SEED_NOT_TESTED
+core_t3,team,550,funds,1,core_t2,Final risk-reward choice,SEED_NOT_TESTED
+sector_workshop,team,260,funds,1,after_wave_3,New spawn access after next wave,SEED_NOT_TESTED
+sector_warehouse,team,420,funds,1,after_wave_6,New risk plus reward,SEED_NOT_TESTED
+sector_roof,team,500,funds,1,after_wave_8,Optional vantage and new entry,SEED_NOT_TESTED
+donation_ratio,transfer,1,team_fund_per_player_credit,variable,manual_donation,Needs multiplayer abuse test,SEED_NOT_TESTED
