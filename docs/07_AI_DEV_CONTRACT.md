@@ -1,3 +1,5 @@
+> **AVVISO DI PRECEDENZA (25/10/2026):** per la produzione attuale leggere prima [AGENTS.md](../AGENTS.md), [12_PRODUCTION_ORDER.md](12_PRODUCTION_ORDER.md) e [17_CODEX_EXECUTION.md](17_CODEX_EXECUTION.md). Le fasi, le scelte di base tecnica e gli asset descritti qui sotto sono **materiale storico di progettazione** e non autorizzano Codex a iniziare più sistemi contemporaneamente. HordeTemplate è la baseline designata e la prima consegna è personaggio + un fucile + una zombie + primo isolato, completati in quell'ordine.
+
 # Istruzioni per Codex/AI — Zero invenzioni, lavoro verificabile
 
 Questo testo si incolla come `AGENTS.md`/system brief del futuro repo **solo dopo** la scelta della baseline. È deliberatamente rigido.

@@ -1,3 +1,5 @@
+> **AVVISO DI PRECEDENZA (25/10/2026):** per la produzione attuale leggere prima [AGENTS.md](../AGENTS.md), [12_PRODUCTION_ORDER.md](12_PRODUCTION_ORDER.md) e [17_CODEX_EXECUTION.md](17_CODEX_EXECUTION.md). Le fasi, le scelte di base tecnica e gli asset descritti qui sotto sono **materiale storico di progettazione** e non autorizzano Codex a iniziare più sistemi contemporaneamente. HordeTemplate è la baseline designata e la prima consegna è personaggio + un fucile + una zombie + primo isolato, completati in quell'ordine.
+
 # ZOMBIE DEFENCE — Master dossier v0.1
 
 **Data ricerca:** 24 ottobre 2026 · **Motore di riferimento:** Unreal Engine 5.8 · **Stato:** preproduzione; nessun gioco compilato, nessun asset scaricato, nessuna compatibilità certificata in runtime.

@@ -26,3 +26,11 @@ Thumbs.db
 *.bak
 
 # NOTE: .uasset/.umap must be tracked with Git LFS after Unreal project bootstrap.
+
+# Proprietary third-party raw assets: keep in PRIVATE workspaces, not this public repo
+Content/ThirdParty/
+Game/Content/ThirdParty/
+Game/Content/ZD/External/
+Game/Content/HordeTemplateBP/
+PrivateAssets/
+AssetDownloads/

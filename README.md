@@ -1,72 +1,50 @@
 # Zombie Defence — Unreal Engine FPS + Tower Defense
 
-Progetto in preproduzione per un gioco **FPS 3D di sopravvivenza a ondate zombie con difesa ed espansione della base**. Armi e potenziamenti, classi e abilità, barricate e torrette, un Nucleo da proteggere, zone da sbloccare. Il combattimento diretto rimane il fulcro: non è un gioco idle o un gestionale.
+**Stato:** inizio produzione a strati (documenti pronti, **gioco Unreal non ancora creato in questo repository**). Ultimo aggiornamento: 25 ottobre 2026. Repository pubblico: non caricare mesh/audio/animazioni Fab o Epic in sorgente senza esplicito diritto di redistribuzione.
 
-**Data dossier:** 24 ottobre 2026 · **Versione:** v0.1 · **Stato:** concept e progettazione completati; codice di gioco **non ancora implementato né testato** in questo repository.
+## Il lavoro concreto adesso
 
-## Da dove iniziare
+**Una base definita:** [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate) su Unreal Engine 5.8. **Un solo personaggio:** [Survival Character](https://www.fab.com/listings/11d20d01-b764-4936-8163-cb20d05c369e). **Un solo fucile d'assalto:** selezionato dai modelli veri di [FPS Weapon Bundle](https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5). **Una sola zombie:** [Zombie Female: Nurse](https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc). Piccolo settore di città urbana industriale, il resto in costruzione.
 
-1. **[Panoramica e prima decisione](docs/00_START_HERE.md)** — obiettivo, ordine di lavoro e scelta della base Unreal.
-2. **[Game Design Document](docs/01_GAME_DESIGN.md)** — loop, classi, zombie, ondate, difese, risorse e mappa.
-3. **[Technical Design](docs/02_TECH_DESIGN.md)** — architettura, dati, replication, IA, salvataggi e performance.
-4. **[Catalogo asset verificati online](docs/03_ASSETS.csv)** — link dei pack reali, gratuità osservata e controlli necessari.
-5. **[Roadmap e backlog](docs/05_ROADMAP.md)** — milestone, dipendenze e criteri per dichiarare un'attività conclusa.
+Prima completare **player reale e tutte le animazioni di movimento**; poi il **fucile vero** con mani, mira, sparo, ricarica, effetti e audio; poi la **zombie vera** con IA, locomozione, attacchi, hit reaction e morte; infine una prima scena cittadina rifinita. Solo **dopo** si realizzano ondate, torrette, upgrade, classi e ampliamento base, uno per volta.
 
-## Tutta la documentazione
+Niente mannequin o cubi spacciati per modelli finali, niente placeholder che rimangono, niente codice inventato, niente sistemi iniziati e abbandonati. Il file AGENTS.md è la regola primaria per Codex.
 
-| File | Scopo |
+### Istruzioni vincolanti (LEGGERE IN QUEST'ORDINE)
+
+| Documento | Contenuto |
 | --- | --- |
-| [00_START_HERE.md](docs/00_START_HERE.md) | Sintesi, scope e gate tecnico G0 |
-| [01_GAME_DESIGN.md](docs/01_GAME_DESIGN.md) | Progetto completo delle meccaniche |
-| [02_TECH_DESIGN.md](docs/02_TECH_DESIGN.md) | Componenti Unreal e interfacce fra sistemi |
-| [03_ASSETS.csv](docs/03_ASSETS.csv) | Registro sorgenti, prezzi, licenze e test asset |
-| [04_ASSET_PIPELINE.md](docs/04_ASSET_PIPELINE.md) | Direzione artistica, import e licenze |
-| [05_ROADMAP.md](docs/05_ROADMAP.md) | Piano a sprint e backlog tracciabile |
-| [06_TEST_MATRIX.md](docs/06_TEST_MATRIX.md) | Test riproducibili e prove di accettazione |
-| [07_AI_DEV_CONTRACT.md](docs/07_AI_DEV_CONTRACT.md) | Regole operative per Codex/AI |
-| [08_DECISIONS_AND_RISKS.md](docs/08_DECISIONS_AND_RISKS.md) | Decisioni, ipotesi e rischi |
-| [09_BALANCE_SEED.csv](docs/09_BALANCE_SEED.csv) | Parametri iniziali delle 10 ondate, **non bilanciati** |
-| [10_ECONOMY_SEED.csv](docs/10_ECONOMY_SEED.csv) | Costi iniziali di acquisti/upgrade, **non bilanciati** |
+| **[AGENTS.md](AGENTS.md)** | **Contratto di lavoro principale per Codex; ha precedenza sugli altri** |
+| **[12_PRODUCTION_ORDER.md](docs/12_PRODUCTION_ORDER.md)** | Scelte definitive e fasi L0–L11 |
+| **[15_ASSET_LOCK.md](docs/15_ASSET_LOCK.md)** | Pacchetti reali obbligatori, licenze, divieti |
+| **[13_PLAYER_WEAPON_ANIMATION.md](docs/13_PLAYER_WEAPON_ANIMATION.md)** | Animazioni, sistema FPS, un'arma completa |
+| **[14_ZOMBIE_COMPLETE.md](docs/14_ZOMBIE_COMPLETE.md)** | Zombie completo, comportamento, animazioni, audio/VFX |
+| **[16_CITY_GROWTH.md](docs/16_CITY_GROWTH.md)** | Prima strada cittadina e crescita per settori |
+| **[17_CODEX_EXECUTION.md](docs/17_CODEX_EXECUTION.md)** | Mandato operativo esatto per avviare lo sviluppo |
 
-## Prima attività concreta: audit della base open source
+### Altri documenti: riferimento NON prioritario
 
-La prima opzione da valutare è **[HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate)**. Il suo autore dichiara Unreal 5.8, co-op fino a 4 giocatori, ondate zombie, armi, inventario, IA e lobby; il repository ha una licenza MIT. **Non è una scelta definitiva:** prima di adottarlo bisogna compilare il progetto, eseguire sessioni host+client, verificare l'effettiva qualità di gioco e licenziare separatamente gli eventuali asset di terzi inclusi.
+| Documento | Scopo |
+| --- | --- |
+| [00_START_HERE.md](docs/00_START_HERE.md) | Dossier iniziale, da interpretare secondo il nuovo ordine |
+| [01_GAME_DESIGN.md](docs/01_GAME_DESIGN.md) | Progetto complessivo del gioco dopo la prima scena |
+| [02_TECH_DESIGN.md](docs/02_TECH_DESIGN.md) | Architettura futuri sistemi |
+| [03_ASSETS.csv](docs/03_ASSETS.csv) | Catalogo di candidate risorse per fasi future |
+| [04_ASSET_PIPELINE.md](docs/04_ASSET_PIPELINE.md) | Convenzioni di grafica, import, diritti |
+| [05_ROADMAP.md](docs/05_ROADMAP.md) | Roadmap precedente, superata dove contrasta con L0–L11 |
+| [06_TEST_MATRIX.md](docs/06_TEST_MATRIX.md) | Suite QA future, non sprint autonomi |
+| [07_AI_DEV_CONTRACT.md](docs/07_AI_DEV_CONTRACT.md) | Precedente contratto, sostituito da AGENTS.md |
+| [08_DECISIONS_AND_RISKS.md](docs/08_DECISIONS_AND_RISKS.md) | Storico decisioni e rischi |
+| [09_BALANCE_SEED.csv](docs/09_BALANCE_SEED.csv) | Numeri non bilanciati per fasi avanzate |
+| [10_ECONOMY_SEED.csv](docs/10_ECONOMY_SEED.csv) | Seed costi per fasi avanzate |
+| [11_G0_HORDE_AUDIT.md](docs/11_G0_HORDE_AUDIT.md) | Audit statico esistente, **non** gate preproduzione autonomo |
 
-Se il gate G0 fallisce, la riserva è **[Lyra Starter Game](https://dev.epicgames.com/documentation/unreal-engine/lyra-sample-game-in-unreal-engine)**. Il [template First Person Arena Shooter](https://dev.epicgames.com/documentation/unreal-engine/first-person-template-in-unreal-engine) è utile per un confronto sul gunplay, ma non va sommato indiscriminatamente agli altri progetti.
+## Prima issue produttiva
 
-## Vertical slice da realizzare
+[Elenco Issues](https://github.com/Spidahh/EatMyAss/issues) — usare **L0→L4** come unico incarico, e non aprire quattro task separati di indagine mentre player e primo nemico restano non prodotti.
 
-Una mappa industriale, 6 ondate, 3 armi, 3 tipi di zombie, 1 Nucleo da difendere, 1 barricata, 1 torretta, 1 classe completa e 1 settore che si apre. Il primo test multigiocatore deve prevedere almeno due client sincronizzati. Poi si valuteranno le 10 ondate, 3 classi, boss e ulteriori sistemi.
+## Note tecniche e legali
 
-## Struttura del repository
+HordeTemplate è scelto come framework iniziale, **ma nessuna sua build è stata eseguita qui**. Gli asset esterni scelti sono indicati come gratuiti sulle pagine Fab, ma non sono stati scaricati nell'account dell'utente. Non attribuire un numero di clip a un pack senza ispezionarlo. La compilazione/QA e l'eventuale verifica diritti diventano **attività interne allo strato che utilizza il materiale**, non una serie di progetti separati. I sorgenti MIT possono essere riusati rispettando i notices; i raw binari Fab/Epic non vanno pubblicati indiscriminatamente.
 
-```text
-/
-├── README.md             # punto di ingresso
-├── AGENTS.md             # istruzioni ai coding agent
-├── .gitignore            # esclusioni Unreal future
-└── docs/
-    ├── 00_START_HERE.md
-    ├── 01_GAME_DESIGN.md
-    ├── 02_TECH_DESIGN.md
-    ├── 03_ASSETS.csv
-    ├── 04_ASSET_PIPELINE.md
-    ├── 05_ROADMAP.md
-    ├── 06_TEST_MATRIX.md
-    ├── 07_AI_DEV_CONTRACT.md
-    ├── 08_DECISIONS_AND_RISKS.md
-    ├── 09_BALANCE_SEED.csv
-    └── 10_ECONOMY_SEED.csv
-```
-
-Il futuro progetto Unreal andrà in root (o in una cartella dedicata scelta al gate G0), **non** si importa alla cieca prima di avere una baseline scelta. Per gli asset: il catalogo registra dei *candidati verificati sulle pagine dei produttori*, non dei pacchetti già acquisiti/validati nel motore.
-
-## Vincoli
-
-- Budget iniziale quasi nullo; evitare acquisti e servizi a consumo non autorizzati.
-- Un solo framework gameplay principale, interfacce pulite e dati configurabili.
-- Nessun asset senza provenienza e licenza documentate.
-- Nessun ticket dichiarato `DONE` senza compilazione/test applicabili ed evidenza.
-- No pay-to-win, niente sistema factory/idle che sostituisca lo sparatutto.
-
-Le istruzioni operative dettagliate sono in [AGENTS.md](AGENTS.md). La scelta definitiva di stile, multiplayer al lancio e scope è registrata in [decisioni e rischi](docs/08_DECISIONS_AND_RISKS.md).
+Questo repository contiene la documentazione e potrà contenere il codice con diritto di redistribuzione e i manifest. Il contenuto binario protetto va gestito in workspace privato fino a eventuale scelta di rendere il repo privato.
