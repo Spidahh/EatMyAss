@@ -1,43 +1,18 @@
-# MULTIPLAYER CO-OP 1–4, RETE, LOBBY, DISCONNESSIONI, SALVATAGGI
+# MULTIPLAYER E SAVE V2 — BASE CHE CONTINUA, HOST PERSISTENTE
 
-## Target verificabile della versione 1.0
+**Windows 1p offline e co-op listen-host fino a 4 quando realmente verificato** su HordeTemplate; niente server cloud o account esterni promessi. Il mondo/BASE appartiene a host. Tutti i player possono essere FUORI in combattimento o DENTRO in upgrade; questo non spegne le torri. Con client lontani dall'AI base, AI/damage/spawn rimangono autorevoli server, il sistema di relevancy replica i cambi di stato ai client senza disattivarli.
 
-PC Windows, **offline solo** e **listen-server co-op fino a 4** tramite LAN/soluzione amici ufficialmente supportata dall'integrazione del progetto dopo verifica. Non promettere online pubblico mondiale, matchmaking, server cloud, migrazione host, progressione account o anti-cheat professionale; niente abbonamenti. Il codice multiplayer esiste in HordeTemplate come classi e replica, ma non è stato ancora eseguito dal nostro progetto: implementare e rifinire quando lo strato corrente ha vera logica da sincronizzare.
+## Dati server e compatibilità
+`BaseSaveId, Stage, Mode(Waves|Continuous), CoreHP, TowerSockets, TowerTiers, WallHP, PowerCap, RottamiWallet, ClassChoices, WeaponUnlocks, WavePressureState` gestiti da server/host, inviati ai client. Player input requests equip, shoot, parry, abilities, upgrade con validazioni; no client HP/kill/tower authority. Spawn identity e kill event IDs unici, nessun doppio award o bilancio negativo.
 
-## Autorità e ownership
+## Save persistente
+Host solo/coop salva checkpoint quando compra upgrade, termina stadio, esce volontariamente in prep; schema versionato e checksum atomico (scrivere temp, flush, rename, backup) e journal `TxnId`. Se host interrompe durante wave, riprende da ultimo checkpoint stabile **inizio stadio** con tower/risorse coerenti; non recuperare da client un saldo non registrato. Non salviamo nemici in posizione esatta durante fighting. A programma CHIUSO non continua assedio né auto mining.
 
-| Dato | Server authoring | Replicare a | Regola |
-| --- | --- | --- | --- |
-| stato della run/tempo/ondata/vittoria | GameMode + director → GameState | tutti | client HUD read-only |
-| zombie posizione/stato/HP/morte | Character + AIController server | client rilevanti | no client-determined kills |
-| colpi player | server validate cadence/direction/ammo | owner + hit FX agli altri | client può predire solo elementi cosmetici |
-| crediti personali | PlayerState server | owner, alcuni scoreboard | no client AddPoints arbitrario |
-| fondi squadra | GameState server | tutti | ledger idempotente |
-| strati difensivi/core/socket | server actors + manager | tutti rilevanti | no spawn torrette client |
-| classe attiva/skill cooldown | PlayerState + ability component | owner/all necessari | no double cast |
-| porte/settori aperti | SectorManager server | tutti | late join ricostruisce stato reale |
+## Co-op e player death
+Ospite rientra in base dopo morte/10s seed, server rimane attivo; gli altri combattono e torri operano. Downed temporaneo e revive manuale universale, non Medic class. A host quit interrompere simulazione e tornare menu, non continuare timer client. Reconnect mid siege non promesso se il framework non lo supporta; informare in UI. Base/risorse sono host world, ospiti non ottengono copie permanenti del mondo.
 
-## Lobby e session flow
+## Purchases
+Solo terminali **DENTRO** base attivano server spend; in coop acquisti grandi richiedono confirmation vote o host policy esplicita, non carta bianca ai client. Il wallet è uno solo Rottami, non PC/TF. Le torrette respingono zombie anche con host avatar KO; solo host server devono continuare thread AI.
 
-Host: New Game → solo / Host LAN co-op → lobby → 1–4 player joined → class/loadout choices ready → start. Join: select available host session supportata via OnlineSubsystemNull o soluzione prevista già dal framework → loading/version check → lobby. Una volta iniziata run **late join non supportato alla 1.0** (se desiderato più avanti sarà una feature distinta con sync snapshot completo), UI deve comunicarlo; niente player fantasma.
-
-Slot team ≤4, reconnect durante run **non garantita**: se client disconnecta, server lo segna disconnected e rilascia lock di ready/vote, il personaggio può essere rimosso o diventare spectator secondo regola documentata; fondi team non vanno raddoppiati; non rimborsare crediti da player assente senza policy. **Host quit**: tutti ricevono schermata host-disconnected, sessione chiusa senza crash né corruzione; migrazione host esclusa 1.0. L'utente deve sapere che partita co-op è host-based.
-
-## Sync qualità
-
-- Camera/FPS owner fluida; remote vede weapon, muzzle, reload, sprint, down/revive, ability e zombie death con montages coerenti.
-- Simula 80ms RTT e 2% packet loss durante build QA, attenzione doppio fuoco/acquisto/reward. Solo server può fare danno, ma local feedback deve sembrare immediato. Non fare multicast per ogni traccia audio globalmente.
-- Server launch game con net role e inventory reale; no cast a Pawn/PlayerState senza null guard; cross-level travel e restart senza riferimenti zombie orfani.
-- Pooled impact FX solo se non compromette visibilità del colpo, replication event budget misurato.
-
-## Salvataggi persistenti 1.0
-
-**Salvare soltanto:** video/audio/input/accessibilità, preferenze FOV/sens, preferenze classe/loadout (se ancora valido), local personal stats aggregate, opzione privacy/telemetry local. `SaveGame` versioned schema e fallback safe se versione cambia. **NON** salvare economy, wave, torri, HP Nucleo in corso per co-op 1.0: una run finisce e viene resettata. Da solo la sessione può ricominciare da wave1; menù deve comunicare regola prima di avvio. Salvataggio a checkpoint solo dopo V1 e dopo dimostrazione co-op serializer robusto.
-
-## Sicurezza minima
-
-Validate RPC per player ownership e rango; rate limiting request, bounds per costi/element IDs e amount; rejection con codice; TxnId dedupe; non accettare `Health=100000` da client; non dare fiducia a cooldown o collision client. Nessun dato personale in log/telemetria senza motivo. Nessun accesso amministrativo o command cheat esposto in Shipping.
-
-## QA accettazione
-
-2p e 4p, host e client casual, join lobby, class select, ready, start/return, almeno 10 ondate in 2p, single local offline, morte e revive, potenza Core, acquisto socket, aprire settore, riavvio nuova run. Tutti i client vedono identico saldo/server wave/core e nessuna duplicazione. Test host disconnect, packet loss, client crash, UI ricostruzione dopo travel, Windows packaged. Rapporto LAN vs internet REALMENTE verificato; se manca connectivity online non chiamarla multiplayer internet.
+## QA
+1p entra/ esce/ combatte/ compra in wave, 2p uno fuori e uno dentro, 4p tutti fuori → base difende per 2 minuti, 4p tutti dentro → core subisce/torri sparano, host crash checkpoint rollback, due upgrade simultanei, perdita internet, no doppie transazioni. Misurare CPU/network quando torrette combattendo nessun client guardando.

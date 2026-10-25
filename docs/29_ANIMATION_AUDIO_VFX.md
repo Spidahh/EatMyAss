@@ -1,62 +1,22 @@
-# MATRICE GLOBALE ASSET / ANIMAZIONI / AUDIO / VFX — PER TUTTO IL GIOCO
+# MATRICE ARTE/ANIM/AUDIO/VFX V2 — OGNI ELEMENTO FINITO NEL SUO STRATO
 
-**Scopo:** Codex non può più “dimenticare le animazioni” o considerare conclusa una meccanica quando funziona solo come calcolo numerico. Per ogni tipo è obbligatorio un `ContentCompletionRecord` con mesh e license, state anim, transizioni/IK, SFX, VFX, shader/material response, UI, collision, perf, network e video. Sorgenti ufficiali in [30](30_ASSET_PRODUCTION.md). Le voci sono requisiti, **non claim che i pack le includano**.
+### Player Survival
+Modello reale, FPS arms coerenti 3P remote; walk8, idle, sprint, strafe, crouch, jump/land, turn, reaction, Downed/respawn, porta ingresso base e terminal interaction. Foley passi metal/concrete/gravel, cloth, landing; HUD damage direction. Senza T-pose.
 
-## A. Umano player — stato obbligatorio L1
+### Firearms: AR/Pistola/SMG/Shotgun
+Ogni mesh rig deve essere reale, ads/hip/fire/recoil/reload empty/tactical/equip/sprint/aim offsets, owner + remote, muzzle/shell/smoke/impact flesh/armor/metal/concrete, near/far SFX e no doble sound in coop. Danno, ammo ed equip dal server.
 
-- Mesh/clothing finali e viewmodel arms coerenti, corpo 3P shadow; nessun mannequin.
-- Idle armato, walk 8 direzioni (blend di sorgenti genuine), run, sprint, start/stop, turn in place, crouch idle/walk, jump takeoff/air/land, aim pitch/yaw offsets, animazioni d'interazione, damage hit, death/downed/revive. Foot IK dove utile.
-- Audio footsteps concrete/metal/gravel, cloth/gear, salto e atterraggio, hurt, low-HP feedback, death/revive.
-- FX camera movement appropriati, damage directional hit UI, weapon stance.
-- Networking all 3P; first-person owner non vede duplicato.
+### Melee: Machete/Mazza/Asta
+Ogni arma: equip/unequip, idle/move, true 1p+3p light chain 2–3 step, windup/active/recovery, hit/miss, block start/hold/end, perfect parry/counter (arma-dependent), heavy charge quando previsto, impact/armor break flesh reactions, distinct real SFX whoosh/hit/clank, blood FX non esagerato, stamina e HUD feedback, remote montage and server trace. 1 weapon FINITO prima della seconda.
 
-## A2. Skill e sinergie comuni (design 1.1)
+### Zombie: 5 archetipi
+Ogni nemico con mesh e animation realmente acquisita/creata, locomotion della velocità, detect, Siege vs Field targeting, readable windup/attack/recovery, hit reactions ranged+melee, parry stumble with cooldown, ragdoll/death/cleanup, growl/footstep/swing/death SFX, VFX sangue/armatura. Walker Nurse ha solo 3 clip dichiarate nel pack: retarget/create per gli stati mancanti, non trattarli come già presenti. Saboteur attacco a torre con anim vera. Bruto attaccabile anche melee e torri.
 
-- **Spinta V**: vero montage in 1p/3p con grip arma, whoosh/grunt, carne/armatura reactions, UI cooldown, server cone target e stagger con eccezioni Armored/Boss.
-- **Marcatura MMB**: suono discreto, marker sopra nemico, piccolo focus cue sentry; replicated team target, no line-of-sight cheating.
-- **Impulso Core E**: sirena, emissione circolare di 12m, leggibile 5s, 1/wave team, slow FX per zombie, cadenza anim corretta, T3 visual feedback Portata/Ripristino.
-- **City benefits**: S1 ammo discount apparente shop UI, S2 repair discount, S3 warning direction elite, ognuno con un piccolo audio/icon/segno spaziale sul settore.
-- **Skill Q**: Assault armor penetrate cue sul muzzle (no obscuring ADS), Engineer repair+4s sentry surge, Medic HP heal+bleed pause; ogni classe ha montage/VFX/SFX, target reject, server multicast limitato e remote viewer corretto.
-- **W7 micro-blackout**: una sentry specifica disalimentata, audio out-of-power, stato HUD 8s, ripristino E/Q animato e visibile a tutti.
+### Base e torrette
+**Interno**: porta, 4 terminali con animazioni reali di hardware UI, light ambience e menu SFX; niente dummy cubes. **Perimetro**: barriera deploy/hit/break/tier mesh e suoni, torre rapida con yaw/pitch/acquire/fire/reload/heat/destroy, heavy turret con movimentazione lenta e colpo pesante, Core tier0–3 luminosità/sparks/critical; **auto pulse** con VFX e sirena quando HP<35% seed e una volta/stage. Nessuna azione manuale obbligatoria per difesa.
 
-Per tempi e edge cases leggere [40](40_SYNERGIES_SKILLS_AND_CITY.md). Non basta segnare checkbox: audio/FX/anim devono esistere e funzionare nel gioco.
+### Territorio esterno
+3 aree di combat: ambience specifico, cover e visibilità, terminal/supply event radio call, salvaging reward UI minimale, allarme base con audio spaziale coerente. Eventi solo combat senza NPC/dialoghi lunghi.
 
-## B. Quattro armi — un record per ogni arma L2/L11
-
-Ogni W_PI/W_AR/W_SG/W_SM: idle hold, hip fire, ADS enter/hold/exit, fire ADS, recoil/recovery, equip/unequip, tactical reload, empty reload (bolt/pump/slide corretto), sprint hold+exit, jump/land armed, dry fire, impact/interruption states; hands IK e mag/shell animati **in sync con reale arma**. Shot fire near/medium/far (attenuation), handling, trigger, eject shell, mag out/in, bullet/shot flesh, plate, metal, concrete, ambient tail. VFX muzzle flash, smoke, trace se applicabile, shell casing, muzzle lighting contenuto, impact puffs/decal, blood/headshot, ammo/hitmarker/crosshair UI. Remote replication del fire montage, no double sound.
-
-## C. Zombie roster — un record per ciascun tipo L3/L11
-
-| Enemy | Movement/detect | Attack | Reazione | Morte | Audio/VFX speciali |
-| --- | --- | --- | --- | --- | --- |
-| Walker | idle variant, shuffle, turn, detect | grab/swing telegraphed + recovery | light/heavy + head | hit collapse + ragdoll controllata | groan, foot drag, blood |
-| Runner | idle jitter, sprint+turn+accelerate | leap/swing, miss recovery | stumble breve | crash fall veloce | scream detect, rapid steps |
-| Armored | ponderous walk, turn, rage | overhead smash, recovery | armored bullet spark + exposed weakpoint | fall pesante | plate clank/break, low growl |
-| Saboteur | stalk, target power, locomotion | disarm animation + melee | hit recoil | collapse e sparks residui | electric hiss, lock warning |
-| Boss | intro + walk/charge, 2 stage, phase change | 2 attacchi distinti con anticipation/recovery | stagger limitato e weakpoint reveal | finisher death unico | telegraph siren/rumble distinto; no blinding VFX |
-
-Per Nurse il pack scelto include solo Idle/Walk/Attack. Le clip non presenti vanno **prodotte o acquisite legittimamente** prima di chiamare la Nurse finita. Boss non è “Nurse scalata 5x”.
-
-## D. Strutture e ambiente
-
-| Oggetto | Animazione visiva | Soundscape | VFX/feedback | Stati HUD |
-| --- | --- | --- | --- | --- |
-| Nucleo | tier upgrade, damage stages, power active, collapse | hum loop, hit/critical alarm, powerout | lights/damage sparks/smoke per HP; no eccessi | HP/power/critical |
-| Barricata | placement/repair, hit, splinter/metal bend, break | build, hammer/metal, zombie bash | debris bounded, damage material | HP/tier/cost |
-| Sentry | placement raise, scan yaw/pitch, target acquire/fire/overheat, break | servo, lock cue, muzzle, out of ammo/power | muzzle/fire hit/smoke/damage | ammo/heat, power/target |
-| Campo slow | spawn, pulse, expire, damage/destroy | low freq pulse, shutdown | area zone chiara, deform/electro mist controllati | radius/duration |
-| Cancello settore | lock→power→opening, blocked/destroyed if design | mechanical latch, power, alarm | status light, open smoke minimal | cost/new varchi |
-| Armeria/banco | UI open/close, highlight upgrade | click/upgrade confirmation | selected silhouette + actual weapon tier | prezzo/delta |
-
-## E. Città
-
-Ambience strada industriale, vento, neon, distant groans, sirene, pannelli elettrici; differenziare interno/officina da aperto/strade; 2–3 sound zones spazializzate reali, non musica continua su ogni wave. Adaptive tension layer al passaggio wave: niente audio che maschera corridori o boss. Materials concrete/steel/glass e decals coerenti.
-
-## F. Requisiti comuni per tutti
-
-- Original asset immutable/private, wrapper e instances, retarget source/version + mapping salvati nel manifest.
-- Animation Sequence vera, clip/event name identificati; graph non può fare finta di mostrare un attack non animato.
-- All actors combat: audio cues con attenuazione/concurrency/volume; niente multicast ridondante.
-- Niagara/particles controllati: emitter spawn cap, durata FX e decal limitata; non saturare performance crowd.
-- Real-time lighting/material blend, LOD, cloth, armature, FOV; niente asset 8K ovunque per sentirsi “belli”.
-- Video/screenshot dell'intero ciclo; QA per 1p e 2p, 20 zombie dove applicabile. Missing any required row => strato IN PROGRESS.
+### Completeness gate
+Per ciascun tipo: `Mesh + Skeleton/LOD + AnimationSet (real) + SFX + VFX + UI + AI/damage + Replication + Test video + License + Build`. Qualunque colonna mancante => IN PROGRESS/BLOCKED. Registrare status in `38_RELEASE_CONTENT_MATRIX.csv` e prove task. Non aggiungere effetto “provvisorio” mai sostituito. Video actual gameplay, mai concept art dichiarata gameplay.

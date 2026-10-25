@@ -1,93 +1,43 @@
-# ARCHITETTURA UNREAL END-TO-END — CODICE, DATI, OWNERSHIP E INTEGRAZIONI
+# ARCHITETTURA UNREAL V2 — HUB/BASE/EVENTI/MELEE, UN SOLO FRAMEWORK
 
-## Base reale vs nuove classi
+**Baseline:** HordeTemplate V2 Native UE5.8 designato. Esistono upstream `HordeBaseCharacter`, `BaseFirearm`, `ZedPawn`, `ZedAIController`, `HordeGameMode`, `HordeGameState`, `ZedSpawner` e inventory; estendere con prefisso ZD, non introdurre Lyra o un secondo inventario/AI. I seguenti nomi ZD sono **CONTRATTI**, non classi già presenti o codice compilato.
 
-**Upstream reale**: [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate), UE 5.8 dichiarato. Esistono nel repository sorgente `AHordeGameMode`, `AHordeGameState`, `AHordeBaseCharacter`, `ABaseFirearm`, `AZedPawn`, `AZedAIController`, `AZedSpawner`, `UInventoryComponent`, `AHordePlayerState`, `HordeTrader` e HUD classes. Il runtime del progetto non è ancora stato verificato. **Le classi ZD elencate di seguito NON esistono ancora e sono da implementare quando servono**. Non dichiararle esistenti in report o includerle in C++ senza creare i relativi files.
+| Sistema | Owner server | Funzione |
+| --- | --- | --- |
+| `ZDWorldBaseState` | GameState o Actor replicated host | livelli turret, socket, HP Core, PowerCapacity, Rottami, profile id |
+| `ZDBaseInteriorVolume` | collision authority server | traccia InsideBase, upgrade consentiti solo nei 4 terminali |
+| `ZDDefenseManager` | server AI subsystem | automatic target acquire/range/LoS, firing, damage, heat, repair/power, no player relevancy |
+| `ZDCore` | actor replicated | HP0 fail, autorepair tier e auto emergency pulse threshold once/stage |
+| `ZDThreatDirector` | GameMode/server | 2 stream FieldPressure/SiegePressure, Waves/Continuous stesso codice, cap, checkpoint |
+| `ZDWeaponAdapter` | integrazione BaseFirearm | ranged fire/damage/ammo/impacts server, saved upgrades |
+| `ZDMeleeComponent` | player server component | swing montages/notify windows, collision swept trace, block/parry/stamina, counter, net |
+| `ZDEnemyBehavior` | ZedPawn/ZedAIController data | role Siege/Field, target core/towers vs player, hit reactions and death |
+| `ZDSpecializationComponent` | player state/pawn | Tiratore/Spezzatore/Tecnico passiva, Q, mode solo melee |
+| `ZDOutsideEventManager` | server | one short mission active, objective reward bounded, siege budget modifiers |
+| `ZDWalletLedger` | server | one Rottami resource, grant/spend TxnId idempotence, shared/host permissions |
+| `ZDBaseSave` | host SaveGame | saved base/world between sessions, versioning/checkpoint/journal |
+| `ZDUI/HUD` | client presentation | Hub terminals, outside shooting, auto-defense warnings, no fake stats |
 
-## Scelta di implementazione
+## Un solo stato di danno
 
-Un unico framework di base. Creare namespace/prefisso `ZD` per estensioni; importare framework mantenendo notices MIT. Mettere dati in `PrimaryDataAsset` / `UDataTable` coerenti con moduli reali e config runtime in GameState. Blueprint = wiring, anim graph, UI, effect actors; C++ = invarianti, gameplay state, economia, validation/replication, AI interfaces, transaction ledger. Non creare due skill systems (GAS vs manual), due wave directors o tre inventory.
+DamageEvent con `SourceActor` `Instigator` (può essere nullo per torretta) `TargetActor` `HitZone` `Amount` `EventId`; morte una sola volta a HP<=0 da player arma, melee o turret. Award Rottami diverse quote in funzione fonte e evento unico. No aspettativa `DamageCauser is ACharacter`.
 
-### Component map prevista (nomi CONCETTUALI)
+## Timer/AI tick/relevancy
 
-| Sistema | Proprietario ed estensione prevista | Dati | Dipendenze |
-| --- | --- | --- | --- |
-| `ZDRunCoordinator` | estensione GameMode/GameState | RunRules, PhaseEnum | upstream multiplayer |
-| `ZDCombatBridge` | integra `BaseFirearm` e `ZedPawn::TakeDamage` | WeaponDefs, DamageEvent | gunplay L2 |
-| `ZDWaveDirector` | GameMode server, replicazione GameState | WaveDef, SpawnGroupRegistry | zombie L3 e sessione |
-| `ZDEnemyDefinition` | data asset + child class existing zombie | HP, resists, AnimSet, AIProfile, Rewards | L3 e wave |
-| `ZDBaseCore` | actor server replicated | HP, maxHP, power, Tier | wave |
-| `ZDDefenseManager` | server manager con socket actors | DefenseDefs, tiers, sockets | Core e economy |
-| `ZDEconomyLedger` | server authoritative per player/team | reward tables, costs, TransactionId | Wave/PlayerState |
-| `ZDSectorManager` | server subystem o world actor | SectorDefinitions, nav, doors, spawns | map+economy |
-| `ZDClassAbilityComponent` | attached player, server authoritative | ClassDefs, AbilityDefs, Cooldowns | L10 |
-| `ZDProfileSave` | client settings SaveGame | config version+preferences | UI |
-| `ZDPresentationRegistry` | soft refs sounds/FX/anims/material | asset manifest | every visible system |
+Zombie Siege/server e torre AI sempre attivi nella simulazione durante una sessione, anche se nessun player nella distanza del perimetro: il server può ottimizzare tick con dati temporali ma **non può spegnere il sistema**. FPS/HUD e audio FX possono essere replicati/cullati per client distanti, mantenendo risultato fisico; usare AI spawning/cap reali e NavMesh. No fake damage al Core per “simulare” wave lontana.
 
-**Non costruire la tabella intera al primo commit.** Ogni sistema nasce nel suo strato, ma aderisce ai contratti sopra per evitare riscrittura. Non introdurre complessi dependency injection/plugin non necessari.
+## Runtime flusso
 
-## Ability e sinergia tra sistemi (v1.1)
+`HostStart/LoadBase → InsideHub`; un player che cammina tramite cancello viene identificato Inside/Outside; `Outside` cambia solo UI/opzioni disponibili per player, non wave state; quando player torna può spendere durante Siege senza interrompere timer. `ThreatDirector` può generare spawn Field e Siege contemporaneamente senza doppio conteggio; a stage10 boss, base salva milestone. Difficoltà migliora nemici veri via defs, non fake timer HP.
 
-**Aggiunte solo tramite componenti già necessari, non nuovo framework di abilità:**
-- `PlayerAbilityComponent`: spinta V e Q classe condividono validazione server/cooldown, montage reali, determinazione del target e replicazione. Niente stamina separata.
-- `GameState.TeamFocusTargetId` (nome concettuale) e `MarkedUntil`: input middle-click server trace e focus che il targeting Sentry legge se disponibile; non altera danni né LoS.
-- `ZDBaseCore.ProtocolUsedWaveIndex` e `CoreProtocolChoice`: E sul pannello, server atomico, 1 uso per wave; usa il medesimo StatusSlow del campo rallentante con stacking max (non additive).
-- `ZDSectorDefinition.SectorBenefit` in acquisti ammo/repair/UI; niente resource manager supplementare.
-- `ZDWaveDefinition.OptionalEvent`: W7 referenzia il già esistente `Disabled` Sentry status, senza nuovo actor né aiuto obbligato dell'Ingegnere.
-Dettagli completi [40](40_SYNERGIES_SKILLS_AND_CITY.md); questi nomi sono contratti architetturali, non classi upstream già esistenti.
+## Persistence
 
-## API/eventi condivisi
+Data versioned `BaseSaveId` sul PC host, SaveGame snapshot a stage boundary e ad acquisto, backup atomico. Mid-assault crash reload checkpoint pre-stage; se wallet ha grant dopo checkpoint, non riapplicare journal senza matching stage/event ID. A offline non run tick/spawn. Co-op guest no persisting duplicate.
 
-- `OnDamageResolved({VictimId,SourceType,CauserActor,InstigatorPlayerId,DamageType,BodyZone,Amount,ServerTime})` server only → cosmetics.
-- `OnEnemyKilled({EnemyId,WaveId,KillEventId,RewardRecipient,DeathReason})` unica sorgente kill.
-- `OnWaveStateChanged({RunId,Wave,Phase,RemainingAlive,RemainingToSpawn})` replicated.
-- `RequestPurchase({TxnId,PlayerId,ItemOrUpgradeId,TargetActorId})` server only; `PurchaseResolved({TxnId,Success,Reason,NewBalance})`.
-- `OnCoreStateChanged({HP,MaxHP,Power,Tier,EmergencyState})` replicated.
-- `OnDefenseStateChanged({SocketId,DeviceId,Tier,HP,Power,TargetState})` replicated.
-- `OnSectorUnlocked({SectorId,WaveIndex,NewSpawnGroups})` server event then replication.
-- `OnAbilityActivated({PlayerId,AbilityId,CooldownEnd,Targets})` server event.
-- `OnRunEnded({RunId,Victory,Reason,Results})` exactly once.
+## Architettura asset
 
-Sono **contratti di design**, non firme C++ compilabili, e `actor ID` nel gioco va collegato ad actor pointer replicato valido/NetGUID con cleanup.
+Workspace PRIVATO con raw Unreal assets da Fab/Epic; repo pubblico contiene codice lecito, documenti, manifests, script, config e `Content/ZD` SOLO assets propri/autorizzati alla redistribuzione. Quattro terminali reali hub, player rig real, turret meshes e zombie real, no placeholder. Blueprint solo presentation/Animation BP/Niagara/wiring, C++ per invariant/damage/saving/AI. Video in editor e package provano completezza.
 
-## Schema dati e cartelle (target post bootstrapping)
+## Test obbligatori
 
-```text
-Game/
-  HordeTemplateV2Native.uproject
-  Source/HordeTemplateV2Native/           # upstream dove legalmente possibile
-  Source/ZDGame/                          # gameplay esteso, da creare gradualmente
-  Config/                                 # pin engine/input/network/maps
-  Content/ZD/Data/{Run,Wave,Enemies,Weapons,Defense,Classes,Sectors}
-  Content/ZD/Blueprints/{Player,Enemies,Defense,World,Items}
-  Content/ZD/Animation/{Player,Weapons,Enemies,Abilities}
-  Content/ZD/Audio/{Player,Weapons,Enemies,Defenses,World,UI}
-  Content/ZD/VFX/{Weapons,Hit,Defenses,Abilities}
-  Content/ZD/UI/{Menus,HUD,Widgets}
-  Content/ZD/Maps/{DistrictZero}
-  Content/ThirdParty/                    # raw assets solo nel workspace PRIVATO
-docs/                                      # GDD e manifest/versione pubblici
-scripts/                                   # import/bootstrap e controlli
-```
-
-In GitHub pubblico `Content/ThirdParty` NON viene pushato senza accordi specifici. Non committare accidentalmente gli .uasset di Fab tramite LFS: LFS non rende legittima la redistribuzione pubblica.
-
-## State machine e life cycle del network
-
-`GameMode` server: lobby/readiness, create RunId, spawn 1–4 pawn, wave state, NPC director, end game. `GameState`: phase/wave funds/core/sector to all. `PlayerState`: class, personal credits, perks cooldown, scoreboard. Player pawn/ability component: health/down state, weapon equip and server validated commands. Enemy: AI controller server, death and locomotion state replicated. Defense actors: server only targeting/damage, remote visuals played on event.
-
-## Navigation e attenzione horde
-
-Prebuilt paths/links e BuildSockets impediscono blocked routes. NavMesh data/doors validati prima di abilitare settore. Zombie crowd cap calcolato per profiler (game, render, GPU, Anim), non dichiarare 100 network zombies senza misurazione. Reuse combat damage pipeline per turrets e traps.
-
-## Workflow integrativo per asset
-
-Source raw in private folder → import into sandbox PROJECT di quella fase solo per preparazione → real ZD wrapper → asset name/version manifest → rig/retarget/LOD/audio → cooked build → screenshot QA. **Non restare nella sandbox e non creare un secondo gioco**: la preparazione si conclude con asset integrato nel progetto principale nello stesso task.
-
-## Quality/performance/CI
-
-Source compile UE5.8 pinned; Unreal Editor preview e build packaged Windows come requisito ogni volta che cambia gameplay reale; profiling su hardware target sotto RTX4090, bilancia in medium 1080p, 60fps come **obiettivo** non misurato. Stat unit/game/gpu/animation/navigation, network profiling 1–4, memory/VRAM. Pre-commit lint Markdown+CSV, source static checks, build test se self-hosted runner con UE realmente presente. Non creare GitHub Actions che dichiarano compilazione UE se il runner non ha Unreal/SDK o se licenze binarie mancano.
-
-## Packaging/ownership
-
-Public repo contiene solo materiale che possiamo distribuire. La release Windows include contenuti legalmente incorporati/cooked. Assets e licenze terze hanno un inventario privato e crediti necessari; nel binario la licenza Fab non permette ripubblicazione isolata raw assets. In caso di dubbio bloccare release, non mascherare riferimento raw.
+Host avatar in Zona C e tutti i client fuori, server torri difendono W3 120s. Entrare upgrade durante wave e tornare fuori, nessun stop spawn; ctrl save/restart host co-op corretta, tentativi doppio acquisto. Melee parry network same time and damage. Mode Waves/Continuous share asset/state. No build claims without engine.
