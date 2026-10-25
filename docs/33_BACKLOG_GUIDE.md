@@ -18,7 +18,11 @@ Questo documento accompagna il [backlog machine-readable](33_FULL_BACKLOG.csv): 
 - **L11**: 9 attività — [spec](18_MASTER_GAME_SPEC.md)
 - **RC**: 10 attività — [spec](32_QA_RELEASE.md)
 
-## Controllo automatico documentale\n\nEseguire `python scripts/validate_plan.py` per verificare 80 righe, dipendenze, referenze, stato e 28 contenuti. È un controllo del **piano**, non sostituisce Unreal/QA. La CI controlla a ogni modifica del repository.\n\n## Regole di esecuzione
+## Controllo automatico documentale\n\nEseguire `python scripts/validate_plan.py` per verificare 80 righe, dipendenze, referenze, stato e 28 contenuti. È un controllo del **piano**, non sostituisce Unreal/QA. La CI controlla a ogni modifica del repository.\n\n## Integrazioni gameplay v1.1 nelle attività esistenti
+
+Il design lock [40](40_SYNERGIES_SKILLS_AND_CITY.md) **non aggiunge 25 task separati** né un'altra produzione: gli obblighi V, Q, MMB ping, E Core pulse, utilità S1/S2/S3 e W7 sono inclusi come `V1.1` negli acceptance criteria di task già necessari. Le voci corrispondenti nella [matrice](38_RELEASE_CONTENT_MATRIX.csv) ora contengono animazioni, audio, VFX, UI, server sync e behavior. NON marcare DONE senza coprirle.
+
+## Regole di esecuzione
 
 1. Cercare prima riga diversa da DONE in `33_FULL_BACKLOG.csv`; **solo quella** si lavora. Se blocked, non saltare a riga successiva.
 2. Se task completato e verificato, aggiungere evidenza in `37_EXECUTION_STATUS.csv` con SHA, build, video/QA/link e flag DONE; aggiornare status nel backlog nello stesso commit.
