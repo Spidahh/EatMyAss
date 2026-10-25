@@ -1,50 +1,57 @@
-# Zombie Defence — Unreal Engine FPS + Tower Defense
+# Zombie Defence — FPS zombie + Tower Defense (Unreal Engine 5.8)
 
-**Stato:** inizio produzione a strati (documenti pronti, **gioco Unreal non ancora creato in questo repository**). Ultimo aggiornamento: 25 ottobre 2026. Repository pubblico: non caricare mesh/audio/animazioni Fab o Epic in sorgente senza esplicito diritto di redistribuzione.
+**DOCUMENTAZIONE DI PRODUZIONE COMPLETA v1.0 · 25/10/2026**  
+**Stato reale:** documenti, asset research e backlog completati; **nessun codice gameplay Unreal ancora integrato/compilato in questo repository**. Gli asset esterni vanno acquisiti legalmente sul workspace di sviluppo: non sono contenuti nell'archivio GitHub pubblico.
 
-## Il lavoro concreto adesso
+## Il gioco che stiamo costruendo
 
-**Una base definita:** [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate) su Unreal Engine 5.8. **Un solo personaggio:** [Survival Character](https://www.fab.com/listings/11d20d01-b764-4936-8163-cb20d05c369e). **Un solo fucile d'assalto:** selezionato dai modelli veri di [FPS Weapon Bundle](https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5). **Una sola zombie:** [Zombie Female: Nurse](https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc). Piccolo settore di città urbana industriale, il resto in costruzione.
+Un FPS d'azione cooperativo 1–4 per Windows. Si combattono ondate zombie con 4 armi potenziabili, 3 classi e abilità, mentre si protegge un Nucleo costruendo barricate, torrette e un dispositivo rallentante. La mappa è una città industriale con 3 settori acquistabili oltre al cortile iniziale. Economia personale + fondi difesa, upgrade a Nucleo/armi/difese, 10 ondate + boss, fine partita e replay. Asset credibili, animazioni e suoni completi, niente placeholder che rimangano.
 
-Prima completare **player reale e tutte le animazioni di movimento**; poi il **fucile vero** con mani, mira, sparo, ricarica, effetti e audio; poi la **zombie vera** con IA, locomozione, attacchi, hit reaction e morte; infine una prima scena cittadina rifinita. Solo **dopo** si realizzano ondate, torrette, upgrade, classi e ampliamento base, uno per volta.
+**Base designata:** [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate) UE5.8. **Primo contenuto:** [Survival Character](https://www.fab.com/listings/11d20d01-b764-4936-8163-cb20d05c369e) + una vera arma del [FPS Weapon Bundle](https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5) + [Zombie Nurse](https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc). Poi ogni funzionalità di gioco completa, prima della successiva.
 
-Niente mannequin o cubi spacciati per modelli finali, niente placeholder che rimangono, niente codice inventato, niente sistemi iniziati e abbandonati. Il file AGENTS.md è la regola primaria per Codex.
+## Apri qui il piano COMPLETO
 
-### Istruzioni vincolanti (LEGGERE IN QUEST'ORDINE)
+| Punto | Documento | A cosa serve |
+| --- | --- | --- |
+| **0** | **[AGENTS.md](AGENTS.md)** | Regole obbligatorie per Codex/AI: valgono per l'intero gioco |
+| **1** | **[Specifica madre 1.0](docs/18_MASTER_GAME_SPEC.md)** | Contenuto finale e scelte bloccate |
+| **2** | **[Backlog integrale (80 attività)](docs/33_FULL_BACKLOG.csv)** | Tutto il lavoro in sequenza, task + dipendenze + Done |
+| **3** | **[Guida backlog](docs/33_BACKLOG_GUIDE.md)** | Come non saltare strati e registrare le prove |
+| **4** | **[Mandato esecutivo Codex](docs/34_CODEX_MASTER_BRIEF.md)** | Istruzioni da seguire senza reinterpretazioni |
+| **5** | **[Matrice contenuto 1.0](docs/38_RELEASE_CONTENT_MATRIX.csv)** | Tutto ciò che deve essere realmente presente: anim, audio, VFX, UI, net |
+| **6** | **[Status esecuzione](docs/37_EXECUTION_STATUS.csv)** | Stato reale e prova per ogni singolo task |
+| **7** | **[Asset fonti e gaps](docs/30_ASSET_PRODUCTION.md)** | Pack concreti, licenze, componenti da trovare/produrre |
+| **8** | **[Quality bar e release](docs/32_QA_RELEASE.md)** | Definizione di completo fino allo shipping |
 
-| Documento | Contenuto |
+## Specifiche di tutti i sistemi
+
+| Tema | Link |
 | --- | --- |
-| **[AGENTS.md](AGENTS.md)** | **Contratto di lavoro principale per Codex; ha precedenza sugli altri** |
-| **[12_PRODUCTION_ORDER.md](docs/12_PRODUCTION_ORDER.md)** | Scelte definitive e fasi L0–L11 |
-| **[15_ASSET_LOCK.md](docs/15_ASSET_LOCK.md)** | Pacchetti reali obbligatori, licenze, divieti |
-| **[13_PLAYER_WEAPON_ANIMATION.md](docs/13_PLAYER_WEAPON_ANIMATION.md)** | Animazioni, sistema FPS, un'arma completa |
-| **[14_ZOMBIE_COMPLETE.md](docs/14_ZOMBIE_COMPLETE.md)** | Zombie completo, comportamento, animazioni, audio/VFX |
-| **[16_CITY_GROWTH.md](docs/16_CITY_GROWTH.md)** | Prima strada cittadina e crescita per settori |
-| **[17_CODEX_EXECUTION.md](docs/17_CODEX_EXECUTION.md)** | Mandato operativo esatto per avviare lo sviluppo |
+| Sessioni, regole vittoria/sconfitta, down/revive | [19 — Partita](docs/19_SESSION_AND_RULES.md) |
+| Shooting, 4 armi, migliorie, suoni/anim | [20 — Combat](docs/20_COMBAT_WEAPONS.md) |
+| 5 zombie, AI, behavior, hit, boss | [21 — Zombie](docs/21_ZOMBIES_AI.md) |
+| Nucleo, barricata, sentry, slowfield, energia | [22 — Difese](docs/22_DEFENSE_AND_BASE.md) |
+| 3 classi, passive/attive, cooldown | [23 — Classi](docs/23_CLASSES_ABILITIES.md) |
+| Cortile e tre settori città espandibili | [24 — Città](docs/24_CITY_AND_SECTORS.md) |
+| Crediti, fondi, spese, ricompense e bilanciamento | [25 — Economia](docs/25_ECONOMY_BALANCE.md) |
+| Curve delle dieci ondate, spawn, boss | [26 — Wave director](docs/26_WAVE_DIRECTOR.md) |
+| Co-op 1–4, networking, lobby, salvataggi | [27 — Multiplayer](docs/27_MULTIPLAYER_SAVE.md) |
+| HUD, input, UI, accessibilità | [28 — UI/UX](docs/28_UI_AND_INPUT.md) |
+| Matrice di animazioni/audio/VFX per ogni oggetto | [29 — Media](docs/29_ANIMATION_AUDIO_VFX.md) |
+| Classi Unreal, data assets, replication e codice | [31 — Tecnica](docs/31_UNREAL_ARCHITECTURE.md) |
+| Store, licenze, costi, patches | [36 — Release](docs/36_RELEASE_AND_OPERATIONS.md) |
+| Cosa non è verificabile senza file reali | [35 — Gap e decisioni](docs/35_DECISION_GAPS.md) |
 
-### Altri documenti: riferimento NON prioritario
+## Sequenza di realizzazione SENZA sostituzioni fittizie
 
-| Documento | Scopo |
-| --- | --- |
-| [00_START_HERE.md](docs/00_START_HERE.md) | Dossier iniziale, da interpretare secondo il nuovo ordine |
-| [01_GAME_DESIGN.md](docs/01_GAME_DESIGN.md) | Progetto complessivo del gioco dopo la prima scena |
-| [02_TECH_DESIGN.md](docs/02_TECH_DESIGN.md) | Architettura futuri sistemi |
-| [03_ASSETS.csv](docs/03_ASSETS.csv) | Catalogo di candidate risorse per fasi future |
-| [04_ASSET_PIPELINE.md](docs/04_ASSET_PIPELINE.md) | Convenzioni di grafica, import, diritti |
-| [05_ROADMAP.md](docs/05_ROADMAP.md) | Roadmap precedente, superata dove contrasta con L0–L11 |
-| [06_TEST_MATRIX.md](docs/06_TEST_MATRIX.md) | Suite QA future, non sprint autonomi |
-| [07_AI_DEV_CONTRACT.md](docs/07_AI_DEV_CONTRACT.md) | Precedente contratto, sostituito da AGENTS.md |
-| [08_DECISIONS_AND_RISKS.md](docs/08_DECISIONS_AND_RISKS.md) | Storico decisioni e rischi |
-| [09_BALANCE_SEED.csv](docs/09_BALANCE_SEED.csv) | Numeri non bilanciati per fasi avanzate |
-| [10_ECONOMY_SEED.csv](docs/10_ECONOMY_SEED.csv) | Seed costi per fasi avanzate |
-| [11_G0_HORDE_AUDIT.md](docs/11_G0_HORDE_AUDIT.md) | Audit statico esistente, **non** gate preproduzione autonomo |
+`L0 framework → L1 player completo → L2 AR completo → L3 Nurse completa → L4 prima zona città completa → L5 ondate → L6 Nucleo/barricata → L7 sentry/slow → L8 economia/upgrade → L9 città espansa → L10 classi → L11 armi/zombie/boss/resto 10 onde → RC UI/network/perf/legal/shipping`.
 
-## Prima issue produttiva
+Ogni fase include le animazioni vere, audio, VFX, rete, collisioni, interfacce, bugfix e build dei propri contenuti. **Non iniziare la prossima fase finché la precedente non soddisfa tutti i requisiti.** L1–L4 NON sono tutto il gioco. I vecchi docs/00–17 restano archivi di progettazione e sono **subordinati** alle specifiche aggiornate.
 
-[Elenco Issues](https://github.com/Spidahh/EatMyAss/issues) — usare **L0→L4** come unico incarico, e non aprire quattro task separati di indagine mentre player e primo nemico restano non prodotti.
+## Github pubblico e asset
 
-## Note tecniche e legali
+Fab Standard License normalmente permette asset incorporati nella build del gioco ma vieta redistribuirli come raw files standalone. Non caricare contenuti Fab/Epic non redistribuibili in forma sorgente nel GitHub pubblico. Usa il progetto privato locale ed esporta solo sorgenti/testi che abbiamo diritto a pubblicare; `.gitignore` esclude `Game/Content/` e `ExternalCache/`. Il link non equivale ad aver scaricato/importato.
 
-HordeTemplate è scelto come framework iniziale, **ma nessuna sua build è stata eseguita qui**. Gli asset esterni scelti sono indicati come gratuiti sulle pagine Fab, ma non sono stati scaricati nell'account dell'utente. Non attribuire un numero di clip a un pack senza ispezionarlo. La compilazione/QA e l'eventuale verifica diritti diventano **attività interne allo strato che utilizza il materiale**, non una serie di progetti separati. I sorgenti MIT possono essere riusati rispettando i notices; i raw binari Fab/Epic non vanno pubblicati indiscriminatamente.
+## Quando entra Codex
 
-Questo repository contiene la documentazione e potrà contenere il codice con diritto di redistribuzione e i manifest. Il contenuto binario protetto va gestito in workspace privato fino a eventuale scelta di rendere il repo privato.
+**[Issue #5](https://github.com/Spidahh/EatMyAss/issues/5)** traccia la prima porzione L0–L4; l'intero lavoro fino alla release è nel backlog CSV. Leggere AGENTS.md e prendere solo prima riga non DONE. Helper PowerShell disponibile in [scripts/bootstrap_horde.ps1](scripts/bootstrap_horde.ps1); non è stato eseguito qui. Nessuna promessa fittizia di gioco già pronto.

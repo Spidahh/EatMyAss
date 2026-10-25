@@ -4,19 +4,19 @@ Questo documento accompagna il [backlog machine-readable](33_FULL_BACKLOG.csv): 
 
 ## Carico di lavoro per strato
 
-- **L0**: 3 attività — [spec](docs/31_UNREAL_ARCHITECTURE.md)
-- **L1**: 6 attività — [spec](docs/13_PLAYER_WEAPON_ANIMATION.md)
-- **L2**: 8 attività — [spec](docs/20_COMBAT_WEAPONS.md)
-- **L3**: 7 attività — [spec](docs/14_ZOMBIE_COMPLETE.md)
-- **L4**: 4 attività — [spec](docs/24_CITY_AND_SECTORS.md)
-- **L5**: 5 attività — [spec](docs/26_WAVE_DIRECTOR.md)
-- **L6**: 5 attività — [spec](docs/22_DEFENSE_AND_BASE.md)
-- **L7**: 6 attività — [spec](docs/22_DEFENSE_AND_BASE.md)
-- **L8**: 6 attività — [spec](docs/25_ECONOMY_BALANCE.md)
-- **L9**: 5 attività — [spec](docs/24_CITY_AND_SECTORS.md)
-- **L10**: 6 attività — [spec](docs/23_CLASSES_ABILITIES.md)
-- **L11**: 9 attività — [spec](docs/18_MASTER_GAME_SPEC.md)
-- **RC**: 10 attività — [spec](docs/32_QA_RELEASE.md)
+- **L0**: 3 attività — [spec](31_UNREAL_ARCHITECTURE.md)
+- **L1**: 6 attività — [spec](13_PLAYER_WEAPON_ANIMATION.md)
+- **L2**: 8 attività — [spec](20_COMBAT_WEAPONS.md)
+- **L3**: 7 attività — [spec](14_ZOMBIE_COMPLETE.md)
+- **L4**: 4 attività — [spec](24_CITY_AND_SECTORS.md)
+- **L5**: 5 attività — [spec](26_WAVE_DIRECTOR.md)
+- **L6**: 5 attività — [spec](22_DEFENSE_AND_BASE.md)
+- **L7**: 6 attività — [spec](22_DEFENSE_AND_BASE.md)
+- **L8**: 6 attività — [spec](25_ECONOMY_BALANCE.md)
+- **L9**: 5 attività — [spec](24_CITY_AND_SECTORS.md)
+- **L10**: 6 attività — [spec](23_CLASSES_ABILITIES.md)
+- **L11**: 9 attività — [spec](18_MASTER_GAME_SPEC.md)
+- **RC**: 10 attività — [spec](32_QA_RELEASE.md)
 
 ## Regole di esecuzione
 

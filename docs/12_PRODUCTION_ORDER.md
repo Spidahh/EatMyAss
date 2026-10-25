@@ -1,3 +1,5 @@
+> **AGGIORNAMENTO VINCOLANTE 25/10/2026:** questo file descrive solo l'inizio; il piano **integrale fino alla release 1.0** è in [18_MASTER_GAME_SPEC.md](18_MASTER_GAME_SPEC.md), [33_FULL_BACKLOG.csv](33_FULL_BACKLOG.csv) e [34_CODEX_MASTER_BRIEF.md](34_CODEX_MASTER_BRIEF.md). AGENTS.md governa tutte le fasi, non fermarti a L4.
+
 # PIANO DI PRODUZIONE VINCOLANTE v0.2 — UN SISTEMA PERFETTO ALLA VOLTA
 
 ## 1. Cambio di metodo deciso il 25 ottobre 2026
