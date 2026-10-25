@@ -1,40 +1,35 @@
-# BACKLOG TOTALE 1.0 — UNA SOLA FILA DI PRODUZIONE
+# BACKLOG DI PRODUZIONE V2 — 112 TASK SERIALI
 
-Questo documento accompagna il [backlog machine-readable](33_FULL_BACKLOG.csv): **80 attività ordinate** e concatenate tramite `depends_on`. Per assicurare “prima finisce una cosa e poi comincia l'altra”, **ogni riga dipende da quella precedente**. Le righe sono pezzi concreti, non 13 milestone fittizie. Ogni completamento richiede l'accettazione della sua spec, build/test e prove visuali pertinenti; non segnare DONE dal solo codice.
+**ANNULLA COMPLETAMENTE il vecchio backlog V1.1** che prevedeva città acquistabili, PC/TF e 3 skill vecchie. Questo elenco NON è solo per il prototipo: arriva all'intero gioco Windows Shipping con base autonoma e melee. I task sono in sequenza stretta, uno dipende dal precedente (`depends_on`). Tutti partono PLANNED perché nessun modulo Unreal è stato implementato da questa conversazione.
 
-## Carico di lavoro per strato
+## Ordine degli strati
 
-- **L0**: 3 attività — [spec](31_UNREAL_ARCHITECTURE.md)
-- **L1**: 6 attività — [spec](13_PLAYER_WEAPON_ANIMATION.md)
-- **L2**: 8 attività — [spec](20_COMBAT_WEAPONS.md)
-- **L3**: 7 attività — [spec](14_ZOMBIE_COMPLETE.md)
-- **L4**: 4 attività — [spec](24_CITY_AND_SECTORS.md)
-- **L5**: 5 attività — [spec](26_WAVE_DIRECTOR.md)
-- **L6**: 5 attività — [spec](22_DEFENSE_AND_BASE.md)
-- **L7**: 6 attività — [spec](22_DEFENSE_AND_BASE.md)
-- **L8**: 6 attività — [spec](25_ECONOMY_BALANCE.md)
-- **L9**: 5 attività — [spec](24_CITY_AND_SECTORS.md)
-- **L10**: 6 attività — [spec](23_CLASSES_ABILITIES.md)
-- **L11**: 9 attività — [spec](18_MASTER_GAME_SPEC.md)
-- **RC**: 10 attività — [spec](32_QA_RELEASE.md)
+- **L0 — Framework HordeTemplate:** 3 task, specifiche [31_UNREAL_ARCHITECTURE.md](31_UNREAL_ARCHITECTURE.md).
+- **L1 — Player Survivor completo:** 5 task, specifiche [13_PLAYER_WEAPON_ANIMATION.md](13_PLAYER_WEAPON_ANIMATION.md).
+- **L2 — Primo ranged AR completo:** 7 task, specifiche [20_COMBAT_WEAPONS.md](20_COMBAT_WEAPONS.md).
+- **L3 — Prima vera arma melee: machete:** 9 task, specifiche [42_MELEE_SKILLS_AND_SPECIALIZATIONS.md](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md).
+- **L4 — Prima Nurse completa e integrazione melee:** 7 task, specifiche [21_ZOMBIES_AI.md](21_ZOMBIES_AI.md).
+- **L5 — Hub base fisico + primo perimetro:** 7 task, specifiche [43_AUTONOMOUS_BASE.md](43_AUTONOMOUS_BASE.md).
+- **L6 — Prima difesa autonoma completa:** 8 task, specifiche [43_AUTONOMOUS_BASE.md](43_AUTONOMOUS_BASE.md).
+- **L7 — Rottami, core upgrade, first saving:** 8 task, specifiche [25_ECONOMY_BALANCE.md](25_ECONOMY_BALANCE.md).
+- **L8 — Threat Director ondate/continuo:** 9 task, specifiche [26_WAVE_DIRECTOR.md](26_WAVE_DIRECTOR.md).
+- **L9 — Altre armi melee complete:** 6 task, specifiche [42_MELEE_SKILLS_AND_SPECIALIZATIONS.md](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md).
+- **L10 — Armi ranged rimanenti:** 7 task, specifiche [20_COMBAT_WEAPONS.md](20_COMBAT_WEAPONS.md).
+- **L11 — Resto difese/zombie elite completi:** 12 task, specifiche [43_AUTONOMOUS_BASE.md](43_AUTONOMOUS_BASE.md).
+- **L12 — Tre territori fuori ed eventi:** 7 task, specifiche [44_OUTSIDE_COMBAT_AND_PROGRESSION.md](44_OUTSIDE_COMBAT_AND_PROGRESSION.md).
+- **L13 — Specializzazioni/Co-op/Save:** 7 task, specifiche [42_MELEE_SKILLS_AND_SPECIALIZATIONS.md](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md).
+- **RC — Finale, QA e release V2:** 10 task, specifiche [32_QA_RELEASE.md](32_QA_RELEASE.md).
 
-## Controllo automatico documentale\n\nEseguire `python scripts/validate_plan.py` per verificare 80 righe, dipendenze, referenze, stato e 28 contenuti. È un controllo del **piano**, non sostituisce Unreal/QA. La CI controlla a ogni modifica del repository.\n\n## Integrazioni gameplay v1.1 nelle attività esistenti
+## Regole per Codex
 
-Il design lock [40](40_SYNERGIES_SKILLS_AND_CITY.md) **non aggiunge 25 task separati** né un'altra produzione: gli obblighi V, Q, MMB ping, E Core pulse, utilità S1/S2/S3 e W7 sono inclusi come `V1.1` negli acceptance criteria di task già necessari. Le voci corrispondenti nella [matrice](38_RELEASE_CONTENT_MATRIX.csv) ora contengono animazioni, audio, VFX, UI, server sync e behavior. NON marcare DONE senza coprirle.
+1. Leggere [AGENTS V2](../AGENTS.md), [41](41_CANONICAL_GAME_V2.md), [42](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md), [43](43_AUTONOMOUS_BASE.md), [44](44_OUTSIDE_COMBAT_AND_PROGRESSION.md). Non usare requisiti V1.1.
+2. Trovare **primo PLANNED**; eseguire solo quel task e completare modello reale, animazioni, SFX/VFX, UI, network, build e prove pertinenti **prima del successivo**.
+3. Il numero di task non sostituisce il lavoro: per es. una torre autonoma “funzionante” richiede actual kills senza player nearby; uno script che toglie HP ai nemici offscreen NON è equivalente.
+4. Se task manca di asset legale: BLOCKED, record GAP e source davvero gratuita da trovare/produrre con Blender in modo lecito. Non continuare cambiando gioco.
+5. Task DONE solo con dati in `37_EXECUTION_STATUS.csv`, commit SHA, build/test logs e video/link pertinente. Aggiorna `33_FULL_BACKLOG.csv` stessa commit, non confondere documentazione completata con gameplay completato.
+6. La matrice `38_RELEASE_CONTENT_MATRIX.csv` conta tutte le entità, anim/audio/VFX/collision/AI/replicazione; il release task finale non passa se una colonna manca.
+7. V1 aveva 80 task. Ora questi sono **112 task tutti ridefiniti**; gli ID precedenti possono aver cambiato significato. Non usare checklist di vecchie issue come autorevoli: Git history è storico.
 
-## Regole di esecuzione
+## Design lock
 
-1. Cercare prima riga diversa da DONE in `33_FULL_BACKLOG.csv`; **solo quella** si lavora. Se blocked, non saltare a riga successiva.
-2. Se task completato e verificato, aggiungere evidenza in `37_EXECUTION_STATUS.csv` con SHA, build, video/QA/link e flag DONE; aggiornare status nel backlog nello stesso commit.
-3. Asset non disponibile? Aggiungere GAP in [35](35_DECISION_GAPS.md) e cercare fonte gratuita equivalente, mai placeholder. Senza risoluzione resta BLOCKED.
-4. Tutti i documenti 19–32 sono specifiche di **tutto il prodotto** e contengono dettagli per le righe; nessun requisito deve essere perso solo perché non ha riga separata.
-5. L1–L4 riguardano la prima esperienza FPS completa. L5–RC portano esattamente al gioco promesso. Non fermarsi alla prima esperienza né contrabbandarla come versione 1.0.
-6. Test/bugfix inerenti al task fanno parte della sua riga. Le fasi RC sono test incrociati, shipping e performance su intero gioco, **non i soli controlli** previsti.
-7. Seed balance numerici sono configurazioni di partenza, non dati definitivi. Vanno chiusi con misure prima di RC.
-8. Aggiornare e riusare pacchetti terzi con licenza, non pubblicare file raw Fab/Epic in repo pubblico.
-
-## Esempio di lettura
-
-ZD-001 sceglie ed importa realmente HordeTemplate, ZD-002 ne sistema compatibilità, ZD-003 chiude ambiente reale; ZD-004 importa Survivor, ZD-005 camera e corpo, ... La dipendenza lineare impedisce di saltare fino alla sentry se prima lo zombie non è completo.
-
-Non sostituire 80 task con riassunti vaghi. Questo backlog è un **contratto operativo di produzione**.
+DENTRO HUB upgrade / FUORI FPS e melee / tower autonomous 24-7 **durante sessione** / NO offline / una moneta Rottami / 2 torrette + barricata + auto-pulse / 4 ranged+3 melee / 3 specializzazioni Tiratore/Spezzatore/Tecnico / 5 zombie / stage10 + continuation e modalità continua, salvar base host. Niente città economica.
