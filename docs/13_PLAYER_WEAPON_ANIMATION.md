@@ -1,3 +1,5 @@
+> **CONFINE TRA L1 E L2 (25/10/2026):** questo documento elenca animazioni di **due strati**. L1 termina con **personaggio reale senza arma**, tutte le locomozioni non armate (idle, 8 direzioni, crouch, sprint, jump/land, camera, footsteps, modello remoto) e gestione stati; **non richiede fucile, ADS né reload**. Tutte le varianti armate, aim offset con arma, grip, firing, equip e reload appartengono a **L2** e sono obbligatorie per dichiarare completato L2. Non inventare un fucile temporaneo per “chiudere L1”. L1 e L2 insieme devono coprire tutte le voci della matrice sottostante.
+
 # L1 + L2 — SPECIFICA DI PRODUZIONE: PLAYER FPS E UN FUCILE COMPLETO
 
 **Contratto:** [Piano](12_PRODUCTION_ORDER.md) e [asset bloccati](15_ASSET_LOCK.md). Non si consegnano un modello che cammina male o un fucile che spara senza le mani allineate. Il player **è** il primo prodotto reale.

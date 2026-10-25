@@ -1,3 +1,5 @@
+> **VERIFICA FONTI DEL 25/10/2026:** Fab mostra **Free** per [Survival Character](https://www.fab.com/listings/11d20d01-b764-4936-8163-cb20d05c369e), [FPS Weapon Bundle](https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5), [Zombie Female Nurse](https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc) e [Sci-fi turret](https://www.fab.com/listings/4abb6121-4d71-4b67-8e61-b83b7b3e2d10). L'asset Nurse include **solo idle, walk e attack**, senza IA; Epic [Game Animation Sample](https://dev.epicgames.com/documentation/unreal-engine/game-animation-sample-project-in-unreal-engine) documenta la migrazione delle animazioni. Questi controlli **non** significano download o compatibilità runtime, né dimostrano le animazioni di reload contenute nel Weapon Bundle.
+
 # ASSET STRATEGY DI TUTTO IL GIOCO — REALI, GRATUITI, MAI INVENTATI
 
 ## Regola madre
