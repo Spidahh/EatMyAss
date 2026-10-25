@@ -1,3 +1,5 @@
+> **ARCHIVIATO / NON ESEGUIRE — 25/10/2026 (V2):** questo file contiene decisioni storiche e può contraddire l'attuale Zombie Defence. **Vietato usarlo per definire loop, classi, torrette, city-map, soldi, skill o task.** Il committente ha richiesto **BASE INTERNA PER UPGRADE + BASE AUTODIFENSIVA + FPS/MELEE FUORI**, progressione persistente e Rottami moneta unica. Usare esclusivamente [AGENTS.md](../AGENTS.md), [41_CANONICAL_GAME_V2.md](41_CANONICAL_GAME_V2.md), [42 melee](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md), [43 base](43_AUTONOMOUS_BASE.md), [44 esterno](44_OUTSIDE_COMBAT_AND_PROGRESSION.md) e il [backlog V2](33_FULL_BACKLOG.csv). Questo documento è conservato SOLO a fini storici/riuso di dettagli tecnici non incompatibili.
+
 > **AGGIORNAMENTO VINCOLANTE 25/10/2026:** questo file descrive solo l'inizio; il piano **integrale fino alla release 1.0** è in [18_MASTER_GAME_SPEC.md](18_MASTER_GAME_SPEC.md), [33_FULL_BACKLOG.csv](33_FULL_BACKLOG.csv) e [34_CODEX_MASTER_BRIEF.md](34_CODEX_MASTER_BRIEF.md). AGENTS.md governa tutte le fasi, non fermarti a L4.
 
 # ORDINE DI ESECUZIONE PRONTO PER CODEX — START IMMEDIATO

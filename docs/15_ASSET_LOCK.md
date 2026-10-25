@@ -1,3 +1,5 @@
+> **ARCHIVIATO / NON ESEGUIRE — 25/10/2026 (V2):** questo file contiene decisioni storiche e può contraddire l'attuale Zombie Defence. **Vietato usarlo per definire loop, classi, torrette, city-map, soldi, skill o task.** Il committente ha richiesto **BASE INTERNA PER UPGRADE + BASE AUTODIFENSIVA + FPS/MELEE FUORI**, progressione persistente e Rottami moneta unica. Usare esclusivamente [AGENTS.md](../AGENTS.md), [41_CANONICAL_GAME_V2.md](41_CANONICAL_GAME_V2.md), [42 melee](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md), [43 base](43_AUTONOMOUS_BASE.md), [44 esterno](44_OUTSIDE_COMBAT_AND_PROGRESSION.md) e il [backlog V2](33_FULL_BACKLOG.csv). Questo documento è conservato SOLO a fini storici/riuso di dettagli tecnici non incompatibili.
+
 # ASSET LOCK — MATERIALI REALI DA USARE, NO SCELTE CASUALI
 
 **Regola:** gli asset qui sono selezionati per la prima fase. Questo file prevale sul vecchio catalogo a 26 voci, che rimane una lista di risorse future. Codex non deve sostituirli senza aver accertato un impedimento reale e averlo documentato. **Tutti i prezzi sono “Free” visti sulla scheda web, non download già effettuati.**
