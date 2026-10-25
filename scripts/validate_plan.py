@@ -35,9 +35,10 @@ REQUIRED = {
 def read_rows(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8-sig") as f:
         r = csv.DictReader(f)
-        if not r.fieldnames or any(None in row for row in r):
+        rows = list(r)
+        if not r.fieldnames or any(None in row for row in rows):
             raise ValueError(f"Malformed CSV: {path}")
-        return list(r)
+        return rows
 
 def main() -> int:
     problems: list[str] = []
