@@ -54,4 +54,4 @@ Fab Standard License normalmente permette asset incorporati nella build del gioc
 
 ## Quando entra Codex
 
-**[Issue #5](https://github.com/Spidahh/EatMyAss/issues/5)** traccia la prima porzione L0–L4; l'intero lavoro fino alla release è nel backlog CSV. Leggere AGENTS.md e prendere solo prima riga non DONE. Helper PowerShell disponibile in [scripts/bootstrap_horde.ps1](scripts/bootstrap_horde.ps1); non è stato eseguito qui. Nessuna promessa fittizia di gioco già pronto.
+**[Issue #6 — INTERO GIOCO](https://github.com/Spidahh/EatMyAss/issues/6)** è il mandato madre fino alla release 1.0; [Issue #5](https://github.com/Spidahh/EatMyAss/issues/5) traccia solo L0–L4. L'intero lavoro è nel backlog CSV. Leggere AGENTS.md e prendere solo prima riga non DONE. Helper PowerShell disponibile in [scripts/bootstrap_horde.ps1](scripts/bootstrap_horde.ps1); non è stato eseguito qui. Nessuna promessa fittizia di gioco già pronto.

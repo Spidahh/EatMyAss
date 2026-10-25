@@ -1,0 +1,15 @@
+name: Documentation integrity
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check-plan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check backlog, dependency chain and content matrix
+        run: python3 scripts/validate_plan.py
+# This does NOT compile Unreal, verify third-party asset licenses, or test gameplay.

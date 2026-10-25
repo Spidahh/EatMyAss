@@ -18,7 +18,7 @@ Questo documento accompagna il [backlog machine-readable](33_FULL_BACKLOG.csv): 
 - **L11**: 9 attività — [spec](18_MASTER_GAME_SPEC.md)
 - **RC**: 10 attività — [spec](32_QA_RELEASE.md)
 
-## Regole di esecuzione
+## Controllo automatico documentale\n\nEseguire `python scripts/validate_plan.py` per verificare 80 righe, dipendenze, referenze, stato e 28 contenuti. È un controllo del **piano**, non sostituisce Unreal/QA. La CI controlla a ogni modifica del repository.\n\n## Regole di esecuzione
 
 1. Cercare prima riga diversa da DONE in `33_FULL_BACKLOG.csv`; **solo quella** si lavora. Se blocked, non saltare a riga successiva.
 2. Se task completato e verificato, aggiungere evidenza in `37_EXECUTION_STATUS.csv` con SHA, build, video/QA/link e flag DONE; aggiornare status nel backlog nello stesso commit.
