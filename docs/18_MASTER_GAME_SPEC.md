@@ -1,6 +1,6 @@
 # SPECIFICA MADRE — ZOMBIE DEFENCE (PRODUZIONE COMPLETA v1.0)
 
-**Data 25 ottobre 2026.** Questo è il **contratto di contenuto dell'intero gioco**, non un piano per il solo inizio. In caso di divergenza con i documenti 00–17, prevalgono AGENTS.md e questo documento. Si esegue **uno strato completo alla volta**, ma si progettano fin dall'inizio le integrazioni di TUTTI gli strati. Nessuna riga di questo documento dimostra che il gioco esista già.
+**Data 25 ottobre 2026 · update design 1.1.** Questo è il **contratto di contenuto dell'intero gioco**, non un piano per il solo inizio. In caso di divergenza con i documenti 00–17, prevalgono AGENTS.md e questo documento. Si esegue **uno strato completo alla volta**, ma si progettano fin dall'inizio le integrazioni di TUTTI gli strati. Nessuna riga di questo documento dimostra che il gioco esista già.
 
 ## Prodotto preciso
 
@@ -17,6 +17,18 @@ Gioco PC Windows **FPS action 3D** zombie + difesa base: movimento/mira/colpi co
 - **Co-op 1–4 players** con listen-server/host; nessun account, database remoto, servizio in abbonamento o server dedicato al lancio. Matchmaking pubblico, migrazione host e cross-play **non promessi**. Invito/amici dipende da integrazione effettivamente verificata.
 - **Almeno sei pacchetti completi di animazioni e feedback**: player, 4 categorie armi, 5 nemici, 3 strutture, Nucleo, UI; ogni entità è completa prima della successiva.
 - **Salvataggi:** preferenze persistenti e statistiche locali; progressione e acquisti della singola run si resettano dopo il risultato. Nessun salvataggio mid-wave in co-op 1.0: scelta deterministica per ridurre bug, chiaramente comunicata.
+
+## Gameplay distintivo V1.1: pochi poteri condivisi
+
+L'identità finale mette insieme l'azione FPS, le difese e una città giocabile come strumento tattico, NON come gestionale. [Specifiche complete](40_SYNERGIES_SKILLS_AND_CITY.md), senza ulteriori valute o tasti:
+- **V universale = Spinta d'emergenza** corta, 1 zombie normale, cooldown 12s seed; animazione vera + hit reaction + network.
+- **Q = una abilità di classe**: Sfondamento Assaltatore, Ripristino/boost mirato Ingegnere, Impulso medico/pausa bleedout Soccorritore; una passiva ciascuno.
+- **Middle click = marcatura squadra** di un zombie 5s, priorità sentry soltanto se LoS/range; non aumento DPS e non wallhack.
+- **E al pannello Nucleo, dal T2 = Impulso di contenimento**: slow ad area, **una volta per wave** per tutto il team, non una nuova risorsa; T3 sceglie portata oppure ripristino HP Core (non due abilità).
+- **La città concede una passiva per area acquistata**: S1 sconto refill ammo, S2 sconto repair barricata, S3 radar warning speciale. Ogni settore introduce rischio di un fronte aggiuntivo senza moltiplicare budget totale wave.
+- **Wave7, se esiste sentry**, micro-crisi di blackout preannunciata e risolvibile con Q Ingegnere o E manuale: nessun nemico/valuta extra.
+
+Le capacità aggiunte sono incluse nei task esistenti e hanno animation/audio/VFX/server-QA propri. Nessun deck random perk o slot magici.
 
 ## Principi non negoziabili
 
@@ -54,6 +66,8 @@ Lobby → scelta classe → scelta equip iniziale → caricamento unica mappa �
 | [33](33_FULL_BACKLOG.csv) | tabella di lavorazione completa e sequenziata |
 | [34](34_CODEX_MASTER_BRIEF.md) | singolo incarico esecutivo senza libertà creative |
 | [35](35_DECISION_GAPS.md) | cose non deducibili/non confermate che vietano improvvisazioni |
+| [39](39_COMPARATIVE_GAME_DESIGN.md) | ricerca su 5 riferimenti e criteri di selezione |
+| [40](40_SYNERGIES_SKILLS_AND_CITY.md) | scelte gameplay v1.1 e integrazioni player ↔ difese ↔ città |
 
 ## Condizione di completezza dell'intero prodotto
 

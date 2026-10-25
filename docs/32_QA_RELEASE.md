@@ -32,6 +32,16 @@ Nessuno desidera infiniti prototipi: ogni strato comprende **implementazione + a
 | Sessioni | solo, listen server 2p/4p, host loss handling, no cheat RPC, no desync, package shipping |
 | Legal | provenance 100% included assets, Fab/Epic restrictions and 3rd party notices, no raw public redistribution |
 
+## QA sinergie v1.1 (oltre alla matrice preesistente)
+
+- V spinta entro 1,6m colpisce max un Walker/Runner valido, non spinge Boss/Armored, non duplica munizioni durante reload; 2 client vedono montage.
+- Q Assault penetra meglio corazza solo per 6s, niente moltiplicazione permanente; Q Engineer repair max 15% e sentry cadence +15% max 4s senza stacking; Q Medic HP cap, downed bleed paused 4s, non auto-revive.
+- MMB mark dura 5s, una per team, sentry solo se LoS/range; due richieste ping ravvicinate non fanno spam/stack.
+- E al pannello Nucleo disponibile dal T2, una sola attivazione per wave per TUTTI i player, niente consumo senza target; slow ring 12m, Boss non bloccato, T3 Range *oppure* Repair.
+- S1 ammo discount 15% PC, S2 barricade repair discount 15% TF, S3 warning special 6s, niente benefici quando settore chiuso; UI mostra rischio nuovo fronte.
+- W7 tower blackout max 8s con warning, riattiva E 3s o Engineer Q, no softlock 1p senza sentry o engineer.
+- Nessuna terza valuta, menu talenti, stack moltiplicativi slow o nuova metaprogressione introdotti per errore.
+
 ## Test di maggiore rischio / non saltare
 
 - Spawn zombie non in zona chiusa; nessun zombie stuck con porta/barricata e un player su tetto.

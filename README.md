@@ -1,6 +1,6 @@
 # Zombie Defence — FPS zombie + Tower Defense (Unreal Engine 5.8)
 
-**DOCUMENTAZIONE DI PRODUZIONE COMPLETA v1.0 · 25/10/2026**  
+**DOCUMENTAZIONE DI PRODUZIONE v1.1 · 25/10/2026**  
 **Stato reale:** documenti, asset research e backlog completati; **nessun codice gameplay Unreal ancora integrato/compilato in questo repository**. Gli asset esterni vanno acquisiti legalmente sul workspace di sviluppo: non sono contenuti nell'archivio GitHub pubblico.
 
 ## Il gioco che stiamo costruendo
@@ -8,6 +8,10 @@
 Un FPS d'azione cooperativo 1–4 per Windows. Si combattono ondate zombie con 4 armi potenziabili, 3 classi e abilità, mentre si protegge un Nucleo costruendo barricate, torrette e un dispositivo rallentante. La mappa è una città industriale con 3 settori acquistabili oltre al cortile iniziale. Economia personale + fondi difesa, upgrade a Nucleo/armi/difese, 10 ondate + boss, fine partita e replay. Asset credibili, animazioni e suoni completi, niente placeholder che rimangano.
 
 **Base designata:** [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate) UE5.8. **Primo contenuto:** [Survival Character](https://www.fab.com/listings/11d20d01-b764-4936-8163-cb20d05c369e) + una vera arma del [FPS Weapon Bundle](https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5) + [Zombie Nurse](https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc). Poi ogni funzionalità di gioco completa, prima della successiva.
+
+## Nuovo gameplay intrecciato (v1.1)
+
+Aggiunte di design **senza nuove valute, classi o nemici**: V = spinta di emergenza, Q = una skill per classe, middle mouse = ping che indirizza priorità sentry, E al Nucleo = impulso di rallentamento una volta per ondata (dal Tier2), S1/S2/S3 = utilità della città con rischio di un nuovo fronte. I dettagli sono nella **[spec delle sinergie](docs/40_SYNERGIES_SKILLS_AND_CITY.md)**; la **[ricerca comparativa](docs/39_COMPARATIVE_GAME_DESIGN.md)** spiega cosa tenere/evitare da COD Zombies, Sanctum 2, Outpost, SENTRY e Orcs Must Die!.
 
 ## Apri qui il piano COMPLETO
 
@@ -22,6 +26,8 @@ Un FPS d'azione cooperativo 1–4 per Windows. Si combattono ondate zombie con 4
 | **6** | **[Status esecuzione](docs/37_EXECUTION_STATUS.csv)** | Stato reale e prova per ogni singolo task |
 | **7** | **[Asset fonti e gaps](docs/30_ASSET_PRODUCTION.md)** | Pack concreti, licenze, componenti da trovare/produrre |
 | **8** | **[Quality bar e release](docs/32_QA_RELEASE.md)** | Definizione di completo fino allo shipping |
+| **9** | **[Skill integrate e città v1.1](docs/40_SYNERGIES_SKILLS_AND_CITY.md)** | Abilità giocatore, classi, Nucleo, quartieri e sinergie |
+| **10** | **[Confronto titoli](docs/39_COMPARATIVE_GAME_DESIGN.md)** | Decisioni dopo ricerca giochi simili |
 
 ## Specifiche di tutti i sistemi
 

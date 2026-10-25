@@ -26,6 +26,16 @@ Un unico framework di base. Creare namespace/prefisso `ZD` per estensioni; impor
 
 **Non costruire la tabella intera al primo commit.** Ogni sistema nasce nel suo strato, ma aderisce ai contratti sopra per evitare riscrittura. Non introdurre complessi dependency injection/plugin non necessari.
 
+## Ability e sinergia tra sistemi (v1.1)
+
+**Aggiunte solo tramite componenti già necessari, non nuovo framework di abilità:**
+- `PlayerAbilityComponent`: spinta V e Q classe condividono validazione server/cooldown, montage reali, determinazione del target e replicazione. Niente stamina separata.
+- `GameState.TeamFocusTargetId` (nome concettuale) e `MarkedUntil`: input middle-click server trace e focus che il targeting Sentry legge se disponibile; non altera danni né LoS.
+- `ZDBaseCore.ProtocolUsedWaveIndex` e `CoreProtocolChoice`: E sul pannello, server atomico, 1 uso per wave; usa il medesimo StatusSlow del campo rallentante con stacking max (non additive).
+- `ZDSectorDefinition.SectorBenefit` in acquisti ammo/repair/UI; niente resource manager supplementare.
+- `ZDWaveDefinition.OptionalEvent`: W7 referenzia il già esistente `Disabled` Sentry status, senza nuovo actor né aiuto obbligato dell'Ingegnere.
+Dettagli completi [40](40_SYNERGIES_SKILLS_AND_CITY.md); questi nomi sono contratti architetturali, non classi upstream già esistenti.
+
 ## API/eventi condivisi
 
 - `OnDamageResolved({VictimId,SourceType,CauserActor,InstigatorPlayerId,DamageType,BodyZone,Amount,ServerTime})` server only → cosmetics.

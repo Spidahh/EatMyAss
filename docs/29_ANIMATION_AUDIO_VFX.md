@@ -10,6 +10,17 @@
 - FX camera movement appropriati, damage directional hit UI, weapon stance.
 - Networking all 3P; first-person owner non vede duplicato.
 
+## A2. Skill e sinergie comuni (design 1.1)
+
+- **Spinta V**: vero montage in 1p/3p con grip arma, whoosh/grunt, carne/armatura reactions, UI cooldown, server cone target e stagger con eccezioni Armored/Boss.
+- **Marcatura MMB**: suono discreto, marker sopra nemico, piccolo focus cue sentry; replicated team target, no line-of-sight cheating.
+- **Impulso Core E**: sirena, emissione circolare di 12m, leggibile 5s, 1/wave team, slow FX per zombie, cadenza anim corretta, T3 visual feedback Portata/Ripristino.
+- **City benefits**: S1 ammo discount apparente shop UI, S2 repair discount, S3 warning direction elite, ognuno con un piccolo audio/icon/segno spaziale sul settore.
+- **Skill Q**: Assault armor penetrate cue sul muzzle (no obscuring ADS), Engineer repair+4s sentry surge, Medic HP heal+bleed pause; ogni classe ha montage/VFX/SFX, target reject, server multicast limitato e remote viewer corretto.
+- **W7 micro-blackout**: una sentry specifica disalimentata, audio out-of-power, stato HUD 8s, ripristino E/Q animato e visibile a tutti.
+
+Per tempi e edge cases leggere [40](40_SYNERGIES_SKILLS_AND_CITY.md). Non basta segnare checkbox: audio/FX/anim devono esistere e funzionare nel gioco.
+
 ## B. Quattro armi — un record per ogni arma L2/L11
 
 Ogni W_PI/W_AR/W_SG/W_SM: idle hold, hip fire, ADS enter/hold/exit, fire ADS, recoil/recovery, equip/unequip, tactical reload, empty reload (bolt/pump/slide corretto), sprint hold+exit, jump/land armed, dry fire, impact/interruption states; hands IK e mag/shell animati **in sync con reale arma**. Shot fire near/medium/far (attenuation), handling, trigger, eject shell, mag out/in, bullet/shot flesh, plate, metal, concrete, ambient tail. VFX muzzle flash, smoke, trace se applicabile, shell casing, muzzle lighting contenuto, impact puffs/decal, blood/headshot, ammo/hitmarker/crosshair UI. Remote replication del fire montage, no double sound.

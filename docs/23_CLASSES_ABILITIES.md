@@ -8,9 +8,9 @@
 
 | Classe | Passiva | Attiva, input e risultato | CD seed | Compensazione |
 | --- | --- | --- | ---: | --- |
-| C_ASSAULT | -10% rinculo AR/SMG; più rapido switch | **Sovraccarico**: per 6s -25% spread +15% perforazione contro corazzati, VFX attivo, audio inizio/fine | 45s | zero bonus riparazione |
-| C_ENGINEER | riparazione +20% su strutture, stesso costo fondi | **Ripristino**: sceglie torre/barricata/Nucleo entro raggio, ripara massimo 15% HP o riattiva torre disabilitata; niente exploit oltre max | 55s | meno utility in inseguimento |
-| C_MEDIC | revive del compagno più rapido (-25%) | **Impulso medico**: cura entro raggio 8m fino a 25HP 1 volta, animation e telegraph riconoscibili, no heal sopra max | 50s | nessun boost armi/torri |
+| C_ASSAULT | -10% rinculo AR/SMG; più rapido switch | **Sfondamento**: per 6s -25% spread +15% perforazione contro corazzati, VFX attivo, audio inizio/fine | 45s | zero bonus riparazione |
+| C_ENGINEER | riparazione +20% su strutture, stesso costo fondi | **Ripristino**: sceglie torre/barricata/Nucleo entro raggio, ripara massimo 15% HP o riattiva torre disabilitata; se target valido è sentry dà +15% cadenza per 4s senza stacking; niente exploit oltre max | 55s | meno utility in inseguimento |
+| C_MEDIC | revive del compagno più rapido (-25%) | **Impulso medico**: cura entro raggio 8m fino a 25HP 1 volta e mette in pausa bleedout di alleati Downed per 4s (non li rianima subito), animation e telegraph riconoscibili, no heal sopra max | 50s | nessun boost armi/torri |
 
 All'attivazione: client richiede, server valida Alive, cooldown, range, target, potenza/condizioni, esegue una sola volta e replica stato; UI indica durata e cooldown. Player Downed non può usare skill. Nessuna skill può stunnare tutta la horde o annullare tutte le mosse boss. Stessi parametri per 1/4 player con scaling non automatico, guardando efficacia.
 
@@ -24,6 +24,8 @@ Tutti possono riparare a prezzo standard, comprare strutture, rianimare compagno
 - Ingegnere: animazione di interazione/corto impulso verso torre; effetti di ripristino/power reconnect sui dispositivi, suoni circuiti/repair, indicator target selection; interrompibile secondo regole esplicite.
 - Soccorritore: gesto dispenser/impulso, healing wave a distanza ridotta e SFX udibile agli alleati, notifica cura; un effetto visto anche in 3p.
 - Ogni abilità: idle, activate, active, end, denied/out of range, unavailable/cooldown, interruption on down/death, multiplayer replication, no doppio FX.
+
+**Regola universale condivisa:** oltre Q il player possiede V **Spinta d'emergenza** e middle click **Marcatore tattico**; non sono nuove abilità di classe, né sono legate a una progressione. Dettagli anim/anti-stunlock/targeting e input in [40](40_SYNERGIES_SKILLS_AND_CITY.md). Non aggiungere altre attive, ultimate o talent tree per 1.0.
 
 ## Interazione e controllo
 

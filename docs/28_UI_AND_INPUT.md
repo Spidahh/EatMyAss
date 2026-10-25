@@ -36,8 +36,10 @@ Un punto shop AR/PI/SG/SM: arma posseduta, miglioramento attuale, delta (es. Dan
 | Shift | sprint | Alive, sprint consentito |
 | Ctrl | crouch | Alive |
 | Space | jump | Alive grounded |
-| E | interagisci/repair/build | target valido |
+| E | interagisci/repair/build/**Impulso Nucleo su pannello T2** | target valido; una volta per wave, non un tasto skill separato |
 | Q | abilità classe | cooldown pronto |
+| V | Spinta d'emergenza | Alive, cooldown 12s, bersaglio validato |
+| Tasto centrale mouse | Marca bersaglio | target vivo in vista, cooldown 8s; una marcatura squadra |
 | 1–2 / scroll | cambio arma | arma posseduta |
 | Esc | pause/options/leave | sempre (non conferma pericolosa) |
 | Tab | scoreboard/wave stats | in run |
@@ -47,6 +49,8 @@ EnhancedInput se integrabile con HordeTemplate reale, altrimenti non unire due b
 ## Audio/Video/Accessibility settings
 
 Sens/ADS multiplier, FOV 80–110 (seed range), motion blur on/off, camera shake 0–100%, subtitles callouts con fonte, indicazioni direzionali audio/visuali, modifica colore hitmarker/contrast senza usare rosso come solo feedback, riduzione flash, interfaccia più grande, rebind tasti, scelta output display, quality low/medium/high, resolution scale, cap FPS, audio master/music/SFX/voice. Pausa single player solo con server local e stato coerente; in co-op pause è solo overlay e world continua.
+
+**Nuovi indicatori 1.1:** due icone locali piccole Q e V; mark bersaglio sulla testa dello zombie e per la squadra solo 5s; stato “Impulso Core DISPONIBILE/USATO” **uno per tutto il team** accanto a Core HP, non una skill bar terza; settore preview `utilità + rischio nuovo varco + costo`; E durante W7 riattiva torre disabilitata. Non aggiungere meter o tasti ulteriori. Per regole: [40](40_SYNERGIES_SKILLS_AND_CITY.md).
 
 ## Onboarding non tutorial prolisso
 

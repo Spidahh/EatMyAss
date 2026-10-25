@@ -27,6 +27,16 @@ Disegno concettuale, NON coordinate/prefab fabbricati. Il primo isolato S0 è de
 
 **Apertura:** richiesta durante prep, prerequisito wave + settore collegato aperto se richiesto, spesa fondi team e conferma; porte/volumi/markers/navigazione si aprono con stato server replicato. Spawn dei nuovi varchi **solo dalla wave successiva**, preannunciati in UI. La chiusura della mappa non nasconde spawn attivi invisibili.
 
+## Funzioni della città — una utilità per settore (design lock 1.1)
+
+I settori non devono essere soltanto nuove geometrie o piazzole; ogni unlock aggiunge **una** capacità direttamente utile alla difesa già funzionante, senza nuovo tasto/valuta:
+- **S0**: Core T2 sblocca Impulso di Contenimento, E al pannello, una volta per wave.
+- **S1 Officina**: un banco munizioni già previsto offre refill a -15% PC (seed), solo lì; la wave successiva usa un nuovo varco.
+- **S2 Deposito**: riduce del 15% TF (seed) il costo **solo** di riparazione barricata, non Nucleo o torre; nuovo fronte successivo.
+- **S3 Tetti**: faro tattico comunica per i primi 6s della wave la **direzione** di arrivo dei nemici speciali nel settore, non wallhack globale; nuovo percorso d'assalto.
+
+Mostrare VANTAGGIO/COSTO/NUOVO VARCO nella preview prima di ogni compra. I nuovi fronti redistribuiscono lo stesso threat budget; nessun nuovo spawn nascosto. Specifiche [40](40_SYNERGIES_SKILLS_AND_CITY.md).
+
 ## Regole di level design prima dei dettagli
 
 - Progetta prime 2 route zombie verso Nucleo e 2 percorsi di fuga giocatore in S0. Ogni settore aggiuntivo apre un vantaggio tattico e almeno un rischio, ma non deve diventare 4 spawn incrociati inevitabili.

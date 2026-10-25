@@ -6,7 +6,7 @@
 
 Realizza **Zombie Defence 1.0** in Unreal Engine 5.8 con **HordeTemplate V2 Native** come codice di partenza. Gioco FPS action con zombie in 10 ondate, 4 armi rifinite, 5 archetipi zombie rifiniti e boss, Nucleo difendibile, 3 difese, 3 classi attive, 3 aree cittadine espandibili oltre S0, economia e upgrade, HUD/UX, solo e cooperativo host 1–4, build Windows. Tutti i sistemi **animati, sonorizzati, con FX, coerenza visiva e networking**. Non usare placeholder per fingere che un sistema sia finito. Budget nuovi acquisti 0 €. Non progettare un gioco diverso.
 
-**Fonte di verità:** `AGENTS.md` → `docs/18_MASTER_GAME_SPEC.md` → `docs/33_FULL_BACKLOG.csv` → docs/19–32 specifici. Il vecchio docs/12 descrive l'ordine delle fasi, già incorporato nel backlog. Se istruzione generica contrasta con regola dettagliata recente, applicare la recente e annotare il punto nel decision log. Non “reinterpretare” il concept.
+**Fonte di verità:** `AGENTS.md` → `docs/18_MASTER_GAME_SPEC.md` → **`docs/40_SYNERGIES_SKILLS_AND_CITY.md` (design lock v1.1)** → `docs/33_FULL_BACKLOG.csv` → docs/19–32 specifici. Il vecchio docs/12 descrive l'ordine delle fasi, già incorporato nel backlog. Se istruzione generica contrasta con regola dettagliata recente, applicare la recente e annotare il punto nel decision log. Non “reinterpretare” il concept.
 
 ## Esecuzione deterministica
 
@@ -20,6 +20,7 @@ Realizza **Zombie Defence 1.0** in Unreal Engine 5.8 con **HordeTemplate V2 Nati
 
 ## Proibizioni
 
+- **Integra il design 1.1 senza nuovi sistemi inutili:** V spinta, Q classe, ping centrale su sentry, E Impulso Core 1/wave, una utilità per settore, crisi W7; tutto nel proprio strato e con asset/audio/anim/VFX veri. Non aggiungere altri tasti skill/valute.
 - Nessun placeholder finale (mannequin stock, zombie generico, cubi, audio fake, texture stock fuori stile).
 - Nessun sistema mezzo funzionante spacciato per completato. Se manca una animation/FX/suono, non passare al task successivo.
 - Nessun acquisto, API pay-per-use, download pirata, reverse engineering asset commerciali illegali, pacchetto “gratuito” da pagina Buy now.

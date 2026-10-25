@@ -10,8 +10,8 @@ Il **Nucleo** è la condizione di sopravvivenza e il fulcro visuale. Il giocator
 
 **Upgrade Nucleo:**
 - T1 Fortificazione: +25% MaxHP e componenti di riparo visibili, aggiorna HP secondo regola esplicita (mantenere percentuale attuale, non full heal gratuito).
-- T2 Rete: +2 PowerCapacity seed, attiva una piazzola extra preesistente; feedback elettrico e linea di potenza leggibile.
-- T3 Comando: migliora velocità riparazione base **oppure** riserva di emergenza; una scelta singola durante la run (non entrambe).
+- T2 Rete: +2 PowerCapacity seed, attiva una piazzola extra preesistente e **sblocca Impulso di Contenimento**; una sola attivazione in-game per ondata tramite E al pannello Core, rallenta zombie vicini senza danneggiarli, VFX sirena/anello. Specifiche e networking in [40](40_SYNERGIES_SKILLS_AND_CITY.md).
+- T3 Comando: scegli **una sola evoluzione dell'Impulso**, **Portata** (raggio 12→16m) OPPURE **Ripristino** (recupera fino 10% MaxHP Nucleo quando l'impulso funziona), mai entrambe. La vecchia alternativa generica “velocità riparazione o riserva” è sostituita da questa scelta chiara.
 Riparare HP usando fondi team, con cap, costo per punto riparato e preview; mai oltre MaxHP. Power è capacità, **non terza valuta**.
 
 ## Piazzola di costruzione
@@ -25,6 +25,8 @@ Riparare HP usando fondi team, con cap, costo per punto riparato e preview; mai 
 | D_BARRICADE | rallenta zombie al varco e prende danno | +HP / rinforzo contro breaker | Runner la aggira se c'è percorso, Armored la distrugge | modello barricata metal/wood coerente **DA APPROVARE**, non box |
 | D_SENTRY | target walker/runner entro arco, fuoco con LoS | +range / policy anti-runner | overheats, power limit, sabotatore e boss | [Sci-fi turret](https://www.fab.com/listings/4abb6121-4d71-4b67-8e61-b83b7b3e2d10) come **candidato artistico non approvato**; serve look industriale |
 | D_SLOW | area rallentamento con intervalli | +radius / +uptime limit | armatura/boss parzialmente resistenti | mesh/FX coerenti **DA PRODURRE/APPROVARE**, non dischetto invisibile |
+
+**Sinergia con il giocatore:** il ping centrale marca un zombie per 5s. La sentry può scegliere quel nemico come prioritario **soltanto** quando range, vista e target state sono validi; non ottiene danno gratis né può sparare dietro muri. L'Ingegnere Q può riparare e potenziare momentaneamente cadenza su sentry entro range; gli effetti non si sommano se applicati ripetutamente. Il campo slow deve condividere lo stesso status slowdown dell'Impulso Nucleo, con stacking = **solo slow più forte, mai moltiplicazione** (es. slow40% + slow50% = slow50%, non 90%). Vedi [40](40_SYNERGIES_SKILLS_AND_CITY.md).
 
 **Scelte fissate:** nessuna torretta missilistica, no mortaio, niente mine antiuomo random, no costruzione libera, niente produzione passiva di risorse o crafting. Sentry ha stato `Idle/Acquire/Track/Fire/Cooldown/OutOfPower/Damaged/Destroyed`, yaw/pitch limiti reali, muzzle flash/scia e suono, rifrazione antenna/servomotore, hit surfaces, projectile policy unica (preferire codice weapon condiviso). Line of sight ogni fire confirmation. Target policy prioritize Runner/Saboteur configurabile. Nessun shot attraversa muro.
 

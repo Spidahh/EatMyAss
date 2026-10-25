@@ -27,3 +27,10 @@ HordeTemplate UE5.8, FPS 1p con corpo 3p, Windows, zero acquisti nuovi, 10 onde 
 ## Change-control
 
 Ogni richiesta nuova ha `ID; problema giocatore; proposta; benefit; impatto su core loop; costi; asset; dipendenze; test; approvazione; version`. Lo scope 1.0 non cresce per iniziativa autonoma. Qualsiasi asset che non supera art gate è `REJECTED`, non “good enough”.
+
+## Gap aggiunti dal design di sinergie 1.1
+
+- **G-16 Spinta di emergenza V**: non esiste attestazione che Survivor o le animazioni già scelte comprendano push melee 1P/3P. Quando arriva L2/L3 produrre animazioni vere con rig autorizzati e relative zombie reactions; nessun montage finto.
+- **G-17 FX core**: un anello di contenimento elettrico industriale con telegraph leggibile deve essere creato (Niagara+audio) quando arriva L8, senza usare nuovo pacchetto a pagamento. Lo status slowdown usa logica Slowfield già prevista, niente sistema duplicato.
+- **G-18 Passivi S1/S2/S3**: non aggiungere nuove strutture costose; riusare banco, repair interaction e signal/light dei props esistenti. Mancanza di asset reale implica task settoriale non DONE.
+- **G-19 Ping e onda W7**: nessun nuovo zombie o skill tree richiesti; sono riuso targeting/disable della sentry esistente. QA di LoS e 1p deve essere registrato.

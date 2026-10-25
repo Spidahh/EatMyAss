@@ -18,7 +18,7 @@ HordeTemplate presenta `HordeGameState::StartGameRound()` con generazione e fine
 | 4 | 34 | 22 | armored introdotto 10% | 135 |
 | 5 | 43 | 25 | sabotatore 5%, difese richiedono player | 155 |
 | 6 | 55 | 28 | due fronti, apertura S2 disponibile | 180 |
-| 7 | 69 | 32 | walker/runner + armor/sabotatore | 210 |
+| 7 | 69 | 32 | walker/runner + armor/sabotatore, **crisi breve sentry se esiste** | 210 |
 | 8 | 84 | 36 | pressure, S3 disponibile | 240 |
 | 9 | 100 | 40 | preparare fight finale, elite >20% | 270 |
 | 10 | 120 | 44 | gruppo + boss univoco in scena sicura | nessuno; Victory |
@@ -39,6 +39,10 @@ ThreatBudget(n) = Budget1p × `PlayerFactor[n]` (seed: 1p1.0, 2p1.55, 3p1.95, 4p
 6. Completion soltanto quando pending=0, alive=0, boss (se previsto) dead; reward Team/Personal eseguiti UNA volta per `WaveId`; prep timer avviato server.
 7. Anti-stall: enemy stuck oltre finestra definita => cerca nuova route/bersaglio; se non risolvibile dopo retry limitati, despawn recovery senza reward, log e count; no wipe silenzioso davanti player.
 8. Quando core è morto o team wiped => stop timer e spawner, niente wave rewards.
+
+## Micro-evento tattico di W7 (non nuova modalità)
+
+La settima onda, dopo preavviso 5s, può disabilitare **una sola sentry attiva per massimo 8s**. Si risolve tramite E interazione alla torre (3s) o Q ingegnere, non richiede quel ruolo per poter vincere. Con nessuna torre il micro-evento è solo una normale warning. Nessun aumento di zombie, valute, unità o sistema RNG: riusare stato `Disabled` del Sabotatore. Il Nucleo conserva un unico Impulso di Contenimento una volta/wave e la slow area non conta come enemy kill; le wave terminano sempre solo quando zero pending e zero alive. Specifica [40](40_SYNERGIES_SKILLS_AND_CITY.md).
 
 ## Adaptive director, solo dopo curva controllata
 
