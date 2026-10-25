@@ -12,7 +12,7 @@
 - 3 territori fuori NON sono 3 quartieri base acquistabili. Nessuna passiva Officina/Deposito/Tetti della V1.1.
 - Altri task/codici di V1.1 non hanno autorità sul nuovo design.
 
-**Ordine:** leggere prima riga `PLANNED` in `33_FULL_BACKLOG.csv`, completare un pezzo con asset finali/anim/audio/VFX/network/QA, passare successivo solo con prova. Primo lavoro player Survival, AR e **primo melee**, Nurse, poi base interna e prima turret automatica completa. 4 ranged+3 melee, 5 zombie, due tower+barriera, 3 specializzazioni, 10+ stage con 2 ritmi, salvataggio host/co-op e final shipping. Non lanciare tre giochi alternativi.
+**Ordine:** leggere prima riga `PLANNED` in `33_FULL_BACKLOG.csv`, completare un pezzo con asset finali/anim/audio/VFX/network/QA, passare successivo solo con prova. Primo lavoro player Survival, AR, **Nurse completa**, quindi **primo machete completo provato sulla Nurse**, poi hub, Rottami/Core/save, director vero W1–3 e prima torretta autonoma su ondate reali. 4 ranged+3 melee, 5 zombie, due tower+barriera, 3 specializzazioni, 10+ stage con 2 ritmi, salvataggio host/co-op e final shipping. Non lanciare tre giochi alternativi.
 
 **Legal/assets:** repository pubblico, raw binari Fab/Epic/terzi restano in privata workspace; se asset non Free/non acquisibile, record GAP e possibilità di modello proprio con Blender lecito, non far passare per free un listing Buy Now e non creare placeholder da dimenticare.
 

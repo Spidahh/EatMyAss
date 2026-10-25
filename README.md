@@ -32,7 +32,7 @@ Le precedenti idee della città S1/S2/S3 acquistabile, del vecchio protocollo at
 
 ## Sviluppo in strati definitivi
 
-HordeTemplate base → Player Survival completo → primo AR completo → **primo machete completo con parata/contrattacco** → Nurse completo → HUB base reale + collegamento a esterno → primo sistema difesa autonomo → Rottami e upgrade → assalti persistenti → altri territori, torri, armi, zombie, classi, modalità continua → co-op e build finale. Ogni passaggio include animazioni, effetti audio/video, gameplay e test reali. Niente asset provvisori spacciati per definitivi.
+HordeTemplate base → Player Survival completo → primo AR completo → **Nurse vera** → **machete completo contro Nurse** → HUB base reale → Rottami+Core/save → direttore assalti W1–3 → **prima torretta automatica completa** → assalti persistenti → altri territori, torri, armi, zombie, classi, modalità continua → co-op e build finale. Ogni passaggio include animazioni, effetti audio/video, gameplay e test reali. Niente asset provvisori spacciati per definitivi.
 
 ## Ricerca e vincoli
 

@@ -49,7 +49,7 @@
 
 ## Priorità produzione e art budget
 
-Prima **Machete** finito con full anim 1p/3p, IK, colpi, block/parry, audio flesh, hit FX/death reaction su Nurse. Poi la mazza, poi l'asta nella roadmap dopo il core auto-defense. Per ogni arma melee: hold+equip+idle+walk/sprint, light combo steps, heavy se applicabile, block startup/hold/release, perfect parry/counter, hit impacts, miss, hit light/heavy, death/cancel, stamina/FX e remote replica; non chiamare “completo” con una sola animazione swing.
+Dopo aver completato la Nurse autentica nel precedente strato L3, **Machete** completo in L4 con full anim 1p/3p, IK, colpi, block/parry, audio flesh, hit FX/death reaction contro la Nurse. Non usare dummy. Poi la mazza, poi l'asta nella roadmap dopo il core auto-defense. Per ogni arma melee: hold+equip+idle+walk/sprint, light combo steps, heavy se applicabile, block startup/hold/release, perfect parry/counter, hit impacts, miss, hit light/heavy, death/cancel, stamina/FX e remote replica; non chiamare “completo” con una sola animazione swing.
 
 ## Limiti severi
 
