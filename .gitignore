@@ -34,3 +34,8 @@ Game/Content/ZD/External/
 Game/Content/HordeTemplateBP/
 PrivateAssets/
 AssetDownloads/
+
+# Local Horde checkout and external binary asset library - never push in this public repo
+ExternalCache/
+Game/Content/
+Game/Plugins/ThirdParty/
