@@ -1,39 +1,45 @@
-# ZOMBIE DEFENCE — REGOLE VINCOLANTI DI PRODUZIONE PER CODEX
+# ZOMBIE DEFENCE — MANDATO VINCOLANTE A CODEX (V2)
 
-**Versione attiva 1.1 — 25 ottobre 2026.** Questo file governa **l'intero gioco fino alla release 1.0**, non soltanto i primi quattro strati. Su punti incompatibili sostituisce i documenti storici 00–17.
+**Aggiornamento 25 ottobre 2026.** Il committente ha corretto radicalmente il gioco: **BASE interna autonoma + combattimento FUORI dalla base**. La precedente concezione di città a settori acquistabili e difesa che richiede il giocatore vicino è **ANNULLATA**. Ignora i requisiti V1/V1.1 incompatibili anche se ancora citati nei commit storici o nel testo di una issue vecchia.
 
-## MISSIONE E FONTE DI VERITÀ
+## Fonte di verità — leggere tutti nell'ordine
 
-Devi costruire in Unreal Engine 5.8 un **FPS action zombie cooperativo 1–4 con ondate + tower defense + base upgradabile + città che si espande**, pronto Windows, riutilizzando [HordeTemplate V2 Native](https://github.com/DasBander/HordeTemplate). Il prodotto completo (1.0) richiede **4 armi, 5 archetipi zombie incluso boss, 3 difese, 3 classi, Nucleo aggiornabile, 10 ondate, 4 settori di città, due valute, upgrade, multiplayer, UI/UX, audio, VFX, animazioni e packaging**. Niente gestionale negozio, idle, survival crafting, battle royale, asset di COD o P2W.
+1. [41_CANONICAL_GAME_V2.md](docs/41_CANONICAL_GAME_V2.md) — descrive **cosa è veramente il gioco**.
+2. [42_MELEE_SKILLS_AND_SPECIALIZATIONS.md](docs/42_MELEE_SKILLS_AND_SPECIALIZATIONS.md) — armi da fuoco, melee profondo, Tiratore/Spezzatore/Tecnico.
+3. [43_AUTONOMOUS_BASE.md](docs/43_AUTONOMOUS_BASE.md) — hub interno upgrade e sistema di autodifesa reale, con torrette attive senza player.
+4. [44_OUTSIDE_COMBAT_AND_PROGRESSION.md](docs/44_OUTSIDE_COMBAT_AND_PROGRESSION.md) — zone esterne, incarichi combat, Rottami, waves+continuo, save host.
+5. [18_MASTER_GAME_SPEC.md](docs/18_MASTER_GAME_SPEC.md) — indice e confini di V2.
+6. [33_FULL_BACKLOG.csv](docs/33_FULL_BACKLOG.csv) + [33_BACKLOG_GUIDE.md](docs/33_BACKLOG_GUIDE.md) — SOLO i task V2, un task alla volta, non dati di issue precedenti.
+7. [38_RELEASE_CONTENT_MATRIX.csv](docs/38_RELEASE_CONTENT_MATRIX.csv) — ogni entità deve avere asset reale, animazioni, audio, VFX, AI, rete e prove.
+8. [34_CODEX_MASTER_BRIEF.md](docs/34_CODEX_MASTER_BRIEF.md) — incarico pratico di sviluppo, non pianificazione.
+9. [30_ASSET_PRODUCTION.md](docs/30_ASSET_PRODUCTION.md), [31_UNREAL_ARCHITECTURE.md](docs/31_UNREAL_ARCHITECTURE.md), [32_QA_RELEASE.md](docs/32_QA_RELEASE.md), [35_DECISION_GAPS.md](docs/35_DECISION_GAPS.md) — licenze, tecnica, uscita e incertezze reali.
 
-Leggi **in quest'ordine prima di ogni nuovo lavoro**:
-1. **[Specifica madre](docs/18_MASTER_GAME_SPEC.md)** — il gioco completo, obiettivi e scope finale. Leggi anche **[40 — skill e sinergie città](docs/40_SYNERGIES_SKILLS_AND_CITY.md)**: decisioni V1.1 limitate e vincolanti.
-2. **[Backlog sequenziale](docs/33_FULL_BACKLOG.csv)** e **[Guida](docs/33_BACKLOG_GUIDE.md)** — tutti gli **80 task** dal framework fino alla release, ogni task dipende dal precedente. Non saltare la prima riga non DONE.
-3. **[Master brief Codex](docs/34_CODEX_MASTER_BRIEF.md)** — modalità operativa e divieti.
-4. **[Matrice contenuti](docs/38_RELEASE_CONTENT_MATRIX.csv)** — completezza animazioni, mesh, suoni, VFX, AI e rete per ogni elemento.
-5. **[Gap reali](docs/35_DECISION_GAPS.md)** e **[Asset](docs/30_ASSET_PRODUCTION.md)** — mancanze e fonti legali.
-6. Documento specialistico del task: [partita](docs/19_SESSION_AND_RULES.md), [armi](docs/20_COMBAT_WEAPONS.md), [zombie](docs/21_ZOMBIES_AI.md), [difese/base](docs/22_DEFENSE_AND_BASE.md), [classi](docs/23_CLASSES_ABILITIES.md), [città](docs/24_CITY_AND_SECTORS.md), [economia](docs/25_ECONOMY_BALANCE.md), [onde](docs/26_WAVE_DIRECTOR.md), [rete](docs/27_MULTIPLAYER_SAVE.md), [UI](docs/28_UI_AND_INPUT.md), [audio/anim/VFX](docs/29_ANIMATION_AUDIO_VFX.md), [architettura](docs/31_UNREAL_ARCHITECTURE.md), [QA](docs/32_QA_RELEASE.md), [release](docs/36_RELEASE_AND_OPERATIONS.md).
-7. Solo per i dettagli specifici della prima produzione: docs/12–17. I precedenti docs/00–11 sono storici e non creano nuovi task.
+**Precedenza:** AGENTS.md V2 + 41–44 + backlog V2 > eventuali altre note V2 > documenti legacy 00–17, 39–40 V1.1. Se incontri “difendere Nucleo stando fuori vicino alle torrette” o “città/officina/deposito/tetti acquistabili”, considera il requisito ANNULLATO. Le issue non possono sovrascrivere questo file.
 
-## REGOLE DI ESECUZIONE
+## Missione completa V2 (NON solo primo personaggio)
 
-- **UNO STRATO/UN TASK ALLA VOLTA.** Fai la prima riga non DONE, completa **anche** asset reali, animazioni, blend, SFX, VFX, UI, co-op, regole server e build quando pertinenti. Non sviluppare altre feature “per comodità”.
-- **VIETATI I PLACEHOLDER FINALI.** No mannequin, cubi, zombie low-quality, eventi senza animation, test map spacciate per città, clip/effetti generici mai rifiniti. L1 player REAL Survival Character; L2 AR reale dal FPS Weapon Bundle; L3 Nurse reale, poi città. Gli altri asset si approvano quando arriva il loro task; non inventare il nome di mesh non scaricate.
-- **Nessun numero/compatibilità inventato:** seed bilanciamento non sono valori certificati; non supporre 7 armi tutte buone né zombie con 15 animazioni. Repertorio in docs/30.
-- **HordeTemplate fisso** come base. Non aprire nuovi comparativi con Lyra e non iniziare codice FPS da zero. Se la base presenta bug, patch circoscritte nel progetto. Non aggiungere nuovi framework duplicati.
-- **Server autorevole:** ammo, danni, HP, morte, onde, Nucleo, acquisti, classi e settori. TxnId idempotenti; no reward doppia; death indipendente da `DamageCauser` player.
-- **Asset licenze:** il GitHub è PUBBLICO. Nessun file raw Fab/Epic/Marketplace che non consente redistribuzione isolata. Scaricare solo tramite canali legali autorizzati, conservare asset in workspace PRIVATO, documentare manifest e utilizzare nella build cooked in conformità alla licenza; no acquisti o API a consumo non autorizzati.
-- **NO loop di demo/bozze che restano.** I test sono parte del completamento delle feature reali, non un progetto parallelo. Se mancano strumenti engine, scrivi IN PROGRESS/BLOCKED con prova precisa di cosa manca, non DONE.
-- **SKILL DI GIOCO V1.1:** solo V spinta, Q di classe, ping middle mouse, E impulso del Nucleo sul pannello (una volta/wave), 3 passivi settore. Vedi docs/40. Niente altri tasti skill, valute o carte casuali.
-- **CONTINUA FINO ALLA 1.0:** arrivare a L4 non equivale a finire il gioco. Prosegui L5–RC in ordine col backlog, senza dimenticare difese, economy, 10 ondate, classi, boss, rete e pubblicazione.
-- **CHANGE CONTROL:** nuove idee non incluse nelle spec si documentano in docs/35 e si chiedono solo se cambiano sostanzialmente scope; non aggiungere spontaneamente artiglieria, infinite mode, MMO, server persistenti.
+Un Unreal Engine 5.8 FPS action Windows, partendo dal **codice reale HordeTemplate V2 Native**, con:
+- **Dentro la BASE fisica**: cammini, cambi armi/classi, fai upgrade a Nucleo/barriere/torrette, spese in UNA moneta Rottami, salvi. Niente combattimento obbligato dentro.
+- **Fuori dalla BASE**: FPS ranged + melee (3 armi melee e 4 ranged pianificate), combattimenti zombie e 3 tipi di incarichi opzionali, IA che reagisce a giocatore esterno.
+- **Difesa davvero autonoma**: due tipi di torrette + barricata, tutte potenziabili; uccidono senza controllo del giocatore e senza presenza vicina. La base può resistere da sola agli assalti adeguati ai suoi livelli.
+- **Assalti**: uno stesso director server per ondate (default) e flusso continuo, minaccia crescente, 10 livelli di escalation con Bruto milestone e possibile continuazione; CoreHP0 unico game over.
+- **Tre specializzazioni**: Tiratore, Spezzatore con vera opzione melee-only, Tecnico; 1 attiva Q e 1 passiva ciascuno, revive comune, no healer obbligatorio.
+- **Progressi salvati**: base persistente sul PC host tra sessioni, senza simulazione offline, no database o account.
+- **Costo**: zero nuovi acquisti predefiniti; niente asset temporanei o illegali, niente city management/crafting/survival.
 
-## PROVE E CRITERI DONE
+## Regole per ogni intervento
 
-Compilazione e avvio REALI in Unreal, asset legalmente acquisiti, animazioni verificate, audio/VFX reali, gameplay video dove pertinente, sincronizzazione client/server e regressioni del task. Aggiorna il record specifico in `docs/33_FULL_BACKLOG.csv` da `PLANNED` a `DONE` **soltanto** quando tutte le acceptance sono osservabili. Aggiorna anche `docs/37_EXECUTION_STATUS.csv` con commit, build, prove e bug. Nessuna prova => IN PROGRESS/BLOCKED, non DONE. Leggi [QA release](docs/32_QA_RELEASE.md).
+- Finisci UNO strato intero prima del successivo: codice, mesh reale, rig, animazioni di prima/terza persona, suoni, FX, UI, IA, multiplayer, build, QA visiva e nessuna regressione. **No placeholder finali**.
+- Le vecchie skin Survival/AR Deadghost/Nurse restano prime sorgenti designate, ma gli **asset per armi melee e torre pesante sono GAP** da cercare realmente senza inventare licenza/mesh/animazioni.
+- Non aggiungere Lyra, seconda weapon system, altre valute, 20 abilità, gestione fabbriche o torri che richiedono il player vicino per sparare.
+- La base **continua ad attaccare** se il player è in Zona B, nell'hub o KO; il player può entrare anche sotto assedio, ma l'assedio continua. No autofarming offline.
+- Scegliere prima un tipo tower e provarne AUTONOMIA COMPLETA; non attendere L11 per darla.
+- Una sola `Rottami` e un solo ledger server; separare l'inventario moneta dall'energia-capacità torri. Upgrade solo nell'hub base fisico.
+- Tutta la gameplay state è server-authoritative, incluse tower kills, melee parry/hits, danni, Rottami, salvataggi host, enemy spawns.
+- Niente finta scena “città-base”; costruire un INTERNO vero e un ESTERNO con fronti di assedio e zone di combattimento.
+- In presenza di mancanza reale asset/Unreal/permessi, documentare BLOCKED, soluzione a zero costo, e **non** proseguire fingendo Done. I codici pronti ma non compilati sono IN PROGRESS.
+- GitHub è pubblico: non committare raw asset Fab/Marketplace/Epic non redistribuibili; usare workspace privato e documentare provenance.
 
-## PRIMA AZIONE QUANDO CODEX APRE IL REPO
+## DoD e andamento
 
-Individua ZD-001 (L0) dal backlog, controlla Git status/engine, esegui con i file realmente disponibili, poi ZD-002 solo dopo DONE. Il bootstrap `scripts/bootstrap_horde.ps1` può aiutare in Windows **ma non è stato eseguito dall'autore del dossier**. Non chiedere un altro piano, **implementa**.
-
-**Stato verificato del repository oggi:** contiene documentazione, backlog e helper, **non** il progetto Unreal compilato. Nessuno degli 80 task è stato marcato DONE.
+Il primo task non DONE del backlog è l'unico attivo. Lo stato DONE richiede video/screenshots reali, build/test pertinenti, attacco melee corretto se coinvolto, prova di base autonoma con player lontano per ogni upgrade difensivo, e risorse autorizzate. I task aggiornano [37_EXECUTION_STATUS.csv](docs/37_EXECUTION_STATUS.csv) con commit ed evidenze. **Nessuna build Unreal o asset importato è stato ancora eseguito da questa conversazione.** Il piano non è il gioco finito.
