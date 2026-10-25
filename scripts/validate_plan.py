@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -104,6 +105,33 @@ def main() -> int:
             problems.append(f"Matrix {key} points to missing {m['design_doc']}")
         if not m["animation_requirements"] or not m["audio_requirements"] or not m["vfx_visual_requirements"] or not m["network_requirements"]:
             problems.append(f"Missing media/network contract for {key}")
+
+    needed = {
+        ("CHAR", "Survivor Player"), ("WEAPON", "AR"), ("WEAPON", "Pistol"),
+        ("WEAPON", "Shotgun"), ("WEAPON", "SMG"),
+        ("ENEMY", "Walker Nurse"), ("ENEMY", "Runner"), ("ENEMY", "Armored"),
+        ("ENEMY", "Saboteur"), ("ENEMY", "Boss"),
+        ("DEFENSE", "Barricade"), ("DEFENSE", "Sentry"), ("DEFENSE", "Slow field"),
+        ("WORLD", "Base Core"),
+        ("MAP", "District S0"), ("MAP", "S1 Workshop"), ("MAP", "S2 Warehouse"),
+        ("MAP", "S3 Roof"),
+        ("ABILITY", "Assault"), ("ABILITY", "Engineer"), ("ABILITY", "Medic"),
+        ("NETWORK", "Session 1-4"), ("RELEASE", "Windows Shipping")
+    }
+    for item in sorted(needed - matrix_keys):
+        problems.append(f"Missing required release content: {item}")
+    if tasks and tasks[-1]["status"] == "DONE":
+        incomplete = [m["item"] for m in content if m["production_state"] != "DONE"]
+        if incomplete:
+            problems.append("1.0 final task DONE while content incomplete: " + ", ".join(incomplete))
+    try:
+        tracked = subprocess.check_output(
+            ["git", "ls-files", "--", "Game/Content", "ExternalCache", "PrivateAssets", "AssetDownloads"],
+            cwd=ROOT, text=True).splitlines()
+        if tracked:
+            problems.append("Raw third-party asset locations tracked in PUBLIC repo: " + ", ".join(tracked[:10]))
+    except (OSError, subprocess.CalledProcessError):
+        print("NOTE: git unavailable; skipping tracked raw-asset check.")
 
     for forbidden in (ROOT/"Game"/"Content", ROOT/"ExternalCache"):
         # Local folders are fine; only warn that those contents must not be staged on public GitHub.
