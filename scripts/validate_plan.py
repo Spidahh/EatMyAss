@@ -30,7 +30,9 @@ REQUIRED = {
     "docs/33_BACKLOG_GUIDE.md", "docs/34_CODEX_MASTER_BRIEF.md",
     "docs/35_DECISION_GAPS.md", "docs/36_RELEASE_AND_OPERATIONS.md",
     "docs/33_FULL_BACKLOG.csv", "docs/37_EXECUTION_STATUS.csv",
-    "docs/38_RELEASE_CONTENT_MATRIX.csv"
+    "docs/38_RELEASE_CONTENT_MATRIX.csv", "docs/41_CANONICAL_GAME_V2.md",
+    "docs/42_MELEE_SKILLS_AND_SPECIALIZATIONS.md", "docs/43_AUTONOMOUS_BASE.md",
+    "docs/44_OUTSIDE_COMBAT_AND_PROGRESSION.md"
 }
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -51,10 +53,10 @@ def main() -> int:
         return 1
 
     tasks, statuses, content = read_rows(TASKS), read_rows(STATUS), read_rows(MATRIX)
-    if len(tasks) != 80:
-        problems.append(f"Expected 80 tasks, found {len(tasks)}")
-    if len(content) != 28:
-        problems.append(f"Expected 28 content rows, found {len(content)}")
+    if len(tasks) != 112:
+        problems.append(f"Expected 112 V2 tasks, found {len(tasks)}")
+    if len(content) != 36:
+        problems.append(f"Expected 36 V2 content items, found {len(content)}")
     if len(statuses) != len(tasks):
         problems.append("Status row count differs from task backlog")
     status_by_id = {x["task_id"]: x for x in statuses}
@@ -107,16 +109,20 @@ def main() -> int:
             problems.append(f"Missing media/network contract for {key}")
 
     needed = {
-        ("CHAR", "Survivor Player"), ("WEAPON", "AR"), ("WEAPON", "Pistol"),
-        ("WEAPON", "Shotgun"), ("WEAPON", "SMG"),
-        ("ENEMY", "Walker Nurse"), ("ENEMY", "Runner"), ("ENEMY", "Armored"),
-        ("ENEMY", "Saboteur"), ("ENEMY", "Boss"),
-        ("DEFENSE", "Barricade"), ("DEFENSE", "Sentry"), ("DEFENSE", "Slow field"),
-        ("WORLD", "Base Core"),
-        ("MAP", "District S0"), ("MAP", "S1 Workshop"), ("MAP", "S2 Warehouse"),
-        ("MAP", "S3 Roof"),
-        ("ABILITY", "Assault"), ("ABILITY", "Engineer"), ("ABILITY", "Medic"),
-        ("NETWORK", "Session 1-4"), ("RELEASE", "Windows Shipping")
+        ("PLAYER","Survivor"), ("BASE","Hub Interior"), ("BASE","Perimeter and Core"),
+        ("BASE","Core Upgrade and Emergency"),
+        ("FIREARM","Assault Rifle"), ("FIREARM","Pistol"), ("FIREARM","SMG"), ("FIREARM","Shotgun"),
+        ("MELEE","Machete"), ("MELEE","Heavy Hammer"), ("MELEE","Industrial Pole"),
+        ("DEFENSE","Fast Auto Sentry"), ("DEFENSE","Heavy Auto Turret"), ("DEFENSE","Barricade Gate"),
+        ("ENEMY","Walker Nurse"), ("ENEMY","Runner"), ("ENEMY","Armored"),
+        ("ENEMY","Saboteur"), ("ENEMY","Bruto Boss"),
+        ("ZONE","Zone A Perimeter"), ("ZONE","Zone B Sorting Yard"), ("ZONE","Zone C Infected Area"),
+        ("SYSTEM","Rottami Ledger"), ("SYSTEM","Persistent Host Save"),
+        ("SYSTEM","Threat Director Waves"), ("SYSTEM","Threat Director Continuous"),
+        ("SPECIAL","Tiratore"), ("SPECIAL","Spezzatore"), ("SPECIAL","Tecnico"),
+        ("EVENT","Kill Caller"), ("EVENT","Elite Hunt"), ("EVENT","Supply Defense"),
+        ("NETWORK","Host Coop 1-4"), ("UI","Combat HUD"), ("UI","Base Hub UI"),
+        ("RELEASE","Windows Shipping"),
     }
     for item in sorted(needed - matrix_keys):
         problems.append(f"Missing required release content: {item}")
