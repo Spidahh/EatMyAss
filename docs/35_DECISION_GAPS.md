@@ -1,7 +1,7 @@
 # GAP REALI V2 — IL PIANO NON È FILE GIÀ PRESENTI
 
 ## Blocchi da risolvere nell'ordine del backlog
-- AS-V2-01 **machete realistico e animazioni FPS/3P parry/counter**: il listing Melee Weapon Variety Pack descrive machete/sledgehammer/crowbar ma mostra Buy Now, **non è confermato gratuito**. Non comprarlo. Fonte alternativa gratuita reale [Anfal Sword Pack](https://www.fab.com/listings/381a59e2-f2b7-4ff4-869f-e3cc708e90cb) offre un'ascia e altri blades, ma NON machete; modello proprio Blender oppure trovare free machete serio. Le animazioni non sono garantite.
+- AS-V2-01 **Machete PBR CC0 già individuato, ma da acquisire/riggare/animare**: https://opengameart.org/content/pbr-machete-cc0 (CC0 dichiarato da Lucian Pavel, textures PBR 2K). Il listing a pagamento Melee Weapon Variety Pack descrive machete/sledgehammer/crowbar ma mostra Buy Now, **non è confermato gratuito**. Non comprarlo. Fonte alternativa gratuita reale [Anfal Sword Pack](https://www.fab.com/listings/381a59e2-f2b7-4ff4-869f-e3cc708e90cb) offre un'ascia e altri blades, ma NON machete; modello proprio Blender oppure trovare free machete serio. Le animazioni non sono garantite.
 - AS-V2-02 **mazza e asta realistiche**: cercare free pack/produzione legale, compatibile mani/skeleton. Non sostituire asta industriale con arma medievale stilisticamente incoerente.
 - AS-V2-03 **torretta pesante**: fonte Free/risorsa industriale non verificata; non duplicare la rapida con proiettile più grande senza vero visual/audio.
 - AS-V2-04 **hub interno/terminali**: 4 modelli/props realistici e interazioni, non una stanza di cubi.

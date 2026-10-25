@@ -10,6 +10,11 @@
 | AR Firearms | https://www.fab.com/listings/8aeb9c48-b404-4dcd-9e56-1d0ecedba7f5 | Deadghost FPS Weapon Bundle, AR da censire |
 | Nurse Zombie | https://www.fab.com/listings/35246f73-70ca-41ac-816b-55ead87dbcbc | Nurse model, solo 3 animation incluse secondo listing |
 | Zombie animations | https://www.fab.com/listings/82b55c77-c706-4634-839e-29ba827dac8d | QuokkaVoid pack 50 clips dichiarate, coverage effettivo incognito |
+| **Machete CC0 PBR scelto per primo import** | https://opengameart.org/content/pbr-machete-cc0 | **CC0 esplicita**, autore Lucian Pavel, archivio Machete.zip 12.7 MB, map PBR 2K; non scaricato/testato/riggato da noi, ANIMATION RIG da creare, art review nel gioco prima di APPROVED |
+| **Mazza CC0 candidata** | https://opengameart.org/content/sledgehammer-3d | **CC0**, ma 40 tris/128px = **NON art-approved**, utilizzabile solo come fonte/retopo, non asset finale |
+| **Mazza CC0 fonte Blender** | https://opengameart.org/content/3d-hammer-pack | **CC0**, 9 mesh lowpoly senza texture; richiede produzione PBR+rig per versione finale |
+| **Asta/Palo CC0 candidate** | https://opengameart.org/content/low-poly-survival-toolkit-weapon | **CC0**; include Spear e Hammer, ma lowpoly: può guidare modellazione finale, non è PBR/anim approvata |
+| **Leva industriale CC0 alternativa** | https://opengameart.org/content/crowbar | **CC0**, lowpoly .blend, possibile arma lunga da rifinire con Blender se l'asta non raggiunge look desiderato |
 | Melee *stile realistico* | https://www.fab.com/listings/a2875570-88f0-4ee3-a0de-f45fe9acfa74 | Melee Weapon Variety Pack (machete/sledgehammer/crowbar incluse); **BUY NOW, non confermato Free: NON AUTORIZZATO a zero costo** |
 | Melee alternativa FREE | https://www.fab.com/listings/381a59e2-f2b7-4ff4-869f-e3cc708e90cb | Free Sword Pack Anfal; confermato Free sulla scheda, contiene ascia/sciabola/pugnale/spade ma **non** machete/mazza/asta; realistic art test |
 | Melee alternativa FREE | https://www.fab.com/listings/0842eb1b-c49a-4d3c-9a57-a081944427b6 | pack medieval axe/shield/spear elencato Free, stona con industria: ART REVIEW prima |

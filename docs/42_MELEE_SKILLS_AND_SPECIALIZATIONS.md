@@ -6,15 +6,15 @@
 
 | Codice | Arma | Distanza/uso | Ritmo | Combo/azione speciale | Asset |
 | --- | --- | --- | --- | --- | --- |
-| M_MACHETE | Machete | ravvicinata, singoli zombie | veloce | 3 colpi breve con angoli leggibili, terzo spinge un bersaglio | mesh/rig/anim realistici FREE da reperire e approvare |
-| M_HAMMER | Mazza pesante / martello industriale | corto-medio, armored e frantumazione | lenta | attacco caricato che colpisce armatura, non stun permanente | FREE da approvare |
-| M_POLE | Lancia corta / asta industriale | portata > machete, tiene distanze | media | affondo lineare, colpisce uno zombie in prima fila, fino a 2 solo su traiettoria valida | FREE da approvare |
+| M_MACHETE | Machete | ravvicinata, singoli zombie | veloce | 3 colpi breve con angoli leggibili, terzo spinge un bersaglio | Mesh PBR CC0 candidata https://opengameart.org/content/pbr-machete-cc0 ; da importare, riggare/animare e approvare a vista |
+| M_HAMMER | Mazza pesante / martello industriale | corto-medio, armored e frantumazione | lenta | attacco caricato che colpisce armatura, non stun permanente | CC0 hammer reference https://opengameart.org/content/3d-hammer-pack ; modello finale PBR/rig da produrre |
+| M_POLE | Lancia corta / asta industriale | portata > machete, tiene distanze | media | affondo lineare, colpisce uno zombie in prima fila, fino a 2 solo su traiettoria valida | CC0 pole/spear reference https://opengameart.org/content/low-poly-survival-toolkit-weapon ; necessita produzione stilistica |
 | W_AR | Fucile d'assalto | media | ranged | ADS, reload, recoil, hit bone come già pianificato | Deadghost bundle come fonte prima |
 | W_PISTOL | Pistola | secondaria a distanza | ranged | rapido cambio dall'arma melee | dal bundle se presente davvero |
 | W_SMG | SMG | mobile | ranged | rate di fuoco | fonte FREE da approvare |
 | W_SHOTGUN | Fucile a pompa | close range | ranged | può colpire più zombie se pellet server reali | fonte FREE da approvare |
 
-**Asset non scaricati e animazioni melee non verificate.** Codex deve cercare gratuitamente pacchetti coerenti (Fab, Epic permitted sample, rig Blender/Control Rig), valutarli/approvarli e poi integrarne una arma alla volta, mai usare mesh di cubi o spada genericamente anime. Non comprare, non inventare file.
+**Prima mesh Machete con fonte CC0 reale individuata su OpenGameArt, NON scaricata o riggata in questa sessione. Tutte le animazioni melee rimangono da produrre.** Codex deve cercare gratuitamente pacchetti coerenti (Fab, Epic permitted sample, rig Blender/Control Rig), valutarli/approvarli e poi integrarne una arma alla volta, mai usare mesh di cubi o spada genericamente anime. Non comprare, non inventare file.
 
 ## Regole melee base, senza diventare soulslike
 
