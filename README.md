@@ -1,47 +1,37 @@
-> **DIRETTIVE UTENTE AGGIORNATE 26/10/2026:** questo README e la V2 sotto contengono ancora **ipotesi dell'assistente non approvate**, soprattutto classi/abilità Tiratore–Spezzatore–Tecnico, “colpo preciso” e mappa di sole 3 zone. **NON usarle per sviluppare.** La regola ora è: mappa **stile Call of Duty Zombies** con esplorazione libera e **zone sbloccabili**, base fisica per upgrade che **si autodifende**, combattimento FPS+melee e scelte originali approvate dall'utente. Leggere [AGENTS.md](AGENTS.md), [45 Direttive](docs/45_USER_DIRECTIVES.md) e [46 Percorso di gioco](docs/46_PLAYER_JOURNEY_REQUIREMENTS.md) **prima di tutto**. Il piano 112 task è **IN REVISIONE**, non approvato nelle decisioni di gameplay.
+# Zombie Defence — progetto di Game Design (26/10/2026)
 
-# Zombie Defence — FPS + Melee + Base Autonoma (V2)
+**Stato: PROPOSTA DI GAME DESIGN DA VALUTARE. NESSUN CODICE MODIFICATO NELLA REVISIONE ATTUALE.** La base del motore indicata nelle ricerche precedenti è HordeTemplate su UE5.8, ma l'implementazione non è stata verificata qui.
 
-**CONCEPT CANONICO CORRETTO · 25 ottobre 2026**  
-**Stato reale:** specifiche, task e piano pubblicati; non esiste ancora una build Unreal del gioco in questo repo. HordeTemplate è la baseline scelta; asset Fab/Epic non sono già scaricati e non possono essere pushati raw sul GitHub pubblico.
+## Il gioco richiesto
 
-## Cos'è il gioco (leggere prima di qualsiasi Codex)
+FPS zombie con mappe **come COD Zombies**: puoi esplorare liberamente, **aprire/liberare progressivamente nuove aree**, scoprire scorciatoie e ricollegare percorsi. Nella stessa mappa hai una **base**: dentro fai soltanto upgrade, fuori combatti con armi da fuoco e melee. Torrette e fortificazioni **difendono automaticamente** la base, anche mentre sei lontano; col crescere della minaccia vanno potenziate. Gameplay divertente/originale e contenuti sviluppati a strati senza placeholder permanenti.
 
-La **BASE è un hub fortificato accessibile fisicamente**. Dentro si fanno upgrade di armi, specializzazioni, Nucleo, torrette e barriere. Fuori si combatte **in prima persona con armi da fuoco e melee reali**, si eliminano zombie/elite e si completano brevi eventi per guadagnare **Rottami**.
+**Questa definizione viene dalle correzioni dell'utente.** Il tipo di abilità, le classi, i numeri di armi/torri/onde e la struttura della progressione permanente **non sono approvati**: niente "Tiratore/Tecnico", niente "colpo preciso" o vecchie classi banali.
 
-**La base si autodifende**: le torrette mirano, sparano e uccidono anche se il giocatore è lontano, dentro la base o KO. Una base ben potenziata riesce a resistere da sola agli attacchi del livello attuale; col passare degli assalti arrivano nemici più forti e serve potenziare ancora. Si può rientrare **quando si vuole**, anche durante un'ondata. La base persiste fra sessioni host; quando il gioco è chiuso non avviene simulazione offline.
+## Leggi il vero piano di gioco — non le vecchie liste
 
-Non ci sono “settori cittadino da comprare”, non serve difendere il Nucleo sparando sempre da vicino, non esiste idle farming, niente raccolta di 50 materiali o negozio gestionale.
-
-## DOCUMENTI AUTOREVOLI V2
-
-| Ordine | Documento | A cosa serve |
+| Priorità | Documento | Contenuto/stato |
 | --- | --- | --- |
-| 0 | **[AGENTS.md](AGENTS.md)** | Contratto di Codex e precedenza V2 |
-| 1 | **[41 — Game vision V2](docs/41_CANONICAL_GAME_V2.md)** | Definizione esatta del gioco dentro/fuori base |
-| 2 | **[42 — Melee e specializzazioni](docs/42_MELEE_SKILLS_AND_SPECIALIZATIONS.md)** | Pistole/fucili/machete/mazza/asta, parry, counter, 3 specializzazioni |
-| 3 | **[43 — Base automatica](docs/43_AUTONOMOUS_BASE.md)** | Hub, torre rapida/pesante, portoni, autocombat, upgrade |
-| 4 | **[44 — Esterno e progressione](docs/44_OUTSIDE_COMBAT_AND_PROGRESSION.md)** | Tre zone esterne, incarichi e Rottami, ondate/continuo, salvataggi |
-| 5 | **[18 — Master spec V2](docs/18_MASTER_GAME_SPEC.md)** | Registro del perimetro del prodotto |
-| 6 | **[33 — Backlog V2](docs/33_FULL_BACKLOG.csv)** | Lavori concreti in ordine lineare e criteri di completamento |
-| 7 | **[38 — Matrix completa](docs/38_RELEASE_CONTENT_MATRIX.csv)** | Modelli, animazioni, audio, effetti, AI, rete per ogni oggetto |
-| 8 | **[34 — Mandato di Codex](docs/34_CODEX_MASTER_BRIEF.md)** | Come eseguire, non reinterpretare |
-| 9 | **[30 — Asset sourcing](docs/30_ASSET_PRODUCTION.md)** | Asset selezionati, gap reali, diritto d'uso |
-| 10 | **[32 — QA e release](docs/32_QA_RELEASE.md)** | Build, autonomie, melee e multiplayer |
-| 11 | **[35 — Decisioni e GAP](docs/35_DECISION_GAPS.md)** | Quello che manca veramente |
+| **1** | **[Direttive esplicite del committente](docs/45_USER_DIRECTIVES.md)** | Requisiti confermati, prevalgono su tutto |
+| **2** | **[Trascrizioni originali](docs/47_USER_QUOTE_LOG.md)** | Ogni correzione finora registrata nel dossier |
+| **3** | **[Partita completa immaginata](docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md)** | **PROPOSTA**: menu → primo scontro → porte → scorciatoie → difese → esito |
+| **4** | **[Mappa vera e sistemi che interagiscono](docs/49_MAP_GAMEPLAY_AND_ORIGINALITY_PROPOSAL.md)** | **PROPOSTA**: grafo di zone, map opening, melee, IA, torretti |
+| **5** | **[Piano dall'inizio alla release](docs/50_COMPLETE_DESIGN_AND_PRODUCTION_PLAN_PROPOSAL.md)** | **PROPOSTA**: tutti i sistemi e ordine di produzione |
+| **6** | **[Registro errori corretti](docs/51_CORRECTIONS_AUDIT_AND_APPROVAL_REGISTER.md)** | Controprova dei conflitti e delle idee respinte |
+| **7** | **[AGENTS.md](AGENTS.md)** | Blocco del vecchio backlog e del codice durante la fase di design |
 
-Le precedenti idee della città S1/S2/S3 acquistabile, del vecchio protocollo attivato manualmente e delle classi Assaltatore/Ingegnere/Soccorritore sono **ritirate**. I documenti 00–17 e 39–40 v1.1 non prevalgono mai sul V2; eventuali note legacy sono conservate solo per storico.
+## Una partita — principio fondamentale
 
-## Sviluppo in strati definitivi
+Inizi dentro/vicino alla base e vedi la città bloccata oltre un primo accesso. Esci, combatti, raccogli i risultati del combattimento, scegli quale porta/settore aprire, scopri aree fisicamente percorribili e colleghi i rami con scorciatoie; puoi tornare fisicamente alla base per migliorare le torrette. La base combatte gli zombie **in autonomia**, mentre il player continua a esplorare e a decidere come affrontare gruppi e nemici più difficili. Nessun nuovo scenario “negozio gestionale”; il ritorno alla base fa parte della stessa partita.
 
-HordeTemplate base → Player Survival completo → primo AR completo → **Nurse vera** → **machete completo contro Nurse** → HUB base reale → Rottami+Core/save → direttore assalti W1–3 → **prima torretta automatica completa** → assalti persistenti → altri territori, torri, armi, zombie, classi, modalità continua → co-op e build finale. Ogni passaggio include animazioni, effetti audio/video, gameplay e test reali. Niente asset provvisori spacciati per definitivi.
+Questa scena è una **proposta illustrativa** coerente con le direttive, non una lista chiusa di feature già approvate.
 
-## Ricerca e vincoli
+## Rischi: non avviare il vecchio piano
 
-Riferimenti: [The Riftbreaker](https://www.riftbreaker.com/) per l'autodifesa + combattimento fuori, [7 Days to Die](https://7daystodie.wiki.gg/wiki/Blood_Moon_Horde) per escalation assalto, [Killing Floor 2](https://killingfloor2.com/overview/weapons.html) per melee gunplay. Non si importano sistemi di mining/crafting, né codice/mesh di titoli commerciali.
+I file storici `docs/00–44`, il vecchio `docs/33_FULL_BACKLOG.csv` (112 task) e la `docs/38_RELEASE_CONTENT_MATRIX.csv` (36 voci) conservano scelte dell'assistente respinte o non approvate (3 territori sempre aperti, classi standard, "colpo preciso", valuta, num. armi e boss). **NON sono un incarico valido per Codex.** La loro sostituzione con task reali avverrà soltanto dopo che il game design avrà superato una revisione coerente. Per ora leggere la [proposta completa](docs/50_COMPLETE_DESIGN_AND_PRODUCTION_PLAN_PROPOSAL.md) e il [registro](docs/51_CORRECTIONS_AUDIT_AND_APPROVAL_REGISTER.md).
 
-**GitHub pubblico:** file Fab e Marketplace non ridistribuibili raw rimangono in workspace privato. Script bootstrap esistente in [scripts/bootstrap_horde.ps1](scripts/bootstrap_horde.ps1); non compilato né eseguito in Unreal qui.
+**Non è stato scritto, compilato o eseguito gameplay Unreal.** Questo repository contiene design e strumenti preparatori; asset commerciali/Fab non sono stati automaticamente acquisiti. Non caricare binari Fab raw su GitHub pubblico senza i necessari diritti.
 
-## Incarico di sviluppo
+## Issue principali
 
-[Issue #6 — gioco V2 completo](https://github.com/Spidahh/EatMyAss/issues/6). Il backlog è la singola fonte per l'ordine di lavoro. Si comincia dal primo task PLANNED: non si saltano strati e non si inventano asset.
+[Issue #6 — revisione game design del progetto](https://github.com/Spidahh/EatMyAss/issues/6). Fino a decisioni approvate e specifiche compatibili, niente codice e niente dichiarazioni di gioco completo.

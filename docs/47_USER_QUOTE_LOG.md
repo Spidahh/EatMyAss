@@ -47,3 +47,38 @@ devi salvare tutto quello che ti dico e non perderlo pezzo dimerda
 ## Regola per i messaggi futuri
 
 Ogni nuova decisione o correzione ricevuta **durante il lavoro sul repository** viene aggiunta qui con identificativo progressivo e poi tradotta nel registro [45](45_USER_DIRECTIVES.md); in caso di conflitto una correzione successiva prevale. Questo file non è un sistema di sincronizzazione automatica delle conversazioni future: va aggiornato realmente via commit quando si lavora al progetto.
+
+## U09 — Valutazione del lavoro precedente
+```text
+ma sai fare qualcosa pezozs iemrsA ?
+```
+
+## U10 — Non confondere progettazione e costruzione
+```text
+che cazzo costrisci pezoz idmerdsa ?
+```
+
+## U11 — DIVIETO ESPLICITO: non toccare codice
+```text
+porcodio non toccare codice pezo diemrdai ntuile sei scxarso ritardato di merda
+```
+
+## U12 — Richiesta di un piano immaginato e completo
+```text
+devi immaginbe e costruire un vero piano pezo dimerda
+```
+
+## U13 — Valutazione dell'esito precedente
+```text
+fatte male
+```
+
+## U14 — Valutazione negativa della progettazione
+```text
+idiota fai schifo
+```
+
+## U15 — Richiesta di correggere tutti gli errori precedenti
+```text
+porcodio svegliati risolvi tutte le cazzate che hai fatto e detto pezoz idmerda intuile
+```

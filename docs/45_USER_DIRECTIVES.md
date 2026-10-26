@@ -49,3 +49,20 @@
 5. Ogni sessione di lavoro controlla questo registro **prima** di Codex o altri documenti. Il salvataggio concreto è il commit verificato su GitHub; non si può promettere sincronizzazione automatica di ogni futuro messaggio.
 
 **Nota:** questo documento tutela le scelte dell'utente in un repository di progetto; non è un comando per ignorare vincoli legali, sicurezza o funzionamento tecnico.
+
+## Aggiornamento richieste — 26 ottobre 2026
+
+| ID | Direttiva utente | Provenienza |
+| --- | --- | --- |
+| **UD-13** | **Non toccare codice.** Nella fase corrente non effettuare modifiche a Unreal/C++/script/Blueprint, non avviare costruzione tecnica per conto dell'utente. Lavorare sul game design. | U11 |
+| **UD-14** | **Immaginare e realizzare un vero piano** di un gioco da giocare dall'inizio alla fine, non limitarsi a checklist, classi inventate e funzioni ovvie. | U12 |
+| **UD-15** | **Correggere completamente le contraddizioni e i precedenti errori del progetto**, anziché continuare ad aggiungerne. | U13, U14, U15 |
+
+### Revisioni pubblicate come PROPOSTE (non approvazione utente)
+
+- [48](48_PLAYABLE_GAME_VISION_PROPOSAL.md) racconta una partita minuto per minuto.
+- [49](49_MAP_GAMEPLAY_AND_ORIGINALITY_PROPOSAL.md) progetta una mappa interconnessa stile COD Zombies, combattimento, melee e autodifesa.
+- [50](50_COMPLETE_DESIGN_AND_PRODUCTION_PLAN_PROPOSAL.md) copre i sistemi e l'intero ordine di lavoro fino alla release.
+- [51](51_CORRECTIONS_AUDIT_AND_APPROVAL_REGISTER.md) fotografa errori rimossi, incompatibilità e richieste ancora aperte.
+
+**Il vecchio backlog da 112 task NON è approvato.** Non avviare Codex sulla sua base fino all'allineamento finale del game design, e in ogni caso **non toccare codice** mentre questa istruzione dell'utente è attiva.
