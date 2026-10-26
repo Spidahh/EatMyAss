@@ -38,3 +38,7 @@ La revisione ora riguarda **solo file di progetto Markdown e descrizioni delle i
 ## 6 — Controllo di realtà vincolante (UD-16, 26/10/2026)
 
 L'utente ha chiesto: **«tieniti costante, reale, non fantasticare»**. Prima di ogni aggiunta, dire per iscritto se è: (a) fatto verificato in repo/build, (b) scelta espressa dall'utente, (c) proposta ipotetica non approvata, (d) blocco/asset non ottenuto. Non riempire vuoti con classe generica, meccanica cliché, numeri immaginati o “funzionerà” senza prove. Non trasformare lo storyboard in contenuto realmente implementato. Attenersi al **concept esistente** e alle limitazioni del progetto. Niente ulteriore proliferazione di documenti per simulare avanzamento e, finché UD-13 è attiva, **non modificare codice**. Priorità: individuare e risolvere contraddizioni di progetto concrete, non aggiungere feature per impressionare.
+
+## 7 — Un solo design candidate, niente proliferazione (26/10/2026)
+
+La proposta primaria aggiornata è [docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md](docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md). Contiene il ciclo completo menu→mappa COD Zombies con aree apribili→equip/melee→base auto-defense con zombie veri→nuova minaccia→sconfitta/replay, economia senza farming passivo e criteri testabili. **49 e 50 sono subordinati a 48 quando esprimono proposte divergenti**, non autorizzano skill o classi aggiuntive. Le direttive UTENTE di [45](docs/45_USER_DIRECTIVES.md) prevalgono su 48. **In questa fase nessun codice e nessun asset può essere modificato.**

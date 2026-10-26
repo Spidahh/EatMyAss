@@ -1,3 +1,5 @@
+> **ATTENZIONE — 26/10/2026:** [48 — GAME DESIGN UNICO](48_PLAYABLE_GAME_VISION_PROPOSAL.md) è l'unica **proposta centrale corrente**. Questo file è materiale di approfondimento **NON APPROVATO** e potrebbe contenere idee in eccesso o precedenti alternative (trappole, abilità, numeri, mappe) **NON VINCOLANTI**. Se non compare in 48, non aggiungerlo al backlog; se contraddice 48, usare la versione 48. **Resta in vigore il divieto di toccare codice** dell'utente. La fonte realmente vincolante sono le [direttive utente 45](45_USER_DIRECTIVES.md).
+
 # ZOMBIE DEFENCE — PIANO INTEGRALE DI PROGETTAZIONE E PRODUZIONE, DALLA PARTITA ALLA RELEASE
 
 **26 ottobre 2026 · VERSIONE DA VALUTARE, NON APPROVATA DAL COMMITTENTE · SOLO DOCUMENTO, NESSUN CODICE.**

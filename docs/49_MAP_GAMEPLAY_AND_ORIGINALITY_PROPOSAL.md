@@ -1,3 +1,5 @@
+> **ATTENZIONE — 26/10/2026:** [48 — GAME DESIGN UNICO](48_PLAYABLE_GAME_VISION_PROPOSAL.md) è l'unica **proposta centrale corrente**. Questo file è materiale di approfondimento **NON APPROVATO** e potrebbe contenere idee in eccesso o precedenti alternative (trappole, abilità, numeri, mappe) **NON VINCOLANTI**. Se non compare in 48, non aggiungerlo al backlog; se contraddice 48, usare la versione 48. **Resta in vigore il divieto di toccare codice** dell'utente. La fonte realmente vincolante sono le [direttive utente 45](45_USER_DIRECTIVES.md).
+
 # MAPPA, ECONOMIA, MELEE, DIFESA E ABILITÀ — PROPOSTA SISTEMICA
 
 **26/10/2026 • SOLO GAME DESIGN • PROPOSTA NON APPROVATA.** Documento complementare all'esperienza [48](48_PLAYABLE_GAME_VISION_PROPOSAL.md). Il committente ha già confermato COD Zombies-style unlock, mappa percorribile, base interna upgrade, base auto-defense, zombie che crescono, melee, possibili specializzazioni solo melee e rifiuto classi banali. Tutti i numeri e nomi seguenti sono esempi di design.

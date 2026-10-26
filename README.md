@@ -1,3 +1,5 @@
+> **DOCUMENTO CENTRALE UNICO, aggiornato 26/10/2026:** [48 — Game design e partita completa](docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md) descrive **menu, mappa COD-like realmente collegata, economy candidate senza AFK farming, armi/melee, base autonoma, eventi assedio, esito e fasi di produzione osservabili**. I docs 49/50 sono approfondimenti, non alternative che decidono nuove feature. **Non è implementato né approvato; niente codice.**
+
 # Zombie Defence — progetto di Game Design (26/10/2026)
 
 **Stato: PROPOSTA DI GAME DESIGN DA VALUTARE. NESSUN CODICE MODIFICATO NELLA REVISIONE ATTUALE.** La base del motore indicata nelle ricerche precedenti è HordeTemplate su UE5.8, ma l'implementazione non è stata verificata qui.
