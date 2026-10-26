@@ -106,24 +106,24 @@ Se si desidera base persistente fra sessioni, è un'opzione da decidere esplicit
 
 | Fase | Contenuto che deve uscire realmente | Barriera obbligatoria prima di andare oltre |
 | --- | --- | --- |
-| **P0** | GDD dal menu alla fine, layout a grafo/map opening e loop base approvato; correzioni utente integrate | NESSUNA classe/mappa inventata approvata dall'AI; feedback risolto |
-| **P1** | Progetto UE5.8 e framework scelto pronti, provenance asset lecito | Unreal apre/compila realmente, non solo repo docs |
-| **P2** | Un personaggio completo | Real model, movement + anim in 1p/3p, footsteps, hit feedback, net e video |
-| **P3** | Una firearm completa | Modello/reload/ADS/recoil/traces/audio/VFX/ammo/server e prova in game |
-| **P4** | Un zombie completo | Rig, locomotion, persecuzione, attack, hit/death reazioni, gore/audio, 2p e prova |
-| **P5** | Primo melee completo contro vero zombie | 1p/3p swing/block/parry se approvata, hit sweep/audio/reactions; no mannequin |
-| **P6** | Prima zona iniziale esterna + interno base veri | 2 percorsi visibili, dentro upgrade, fuori combat, 0 dummy props finali |
-| **P7** | Prima porta e primo settore aperto COMPLETO | Reale gate anim/collision/nav, nuovo percorso, audio e loop playtest |
-| **P8** | Prima torretta autonoma completa e upgrade visibile | Zombie AI target base e kills mentre player lontano, nessun HP finto |
-| **P9** | Rounds/continuous director secondo scelta e economy coerente | Assalti reali, acquisti e reward IDempotenti, niente softlock |
-| **P10** | Secondo ramo + scorciatoia che chiude il circuito | Percorso 2-route traversal e performance AI reale |
-| **P11** | Resto della mappa settore per settore con interazioni poche ma buone | No zone vuote, replay route meaningful, zero zombie in internal hub |
-| **P12** | Resto armi, melee, zombie/contromosse e upgrade base | Ogni asset tipo completo prima del successivo, combat differenti |
-| **P13** | Stili/skill originali selezionati + balancing solo/co-op | Azioni cambiano davvero gioco, non buff ovvi; specializzazione melee valida |
-| **P14** | Esito partita, modalità finale scelta e UI/retry/save | Gioca menu→gameplay→end→new run/continue secondo decisione |
-| **P15** | Ottimizzazione, net, legale e Windows Shipping | Test solo/2/4, build reale, 60fps target misurato, licenze, nessuna regressione |
+| **P0** | Valutare **partita concreta** del [48](48_PLAYABLE_GAME_VISION_PROPOSAL.md), grafo delle zone, scelte della base e risultati; tutte le correzioni dell'utente registrate | Nessuna classe, valuta, porta o modalità inventata viene spacciata per approvata |
+| **P1** | UE5.8 + HordeTemplate acquisiti e ambiente reale | Engine compila e apre progetto vero, licenze per codice/asset controllate |
+| **P2** | Personaggio definitivo e movimento FPS | Modello vero + mesh 1p/3p, anim, passi, danni e input funzionano |
+| **P3** | Prima firearm definitiva | Mesh+anim corrette ADS/fire/reload, audio/FX/colpi server e video |
+| **P4** | Prima Nurse/zombie definitiva | Vera IA Field, attack windup/hit reaction/death, anim, audio e network |
+| **P5** | Prima melee definitiva contro Nurse | Hitbox reali, animazioni+impatti, parry/counter solo se scelti, no colpi fantasma |
+| **P6** | Prima piazza esterna + interno base funzionanti | Giocatore entra/esce, dentro può solo fare upgrade, nessun mondo secondario |
+| **P7** | Economia minima + prima porta reale + zona successiva completa | Kill reward reale, saldo/costo idempotente; porta animata/collisione/nav; apertura non finta |
+| **P8** | AI Siege e direttore assalti iniziale, usando nemici già presenti | Zombie percorrono vere strade e attaccano fisicamente Core/perimetro; no trigger HP artificiale |
+| **P9** | Prima torre autonoma realmente acquistabile e potenziabile | Player lontano, torre acquisisce e uccide **gli stessi zombie Siege**, no magia offscreen, test minaccia prima/dopo upgrade |
+| **P10** | Secondo ramo e scorciatoia che chiudono il circuito della mappa | Due aperture alternative, vie che si ricongiungono, ritorno base reale, navmesh multiplayer |
+| **P11** | Altre zone una per volta fino alla mappa completa | Ogni zona cambia combattimento o percorso, niente stanze vuote/asset finti |
+| **P12** | Restanti armi, varianti zombie e difese **approvate** | Ogni nuovo oggetto completato con mesh/anim/audio/FX/AI/net prima del prossimo |
+| **P13** | Meccaniche originali scelte dopo valutazione di [49](49_MAP_GAMEPLAY_AND_ORIGINALITY_PROPOSAL.md) | Solo quelle che funzionano nel gioco reale, niente classi cliché o perk generici |
+| **P14** | Ritmo ondate/continuo ed esito della partita **secondo le decisioni approvate** | Menu → mappa → unlock → autonomia → escalation → fine/continuazione → retry o salvataggio se previsto |
+| **P15** | QA solo/multiplayer verificato, bilanciamento, performance, licenze, Windows Shipping | Build eseguita realmente, prove filmate, niente falsi DONE e nessun codice scaricato senza permesso |
 
-**Le fasi sono l'ordine logico proposto di produzione completa, NON nuovi comandi di programmazione approvati per Codex.** I test e le animazioni sono inclusi in tutte le fasi. Evitare di fare P8 prima di aver completato P6/P7 e l'AI base; dettagli delle dipendenze di implementazione vanno risolti durante il progetto, senza creare scene provvisorie spacciate finali.
+**Le fasi sono una sequenza di GAME DESIGN proposta, non ordini di scrivere codice.** Corrette dipendenze concrete: P7 punti/porta precedono gli acquisti; P8 porta la minaccia Siege vera; P9 può finalmente validare la sentry su zombie e ondate reali. Se per completare una fase manca un asset/audio/animazione, lo stato resta BLOCKED e non si aprono funzionalità di comodo che restano nel gioco. La scelta dell'utente prevale su ogni esempio.
 
 ## 12. Piano anti-errore per Codex
 

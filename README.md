@@ -14,9 +14,9 @@ FPS zombie con mappe **come COD Zombies**: puoi esplorare liberamente, **aprire/
 | --- | --- | --- |
 | **1** | **[Direttive esplicite del committente](docs/45_USER_DIRECTIVES.md)** | Requisiti confermati, prevalgono su tutto |
 | **2** | **[Trascrizioni originali](docs/47_USER_QUOTE_LOG.md)** | Ogni correzione finora registrata nel dossier |
-| **3** | **[Partita completa immaginata](docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md)** | **PROPOSTA**: menu → primo scontro → porte → scorciatoie → difese → esito |
+| **3** | **[Partita concretamente simulata sulla carta](docs/48_PLAYABLE_GAME_VISION_PROPOSAL.md)** | **PROPOSTA PRINCIPALE AGGIORNATA**: menu, intera mappa a circuiti, primi 12 min, ritorno base, melee, pericoli, bilanciamento, esito e test osservabili |
 | **4** | **[Mappa vera e sistemi che interagiscono](docs/49_MAP_GAMEPLAY_AND_ORIGINALITY_PROPOSAL.md)** | **PROPOSTA**: grafo di zone, map opening, melee, IA, torretti |
-| **5** | **[Piano dall'inizio alla release](docs/50_COMPLETE_DESIGN_AND_PRODUCTION_PLAN_PROPOSAL.md)** | **PROPOSTA**: tutti i sistemi e ordine di produzione |
+| **5** | **[Piano dall'inizio alla release](docs/50_COMPLETE_DESIGN_AND_PRODUCTION_PLAN_PROPOSAL.md)** | **PROPOSTA RIORGANIZZATA**: economia e porta prima della torre, IA Siege prima del test di autodifesa, asset finali per ogni fase |
 | **6** | **[Registro errori corretti](docs/51_CORRECTIONS_AUDIT_AND_APPROVAL_REGISTER.md)** | Controprova dei conflitti e delle idee respinte |
 | **7** | **[AGENTS.md](AGENTS.md)** | Blocco del vecchio backlog e del codice durante la fase di design |
 
