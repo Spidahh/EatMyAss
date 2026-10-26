@@ -47,3 +47,7 @@ Un GDD è pronto per Codex solo quando la sequenza [48](48_PLAYABLE_GAME_VISION_
 ## Non modificare codice per correggere un'idea
 
 Questa revisione riguarda SOLO `.md` del progetto e descrizioni GitHub. Niente Unreal C++, Blueprint, assets, script, CSV di milestone o builder deve essere toccato per mettere ordine nel concept. Dovrà essere esplicitamente richiesto il lavoro sul codice.
+
+## Nuovo controllo di qualità: realismo e continuità (UD-16)
+
+**26/10/2026 — CONFIRMED-USER.** L'utente ha chiesto di restare costanti e realistici, senza fantasticare. Da ora: ogni contenuto deve essere classificato in `FATTO VERIFICATO`, `RICHIESTA UTENTE`, `PROPOSTA NON APPROVATA` o `MANCANTE`. Descrizioni ipotetiche della partita non sono gioco testato. Asset linkati ma non scaricati non sono integrati. Prezzi/tempi/nemici/numero zone proposti non sono decisioni confermate. Non produrre nuove versioni arbitrarie del concept; correggere prima ciò che contraddice le direttive. Il divieto di toccare codice UD-13 rimane valido.

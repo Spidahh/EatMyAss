@@ -82,3 +82,8 @@ idiota fai schifo
 ```text
 porcodio svegliati risolvi tutte le cazzate che hai fatto e detto pezoz idmerda intuile
 ```
+
+## U16 — Realismo, coerenza e nessuna invenzione arbitraria (26/10/2026)
+```text
+SECONDO ME TI STAI PERDENDO COME AL SOLITO, PORCODO TIENITI COSTANTE, REALE, NON FANTASTICARE, PEZOZ IDMERDA
+```

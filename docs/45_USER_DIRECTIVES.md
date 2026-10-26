@@ -66,3 +66,17 @@
 - [51](51_CORRECTIONS_AUDIT_AND_APPROVAL_REGISTER.md) fotografa errori rimossi, incompatibilità e richieste ancora aperte.
 
 **Il vecchio backlog da 112 task NON è approvato.** Non avviare Codex sulla sua base fino all'allineamento finale del game design, e in ogni caso **non toccare codice** mentre questa istruzione dell'utente è attiva.
+
+## UD-16 — Restare coerenti, concreti e realistici (26/10/2026)
+
+**Indicazione esplicita dell'utente (U16):** «tieniti costante, reale, non fantasticare». È una **direttiva confermata**, non una richiesta di nuove funzionalità.
+
+**Applicazione obbligatoria:**
+- Non reinventare il concept a ogni risposta né aggiungere classi, mappe, nemici, skill, monetizzazione, prezzi, asset o sistemi non richiesti.
+- Partire SEMPRE dai vincoli già confermati: mappe libere e sbloccabili nello stile COD Zombies, base fisica accessibile per upgrade con torrette autonome, minaccia crescente, combattimento con armi da fuoco e melee, possibilità (non definizione conclusa) di solo-melee, gameplay end-to-end e lavoro per strati rifiniti.
+- Distinguere nettamente **VERIFICATO/ESISTENTE**, **CONFERMATO DALL'UTENTE**, **PROPOSTA DA VALUTARE**, **MANCANTE/NON VERIFICATO**. Non definire “realizzato”, “definitivo” o “completo” un piano, un asset non scaricato, un test non eseguito, un gameplay non compilato.
+- Le scene immaginate per studiare il divertimento sono ammesse come **scenari ipotetici esplicitamente etichettati**, con causa/azione/conseguenza concrete. Non raccontare come fatti meccaniche implementate né promettere che saranno divertenti senza playtest.
+- Ogni nuova proposta richiede utilità dimostrabile per una situazione di gioco e fattibilità plausibile per sviluppo singolo/risorse zero acquisti; se non aggiunge sostanza, **non inserirla**.
+- **Non toccare codice** (UD-13), non eseguire il vecchio backlog da 112 task senza approvazione, non sostituire le richieste con iniziative autonome.
+
+**Regola operativa:** prima correggere un'incoerenza esistente; solo dopo proporre la minima modifica necessaria. Nessun nuovo GDD/backlog “definitivo” finché il design non è coerente e approvato.

@@ -34,3 +34,7 @@ Annotare `UserDirectiveId / isUserApproved / PlayerMoment / RealVisual+Audio / N
 ## 5 — Stato reale
 
 La revisione ora riguarda **solo file di progetto Markdown e descrizioni delle issue**. Non esiste qui un gioco UE compilato o una build testata. I documenti 48–50 costituiscono **un piano proposto** da valutare, non il design approvato né il gioco realizzato.
+
+## 6 — Controllo di realtà vincolante (UD-16, 26/10/2026)
+
+L'utente ha chiesto: **«tieniti costante, reale, non fantasticare»**. Prima di ogni aggiunta, dire per iscritto se è: (a) fatto verificato in repo/build, (b) scelta espressa dall'utente, (c) proposta ipotetica non approvata, (d) blocco/asset non ottenuto. Non riempire vuoti con classe generica, meccanica cliché, numeri immaginati o “funzionerà” senza prove. Non trasformare lo storyboard in contenuto realmente implementato. Attenersi al **concept esistente** e alle limitazioni del progetto. Niente ulteriore proliferazione di documenti per simulare avanzamento e, finché UD-13 è attiva, **non modificare codice**. Priorità: individuare e risolvere contraddizioni di progetto concrete, non aggiungere feature per impressionare.
