@@ -1,3 +1,5 @@
+> **NON APPROVATO / IN REVISIONE (26/10/2026):** le precedenti classi, abilità (“colpo preciso”), numero di zone esterne, economia, ondate e altre scelte specifiche in questo documento sono PROPOSTE DELL'ASSISTENTE, non decisioni dell'utente. **Nuova direttiva: mappa come COD Zombies con esplorazione e ZONE SBLOCCABILI, base da cui entrare/uscire solo per upgrade e che si autodifende, melee e idee originali.** Per la fonte autorevole leggere [45_USER_DIRECTIVES.md](45_USER_DIRECTIVES.md) e [46_PLAYER_JOURNEY_REQUIREMENTS.md](46_PLAYER_JOURNEY_REQUIREMENTS.md). Codex non deve implementare quanto contraddice queste direttive.
+
 # MASTER SCOPE — ZOMBIE DEFENCE V2
 
 **SOSTITUISCE INTEGRALMENTE LA PRECEDENTE MASTER SPEC 1.0.** Definizione dettagliata, autorevole: [41 — V2](41_CANONICAL_GAME_V2.md), [42 — combattimento/melee/classi](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md), [43 — base autonoma](43_AUTONOMOUS_BASE.md), [44 — esterno/progressione](44_OUTSIDE_COMBAT_AND_PROGRESSION.md).

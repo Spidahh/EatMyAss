@@ -1,3 +1,5 @@
+> **NON APPROVATO / IN REVISIONE (26/10/2026):** le precedenti classi, abilità (“colpo preciso”), numero di zone esterne, economia, ondate e altre scelte specifiche in questo documento sono PROPOSTE DELL'ASSISTENTE, non decisioni dell'utente. **Nuova direttiva: mappa come COD Zombies con esplorazione e ZONE SBLOCCABILI, base da cui entrare/uscire solo per upgrade e che si autodifende, melee e idee originali.** Per la fonte autorevole leggere [45_USER_DIRECTIVES.md](45_USER_DIRECTIVES.md) e [46_PLAYER_JOURNEY_REQUIREMENTS.md](46_PLAYER_JOURNEY_REQUIREMENTS.md). Codex non deve implementare quanto contraddice queste direttive.
+
 # COMBATTIMENTO OUTSIDE — FPS, MELEE PROFONDO MA ACCESSIBILE, SPECIALIZZAZIONI
 
 **L'obiettivo non è una classe con +15% danno spada, ma un sistema di combattimento che sia divertente da padroneggiare.** Le armi melee sono **primarie alla pari** con le armi da fuoco, non una spinta di emergenza su V.

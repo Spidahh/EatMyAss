@@ -1,3 +1,5 @@
+> **DIRETTIVE UTENTE AGGIORNATE 26/10/2026:** questo README e la V2 sotto contengono ancora **ipotesi dell'assistente non approvate**, soprattutto classi/abilità Tiratore–Spezzatore–Tecnico, “colpo preciso” e mappa di sole 3 zone. **NON usarle per sviluppare.** La regola ora è: mappa **stile Call of Duty Zombies** con esplorazione libera e **zone sbloccabili**, base fisica per upgrade che **si autodifende**, combattimento FPS+melee e scelte originali approvate dall'utente. Leggere [AGENTS.md](AGENTS.md), [45 Direttive](docs/45_USER_DIRECTIVES.md) e [46 Percorso di gioco](docs/46_PLAYER_JOURNEY_REQUIREMENTS.md) **prima di tutto**. Il piano 112 task è **IN REVISIONE**, non approvato nelle decisioni di gameplay.
+
 # Zombie Defence — FPS + Melee + Base Autonoma (V2)
 
 **CONCEPT CANONICO CORRETTO · 25 ottobre 2026**  

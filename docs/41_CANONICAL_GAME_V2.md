@@ -1,3 +1,5 @@
+> **NON APPROVATO / IN REVISIONE (26/10/2026):** le precedenti classi, abilità (“colpo preciso”), numero di zone esterne, economia, ondate e altre scelte specifiche in questo documento sono PROPOSTE DELL'ASSISTENTE, non decisioni dell'utente. **Nuova direttiva: mappa come COD Zombies con esplorazione e ZONE SBLOCCABILI, base da cui entrare/uscire solo per upgrade e che si autodifende, melee e idee originali.** Per la fonte autorevole leggere [45_USER_DIRECTIVES.md](45_USER_DIRECTIVES.md) e [46_PLAYER_JOURNEY_REQUIREMENTS.md](46_PLAYER_JOURNEY_REQUIREMENTS.md). Codex non deve implementare quanto contraddice queste direttive.
+
 # ZOMBIE DEFENCE — CONCEPT CANONICO V2 (25/10/2026)
 
 **FONTE PRINCIPALE.** Questo documento sostituisce **integralmente** l'idea precedente della “città da esplorare/acquistare” e del giocatore costretto a combattere accanto al Nucleo. Codex non deve recuperare i vecchi requisiti dai documenti storici. Il gioco non è stato ancora implementato: queste sono specifiche di prodotto.

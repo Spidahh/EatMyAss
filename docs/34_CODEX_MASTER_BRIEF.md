@@ -1,3 +1,5 @@
+> **NON APPROVATO / IN REVISIONE (26/10/2026):** le precedenti classi, abilità (“colpo preciso”), numero di zone esterne, economia, ondate e altre scelte specifiche in questo documento sono PROPOSTE DELL'ASSISTENTE, non decisioni dell'utente. **Nuova direttiva: mappa come COD Zombies con esplorazione e ZONE SBLOCCABILI, base da cui entrare/uscire solo per upgrade e che si autodifende, melee e idee originali.** Per la fonte autorevole leggere [45_USER_DIRECTIVES.md](45_USER_DIRECTIVES.md) e [46_PLAYER_JOURNEY_REQUIREMENTS.md](46_PLAYER_JOURNEY_REQUIREMENTS.md). Codex non deve implementare quanto contraddice queste direttive.
+
 # COMPITO COMPLETO A CODEX — ZOMBIE DEFENCE V2 (NON RECUPERARE LA V1.1)
 
 **Missione:** sviluppa l'intero gioco in Unreal Engine 5.8 usando HordeTemplate V2 Native, rispettando [AGENTS](../AGENTS.md), [VISIONE V2](41_CANONICAL_GAME_V2.md), [MELEE/CLASSI](42_MELEE_SKILLS_AND_SPECIALIZATIONS.md), [BASE AUTONOMA](43_AUTONOMOUS_BASE.md), [ESTERNO/PROGRESSIONE](44_OUTSIDE_COMBAT_AND_PROGRESSION.md), [BACKLOG V2](33_FULL_BACKLOG.csv) e [MATRICE ARTE](38_RELEASE_CONTENT_MATRIX.csv).
