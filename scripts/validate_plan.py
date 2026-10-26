@@ -32,7 +32,9 @@ REQUIRED = {
     "docs/33_FULL_BACKLOG.csv", "docs/37_EXECUTION_STATUS.csv",
     "docs/38_RELEASE_CONTENT_MATRIX.csv", "docs/41_CANONICAL_GAME_V2.md",
     "docs/42_MELEE_SKILLS_AND_SPECIALIZATIONS.md", "docs/43_AUTONOMOUS_BASE.md",
-    "docs/44_OUTSIDE_COMBAT_AND_PROGRESSION.md"
+    "docs/44_OUTSIDE_COMBAT_AND_PROGRESSION.md",
+    "docs/45_USER_DIRECTIVES.md", "docs/46_PLAYER_JOURNEY_REQUIREMENTS.md",
+    "docs/47_USER_QUOTE_LOG.md"
 }
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -51,6 +53,18 @@ def main() -> int:
     if problems:
         print("\n".join(problems))
         return 1
+
+    # User directions outrank assistant planning. These checks prevent
+    # accidental removal of the actual user's authoritative design sources.
+    directives = (DOCS / "45_USER_DIRECTIVES.md").read_text(encoding="utf-8")
+    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    journey = (DOCS / "46_PLAYER_JOURNEY_REQUIREMENTS.md").read_text(encoding="utf-8")
+    for token in ("UD-01", "UD-02", "UD-03", "UD-04", "UD-05", "UD-07", "UD-08", "UD-12"):
+        if token not in directives:
+            problems.append(f"User directive missing: {token}")
+    for token in ("45_USER_DIRECTIVES.md", "COD", "sbloccare", "non approvate"):
+        if token.casefold() not in agents.casefold() and token.casefold() not in journey.casefold():
+            problems.append(f"Mandatory user requirement missing from primary guidance: {token}")
 
     tasks, statuses, content = read_rows(TASKS), read_rows(STATUS), read_rows(MATRIX)
     if len(tasks) != 112:
