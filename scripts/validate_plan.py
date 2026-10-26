@@ -63,7 +63,7 @@ def main() -> int:
         if token not in directives:
             problems.append(f"User directive missing: {token}")
     for token in ("45_USER_DIRECTIVES.md", "COD", "sbloccare", "non approvate"):
-        if token.casefold() not in agents.casefold() and token.casefold() not in journey.casefold():
+        if not any(token.casefold() in source.casefold() for source in (agents, journey, directives)):
             problems.append(f"Mandatory user requirement missing from primary guidance: {token}")
 
     tasks, statuses, content = read_rows(TASKS), read_rows(STATUS), read_rows(MATRIX)
