@@ -1,230 +1,255 @@
-# ZOMBIE DEFENCE — GIOCHIAMOCI DAVVERO, DAL MENU ALL'ESITO
+# ZOMBIE DEFENCE — GAME DESIGN UNICO: COME SI GIOCA, COSA CAMBIA, COSA PRODUCIAMO
 
-**Bozza giocabile di game design, 26 ottobre 2026. SOLO PROPOSTA: NON è un gioco realizzato e NON è una decisione dell'utente sui dettagli. NON TOCCARE CODICE.**  
-**Vincoli espressamente richiesti:** mappe percorribili e sbloccabili **come COD Zombies**; base fisica nella mappa, visitata per upgrade; difese **automatiche**, sufficienti a respingere da sole la minaccia del loro livello; zombie progressivamente più forti; gunplay e **melee reale**, possibile scelta solo melee; idee originali ma poche, niente solite classi o "colpo preciso"; piano dall'avvio fino all'esito, produzione a strati definitivi. Fonte: [45 — direttive dell'utente](45_USER_DIRECTIVES.md).  
-**Tutto ciò che segue con nome, numero, costo, tempo o evento specifico è una proposta concreta di test, non una feature approvata.** Non consegnare questo file a Codex come mandate d'implementazione finché non è stato valutato.
+**26 ottobre 2026 — CANDIDATO DI DESIGN, NON APPROVATO. Solo progettazione: NON TOCCARE CODICE.**  
+**Questa è la proposta principale da discutere.** I documenti 49/50 sono allegati di idee tecniche/produzione, non possono cambiarne il gameplay senza feedback dell'utente. La fonte delle indicazioni confermate è [45](45_USER_DIRECTIVES.md), non la presente bozza.
 
-## 1. Qual è il gioco, in una frase?
+## 0. VERITÀ DEL PROGETTO — quattro stati distinti
 
-**Esci dal tuo rifugio, apri una mappa zombie che diventa progressivamente più grande e interconnessa, combatti nel modo che preferisci e investi ciò che hai guadagnato per rendere la base abbastanza autonoma da permetterti di esplorare ancora più lontano.** Gli assalti non aspettano il giocatore e prima o poi nuove minacce mettono in difficoltà le difese che prima bastavano.
+| Tipo | Contenuto |
+| --- | --- |
+| **RICHIESTO DALL'UTENTE** | Mappa come **COD Zombies**: gira, esplora, libera/apri nuove zone; la base è fisica e ci entri **solo per gli upgrade**; installi/potenzi difese che **sparano e reggono da sole** se adeguate; la minaccia cresce; armi da fuoco + melee vero, potenziale stile solo-melee; divertente, senza classi cliché; piano completo dal menu all'esito; niente codice in questa fase. |
+| **PROPOSTA DI QUESTO GDD** | Una prima mappa interconnessa, round come ritmo iniziale da valutare, punti guadagnati combattendo e spesi per **porte / armi / base**, zone che rendono disponibili nuovi upgrade da acquistare **dentro** la base, tre comportamenti zombie e due famiglie di difesa per il primo contenuto rifinito, fine della run se la base cade o nessun giocatore sopravvive. |
+| **VERIFICATO** | Esistono i documenti su GitHub e le direttive registrate. È possibile studiare la mappa e simulare scelte sulla carta. **Non** è verificato un livello Unreal, un sistema d'armi importato, un asset finale, un compilato Windows o il bilanciamento. |
+| **APERTURE REALI** | Persistenza tra sessioni, round vs continuo, numero finale di armi/nemici/mappe, esatto sistema di sblocco, quantità e prezzi, co-op economy, morte/respawn e quale stile melee-only sono decisioni da valutare, **non già decise dall'utente**. |
 
-La progressione decisiva NON è "torre +10% danno": è **"prima non potevo allontanarmi; ora questa parte della città è raggiungibile perché la mia base regge da sola"**. Il momento COD Zombies è aprire una strada e scoprire che si ricollega a un luogo già attraversato. Il momento difesa è **vedere realmente la sentry uccidere zombie mentre si sta facendo altro**.
+### Promessa di gioco, senza aggettivi vuoti
 
-### Il test contro l'effetto "videogioco noioso"
+**Sbloccare la città mi dà qualcosa da fare e percorsi da sfruttare; combattere mi dà risorse; potenziare la base le permette di sopravvivere senza di me; nuovi assalti mi costringono a cambiare come gioco.**
 
-Dopo 10 minuti il giocatore deve aver già:
-- sparato **e** colpito uno zombie in melee (con impatti diversi);
-- **aperto un accesso fisico** e attraversato uno spazio nuovo;
-- visto una torre automatica realmente sparare su zombie che stavano attaccando la base;
-- scelto almeno una volta se spendere per **nuova strada, equipaggiamento o difesa**;
-- potuto tornare dalla zona sbloccata alla base senza caricamento né teletrasporto.
+La differenza rispetto a COD Zombies **non** è "aggiungere torrette a una mappa". È questa: **quando ti allontani, accade un vero assedio alla tua base**, e le scelte fatte sui potenziamenti determinano quanto tempo hai per esplorare. Il giocatore può incontrare e uccidere **gli stessi zombie** che stavano marciando verso il rifugio: non una missione separata, non due giochi indipendenti.
 
-Se manca uno di questi eventi, il primo ciclo non mostra il gioco giusto. I minuti sono un **obiettivo di test**, non una promessa di pacing prima di avere il gioco in mano.
+### Tagli immediati
 
----
-
-## 2. Da "avvia" a "sto giocando": le schermate vere
-
-**MENU PRINCIPALE (esempio candidato):** `Gioca`, `Opzioni`, `Crediti`, `Esci`. `Continua` compare **solo se** è stata approvata e implementata una funzione di salvataggio tra partite. Dentro `Gioca`, solo `Solo` e `Ospita/Entra` **se** il multiplayer esiste davvero; non mostrare modalità fittizie.
-
-**NUOVA PARTITA:** breve scheda di una mappa **solo quando ce n'è davvero una da scegliere**. Per la prima pubblicazione: una mappa rifinita è meglio di tre mappe vuote. Due righe di istruzioni, non dieci pannelli: `Apri la città. Migliora il rifugio. Resisti agli assalti.`
-
-**CARICAMENTO:** carica una sola mappa continua; cancello, perimetro, base interna e aree bloccate appartengono allo stesso livello. Se si gioca online, lo stato di porte/base/zombie è autorevole dell'host e visibile a tutti.
-
-**SPAWN:** dentro o appena all'uscita del rifugio; dopo pochi passi il giocatore vede già **la prima strada, due accessi ancora chiusi e uno zombie**, non un menu dove deve comprare qualcosa prima di poter giocare. Può attraversare la porta alle sue spalle per consultare gli upgrade. La prima minaccia arriva in modo leggibile, non uno spawn dietro la telecamera.
-
-**PAUSA E USCITA:** `Riprendi`, `Opzioni`, `Esci` con conseguenze chiare. Un menu in coop non ferma tutte le AI sul server; in solo la pausa vera è una decisione tecnica/UI da verificare.
+Nessun sistema di classi Tiratore/Tecnico/Spezzatore o "colpo preciso"; niente cento missioni a icone, survival fame/sete, crafting e miniere, fabbriche e timer, tre aree scollegate, spawn nella sala upgrade, raccolta di cinque valute, torrette che funzionano solo vicino al giocatore, auto-guadagno infinito mentre si resta fermi, progressione che richiede aspettare ore reali.
 
 ---
 
-## 3. LA MAPPA — una mappa COD-Zombies-style, non tre arene
+## 1. Menu → ingresso → primo obiettivo (senza fare finta che sia già implementato)
 
-Schema di **UNA possibile prima mappa**, nomi provvisori. Le lettere sono aree, non livelli separati. Simboli: `--` strada già percorribile, `[P]` porta inizialmente chiusa, `[S]` scorciatoia da aprire dall'altro lato.
+**Menu proposto, con solo funzioni realmente prodotte:** `Gioca` → `Solo` oppure `Ospita / Unisciti` se il multiplayer è pronto; `Opzioni`, `Esci`. `Continua` solo se la persistenza esiste davvero. Nessuna scelta obbligatoria della "classe" prima di entrare.
+
+**Gioca** apre **la stessa mappa** che conterrà tutta la run; si vede una base industriale con una sala upgrade, una piazza davanti e due strade sbarrate. Un piccolo sistema di difesa iniziale già operativo all'esterno dimostra che la base **combatte da sola**. Il player ha una vera arma da fuoco iniziale e una melee utilizzabile; il primo zombie deve fare una morte credibile con reazione e suono, non scomparire al click.
+
+**Il primo minuto** è: aprire il cancello, vedere un gruppo fuori, sparare/colpire, vedere che **qualche zombie diretto alla base viene invece eliminato dalla torre**. Nessun briefing parlato di 10 minuti. Al player rimangono due domande subito visibili: `Dove porta quella serranda?` e `Posso migliorare quella torre?`.
+
+L'hub è **solo per upgrade**. Non è una safe house con 20 NPC, laboratori e quest. Puoi entrare quando vuoi; gli zombie all'esterno non si fermano per aspettare un menu.
+
+---
+
+## 2. UNA MAPPA VERA, COLLEGATA COME COD ZOMBIES
+
+**Layout candidato unico, non una lista definitiva di zone.** Le lettere sono posti fisici nello stesso livello, `P` porte/ostacoli apribili progressivamente, `S` scorciatoia da aprire dal lato lontano.
 
 ```text
-              (G) TETTI / BELVEDERE
-                  |          |
-                [P]        [S]-------------+
-                  |                        |
-           (F) DEPOSITO / NODO             |
-              /           \                |
-            [P]          [P]               |
-             /               \             |
-     (D) PARCHEGGIO      (E) SOTTOPASSO    |
-            |                 |            |
-            [P]            [P]            |
-            |                 |            |
-     (B) VIA OFFICINE   (C) MERCATO        |
-              \          /                 |
-              [P]      [P]                 |
-                  \    /                    |
-             (A) PIAZZA ESTERNA ------------+
-                   |
-             BASE FORTIFICATA
-           [INTERNO: SOLO UPGRADE]
+                           [F] TETTI / TIPO INDUSTRIALE
+                             |                      |
+                            [P]                    [S] (ritorno veloce)
+                             |                      |
+                   [D] DEPOSITO ----[P]---- [E] SOTTOPASSO
+                      |                        |
+                     [P]                      [P]
+                      |                        |
+                 [B] OFFICINE             [C] MERCATO
+                        \                     /
+                         [P]                [P]
+                           \                /
+                             [A] PIAZZA
+                                  |
+                                BASE
+                         (INTERNO: UPGRADE)
 ```
 
-**Come si usa, non solo come si disegna:**
-- **A / Piazza:** spazio iniziale, due porte alternative; la base si vede, si sentono le torrette, ed è facile ritornare.
-- **B / Officine:** lunga linea di vista per armi da fuoco, auto e cover, entrata al Parcheggio; non una "zona da acquistare" per sconto munizioni.
-- **C / Mercato:** spazio stretto con isole attorno cui girare, ideale per rischiare melee, seconda entrata al Sottopasso.
-- **D / Parcheggio:** rampe e un circuito ampio per gestire il gruppo, non un corridoio con spawn alle spalle.
-- **E / Sottopasso:** zona più pericolosa, visuale corta, via alternativa.
-- **F / Deposito:** i due rami si **ricongiungono**, puoi tornare a casa senza attraversare per forza le stesse stanze.
-- **G / Tetti:** area visibile da lontano. Una scorciatoia aperta dal lato alto raggiunge la Piazza vicino alla base; il percorso di ritorno che prima richiedeva minuti diventa rapido.
+**A Piazza**: uscita base, arene iniziali, puoi vedere entrambe le porte.  
+**B Officine**: corsie con visuale lunga, utile per ranged; non un negozio da gestire.  
+**C Mercato**: isole e corridoi stretti, utile per il melee e per girare attorno a un gruppo.  
+**D Deposito**: svolta principale: esiste qui un dispositivo/armadio armamenti che **rende disponibile** nell'hub un miglioramento difensivo capace di affrontare la minaccia successiva. Lo *trovi* fuori, ma lo *acquisti e installi* dentro, coerentemente con la richiesta. Non serve raccogliere 10 materiali o fare un incarico.  
+**E Sottopasso**: via alternativa, rischiosa ma rapida; collega i rami tramite D.  
+**F Tetti**: arrivi in alto e sblocchi `S`, una via di ritorno breve verso la Piazza; cambia materialmente il tempo per intervenire alla base.
 
-**Regola di design testabile:** una zona aperta deve offrire **un motivo per entrare (mappa, equip o rischio), un ambiente di scontro differente, almeno una via logica verso altro luogo**. Non aprire un'area vuota solo per aggiungere superficie. Nella mappa completa, percorsi alternativi e collegamenti trasversali sono più importanti di un numero arbitrario di porte.
+**La parte divertente non è il numero di stanze, ma questo:** puoi iniziare a sinistra o a destra, poi ricongiungere le due strade; gli zombie inseguono negli anelli di attraversamento; quando sai usare la scorciatoia puoi spingerti più lontano con un rischio ragionato. La prima apertura **non è uno spostamento di menu**, alza una serranda vera con collisioni/navigazione aggiornata. Ogni area deve cambiare una decisione, non solo le texture.
 
-**"Liberare una zona" ha due significati da testare, NON ancora scelti dall'utente:** (a) spendere punti per un cancello/serranda, come classico COD Zombies; (b) respingere un gruppo localizzato e interagire con l'accesso. Preferire gesti brevissimi e chiari, niente missione di 15 minuti o fetch quest per ogni cancello. Una volta aperta nella sessione, la zona resta attraversabile. Nessuna porta si ricompra perché cambi ondata.
+**Importante:** aprire un quartiere non deve attivare automaticamente un passaggio nascosto che manda zombie direttamente **dentro** la sala upgrade. La scelta di esplorare non può essere una trappola invisibile. Le traiettorie degli assedi sono visibili e si possono intercettare.
 
-**VINCOLO fondamentale:** sbloccare una porta modifica *davvero* mesh, collisione, navmesh e percorso dei giocatori, non soltanto un marker. Gli zombie possono utilizzare i percorsi dove il level design lo permette, senza spawnare magicamente nella sala di upgrade.
+### Perché tornare a esplorare, dopo averla aperta tutta?
+
+L'obiettivo non è visitare l'ultima stanza una volta. La mappa è **un circuito di combattimento**: all'inizio lo attraversi male, poi impari angoli/connessioni; i gruppi che avanzano richiedono percorsi differenti. Le aree contengono posizioni, accesso a tipi di arma e opportunità reali di intercettazione; non vengono riempite con fetch quest generiche.
 
 ---
 
-## 4. PRIMI 12 MINUTI — seduto davanti al PC (pacing ILLUSTRATIVO)
+## 3. LA REGOLA CHE TI FA PRENDERE DECISIONI — un'economia leggibile
 
-| Quando circa | Cosa fai con le mani | Cosa succede davvero nel mondo | Che scelta stai facendo |
+**PROPOSTA, non approvazione**: un solo tipo di punti che si guadagnano **uccidendo zombie attivamente** e si spendono in tre cose reali:
+1. **Aprire strade**: nuova area + possibile accesso a equip / scelte di difesa.
+2. **Migliorare le proprie armi**: potenziamenti nel rifugio, effetti fisici osservabili in gioco.
+3. **Migliorare la base**: la sentry regge più zombie, una difesa anti-corazza ferma un assalitore che prima la superava.
+
+**Regola anti-AFK della proposta: zombie uccisi dalle torrette non generano punti spendibili**. Così una base più forte **regala tempo e libertà**, non un conto in banca infinito. Il giocatore lontano incontra altri zombie reali da combattere, con un budget distinto di obiettivi IA ma **senza duplicare zombie** per far quadrare l'assedio. Se preferisce rientrare e partecipare alla difesa, le sue kill personali valgono come quelle fuori.
+
+**Prova economica numerica ILLUSTRATIVA, NON bilanciamento approvato:**
+- zombie ucciso dal player: `10 punti`;
+- zombie ucciso da torre: `0 punti` spendibili;
+- prima serranda `100`, miglioramento torre `100`, miglioramento arma `100`;
+- 15 uccisioni fatte da te = `150 punti`. Puoi scegliere **una** delle tre migliorie, non tutte e tre. Dopo, altri zombie danno ancora punti anche se la base ne elimina alcuni. Quando la base è abbastanza forte per un'ondata, questo non ti permette di comprare un upgrade senza giocare.
+
+**Conseguenze verificabili, non teoria:** se compri la prima porta, sei esposto ma hai subito mappa nuova e nuove occasioni di uccisione; se scegli torre, ti permette di difendere senza dover rientrare sempre; se scegli arma, abbatti più rapidamente le orde e guadagni altre possibilità. Un giocatore inesperto non deve finire senza più punti, senza munizioni e senza zombie raggiungibili. Il melee resta utilizzabile anche quando l'arma ha il caricatore vuoto. Il valore preciso di punti/prezzi va calcolato *dopo* un test del time-to-kill reale.
+
+**Co-op da valutare con un unico wallet di punti di squadra** (meno HUD, meno doppie valute): punti da kill e acquisti condivisi; le spese grosse della base richiedono una scelta leggibile del gruppo/host, senza voto per aprire ogni porta. Se i 4 giocatori guadagnano quattro volte più in fretta, il director bilancia minaccia e budget, **non** moltiplica di nascosto i prezzi nel mezzo della sessione.
+
+---
+
+## 4. PRIMI 25 MINUTI — cosa succede DAVVERO se premi "Gioca"
+
+Tutti i tempi seguenti sono **obiettivi di prova**, non fatti né un cronometro rigido.
+
+| Quando | Ciò che fai tu | Stato della mappa e della base | Perché non è ripetitivo |
 | --- | --- | --- | --- |
-| 0:00–1:00 | Esci dalla base, guardi le due serrande, muovi/miri | Il primo gruppetto di zombie avanza; una torre d'inizio spara vicino al cancello ma **non basta a pulire tutto** | Resto vicino o affronto gli zombie fuori |
-| 1:00–3:00 | Combatti con prima arma da fuoco, provi melee per un nemico vicino | Impatti/suoni distinguono pelle e metallo; i colpi non attraversano i modelli. Accumuli un valore da spendere | Combat e rischio valgono la pena |
-| 3:00–5:00 | Ti avvicini a porta B o C e interagisci | La serranda sale realmente, suono e collisione cambiano, nuova strada comparsa | Aprire **Officine** per distanza o **Mercato** per gioco ravvicinato |
-| 5:00–8:00 | Attraversi la prima zona, giri attorno a una formazione, usi cover o melee | L'ambiente cambia il modo di affrontare l'orda, non solo la texture dei muri | Spendere ancora per andare avanti o tornare |
-| 8:00–10:00 | Torni per la via già aperta ed entri dentro la base | L'assedio **prosegue fuori**; senti i colpi. Vedi cosa la torre è in grado di fermare e cosa passa | Upgrade mio equip o vera difesa |
-| 10:00–12:00 | Potenzi una sentry, esci e riprendi un altro percorso | Servo/audio/colpo e risultato cambiano; la stessa torre ora respinge da sola minacce normali per una finestra | Posso rischiare un tratto più lontano |
+| **0–3 min** | Esci, spari e passi alla melee su un nemico ravvicinato | Senty iniziale fa qualche kill al portone, tu affronti zombie fuori | Impari due modi di combattere, capisci che la torre è autonoma |
+| **3–6 min** | Hai punti per scegliere una porta oppure una miglioria; apri Mercato **oppure** Officine | La serranda si apre realmente e si attraversa una nuova zona | Prima scelta di percorso, non livello lineare |
+| **6–10 min** | Combatti nella nuova area e valuti se spingerti in avanti | La base continua ad assorbire attacchi anche senza di te | Fiducia nella torre, rischio esplorazione |
+| **10–13 min** | Torni dentro, compri una miglioria fisica, riesci | Vedi la stessa torre che ora riesce a fermare gli stessi zombie di prima | Un cambiamento tangibile, non +stat in un menu |
+| **13–19 min** | Apri il secondo percorso o avanzi verso il Deposito; raggiungi D/E da un lato | Ora intravedi un altro collegamento e una scelta difensiva diversa | Scoprire che il posto è collegato |
+| **19–25 min** | Ricongiungi percorsi o apri S dai Tetti | Hai un anello di mappa e una via rapida verso la base | Il ritorno dalla lontananza diventa fattibile |
 
-Queste non sono "scene da mostrare" o animazioni finte per il pitch: devono essere simulate con **zombie veri, danni veri, AI e sistemi reali** quando si passerà alla produzione. Prima rimangono un **test su carta**, non footage di gioco.
+**Il giocatore non deve attendere l'onda per attraversare una porta**: la mappa è libera; tra le ondate (se quel ritmo viene scelto) è solo più tranquilla. Non avviare "missione conquista Mercato 1/3" con task tracking in un altro menù: si va, si apre, si attraversa.
 
----
+### Dopo 25 minuti: serve ancora gameplay
 
-## 5. QUELLO CHE SUCCEDE MENTRE NON SEI ALLA BASE
+Gli zombie non ricevono soltanto il doppio di HP. In questa **proposta tecnica** la minaccia cambia per categorie di comportamento, partendo da soli tre casi ben prodotti:
+- **Camminatore**: numerosità e pressione lineare; la torre veloce può gestirlo.
+- **Corridore**: può oltrepassare un angolo morto se hai investito tutto sul fronte principale.
+- **Corazzato**: richiede un diverso comportamento di arma/difesa, o l'intervento del giocatore. Lo sblocco di D ti ha reso visibile una scelta di difesa più adatta.
 
-**Schema concettuale di un singolo director (proposta implementativa):**
-- alcuni zombie stanno attaccando un elemento **del perimetro** (cancello, barriera, torre, Nucleo) e percorrono vie reali;
-- altri stanno cercando il player nella zona che sta esplorando;
-- **non sono copie virtuali dello stesso zombie**: un zombie Siege ucciso nella mappa è davvero morto; se un zombie cambia obiettivo, cambia quell'actor, non si aggiunge uno spawn gratuito;
-- il sistema tiene budget/cap di zombie reali per non raddoppiare la difficoltà quando ci sono più giocatori o nuove aree.
+Non sono tre classi del giocatore, né l'intero bestiario già approvato. **Ogni nemico deve avere rig, attacchi, hit reaction, audio, IA e counter reali**, altrimenti usare meno archetipi.
 
-**Autodifesa vera:**
-1. Sentry rileva, ruota e spara con una traiettoria valida, anche senza giocatori vicini.
-2. Zombie riceve il danno del proiettile e reagisce. Se la salute arriva a zero muore, si pulisce e non è contato fra gli assediatori vivi.
-3. La base può resistere completamente a un tipo di attacco con difese appropriate: questa è la ricompensa dell'upgrade.
-4. Le minacce nuove introducono un **problema specifico** (es. corazza resiste al fuoco leggero, zombie rapido sfonda una via non coperta, sabotatore cerca una torre) e rendono insufficiente un vecchio assetto. Non scalare arbitrariamente HP del Nucleo verso il basso.
-5. Se nessuno è lì a guardare, **il server deve continuare a simulare AI/HP/danni**; solo i suoni/FX lontani possono essere alleggeriti sui client. Nessuna scritta "base si difende" a sostituire il combattimento reale.
-
-**La difficoltà giusta di tornare indietro**: un allarme deve permettere una scelta. Esempio di tuning da testare: dalla zona più lontana, una scorciatoia già liberata dà abbastanza tempo per tornare prima di un collasso probabile, **senza promettere salvezza**. Evitare una torre che cade in tre secondi quando il player è a due minuti di corsa: non crea tensione, crea ingiustizia.
+La ricompensa della base sviluppata è forte ma non eterna: quando affronti solo Camminatori ben coperti, **la base può vincere senza il player**. Con Corridori/Corazzati la stessa soluzione può fallire e devi scegliere un upgrade o partecipare direttamente, senza penalità scriptata. L'assedio deve avere **vere entità, targeting, collisioni, HP, danni e morti**.
 
 ---
 
-## 6. IL SECONDO GIRO DELLA MAPPA — perché aprire un'altra porta
+## 5. RANGED E MELEE — nessuna classe finta
 
-Immagina una partita in cui hai prima aperto C (Mercato). Durante un'ondata più difficile esci dalla base e passi per B (Officine), pagando un'altra apertura. Da lì guadagni D (Parcheggio), da cui vedi il Deposito F ancora sbarrato. Quando raggiungi F dal lato del Sottopasso, **il circuito si chiude**: puoi fare Mercato → Sottopasso → Deposito → Parcheggio → Officine → Piazza, oppure invertire il verso. Zombie che inseguono diventano un problema di **scelta del percorso**, non di corridoio unico.
+**L'utente NON ha approvato una classe Tiratore/Medic/Tecnico né “colpo preciso”. Non usarli.**
 
-Da G puoi aprire una scorciatoia [S] sul lato della base. Se suona l'allarme durante un combattimento lontano, **ora sai come tornare rapidamente**. È la forma migliore di upgrade della "città" che si possa fare senza fabbriche: cambi materialmente il percorso del giocatore.
+- **Ranged**: ADS, peso dell'arma, rinculo, reload, hit reaction e audio veri; spazi grandi favoriscono il tiro, strade strette lo rendono meno semplice.
+- **Melee**: arma autonoma con portata/tempo d'attacco, animation hit windows, reazioni corporee e colpi che NON passano attraverso i muri. Non una spinta su `V`. In Mercato il giocatore può decidere di aprirsi un varco fra gli zombie o rischiare per risparmiare munizioni; in Officine può scegliere di ingaggiare a distanza.
+- **Solo-melee opzionale**: non un nome di classe con +15% danno; se verrà adottato, servono mosse/sistemi che permettano di affrontare anche Corridori e Corazzati. Altrimenti è una promessa falsa.
 
-**Non trasformarlo in open world senza direzione:** una mappa COD Zombies ha **rami leggibili, cancelli, circuiti**, punti di riferimento visibili, spawner sicuri e ritorni studiati. Non servono chilometri di quartiere vuoto.
+**Una sola possibile meccanica aggiuntiva da valutare prima di farne dieci:** `INTERCETTA LA COLONNA`. Nelle strade della stessa mappa puoi vedere un gruppo che si dirige alla base, raggiungerlo tramite scorciatoia e ucciderlo/sviarlo. **Sono esattamente gli stessi zombie** e la torre li avrebbe combattuti se fossero arrivati al perimetro. Se il player li ferma, quella pressione è davvero sparita. Richiede soltanto IA con target/base e navigazione che erano già necessari; non una quest, non una ulti, non una classe. Se la map route non permette intercettazione chiara, non aggiungere un radar finto per nascondere il difetto: correggere la route.
 
----
-
-## 7. GUNPLAY, MELEE E AZIONI ORIGINALI SENZA CLASSI INUTILI
-
-### Gunplay
-Deve restare FPS vero: arma riconoscibile, ADS/rinculo/reload, colpo leggibile, audio/FX, zombie reagisce all'impatto, bersaglio mancato = mancato. Una firearm completa per volta. **Nessuna skill “colpo preciso”**: la precisione appartiene al giocare con l'arma, non a una classe inventata.
-
-### Melee
-Non è il tasto V che spinge per un secondo. Il player **sceglie un'arma melee**, cambia stance, distanza utile e rischio. Tre famiglie **come esempio di varietà**, non come quantità già decisa:
-- una lama veloce apre brevemente un varco contro un zombie normale;
-- un colpo contundente più lento può sbilanciare un corazzato prima che attacchi;
-- una lama/asta più lunga mantiene la distanza ma è meno comoda in un corridoio stretto.
-Una parata o un contrattacco sono sensati solo con **hitbox, tempi, audio e reazioni** davvero precisi. Non copiare meccanicamente un soulslike pieno di barre. Una eventuale modalità **solo melee** deve essere percorribile contro **ogni minaccia essenziale**, altrimenti è una punizione mascherata.
-
-### Idee non-classe candidate da testare (massimo 2 in prototipo)
-**A. Rumore come scelta tattica.** Un colpo rumoroso può spostare un numero **limitato** di zombie dal percorso verso la base a quello verso di te, **se realmente nel raggio e capaci di percepirti**. Non è un pulsante magico "aggro entire wave". Vantaggio: allevi pressione dalla base; rischio: attiri un gruppo mentre sei solo nel Mercato. Se 100 zombie rendono AI audio costosa, scartare o semplificare: il design non obbliga a svilupparla.
-
-**B. L'ambiente è una piccola arma.** Una serranda abbassabile o una leva in una zona offre 2–4 secondi di contenimento con anim/suono/collision reali; poi si riapre per cooldown o per riarmo. Non 30 trappole diverse e non un sistema crafting.
-
-**C. Contrattacco fisico in melee.** Una parata ben temporizzata sbilancia un zombie contro quello subito dietro, creando tempo per passare. Limite chiaro: niente catena infinita di stuns e niente invulnerabilità.
-
-**Solo A, B e C sono candidate**, NON tre abilità approvate né tre classi; se una non migliora il divertimento nei test viene tagliata. Non inventare skill a cooldown, ultimate, “buff critico” o nomi di classi finché non c'è un gioco base valido.
+**Fuori scope iniziale:** skill tree di 30 abilità, moltiplicatori di colpo preciso, gore procedural e 5 sistemi di dismemberment prima che il melee base funzioni, trappole automatiche in ogni stanza, fisica zombie costosa per centinaia di attori.
 
 ---
 
-## 8. PUNTI E UPGRADE — la stessa scelta vista dal player
+## 6. BASE: crescita reale, non fabbrica
 
-**Ipotesi preferibile da testare:** un solo tipo di punti ottenuti prevalentemente combattendo, spesi per **porte**, **armi/equip** e **torrette/strutture**. L'utente non ha ancora fissato valuta, cifre, wallet o progressione tra sessioni: non scriverle come definitive.
+**Ingresso fisico** dalla Piazza. Dentro: due punti candidati, `Equipaggiamento` e `Difese`; il numero dei terminali è solo proposta. Le torrette sono disposte in **slot predefiniti reali** sul perimetro (non free-form building): riduce il lavoro del singolo sviluppatore, aiuta pathfinding, permette art polish. Ogni upgrade deve cambiare asset/componente/anim o funzionamento visibile, e la IA continua durante l'acquisto.
 
-**Esempio numerico esclusivamente illustrativo di una prova di bilanciamento**: una porta iniziale può costare quanto un upgrade intermedio, cosicché dopo uno o due assalti il player debba scegliere. Non fissare qui prezzi: servono prove di quanti nemici un neofita uccide realmente per minuto e quanto la torre ne elimina senza giocatore.
+### Una sequenza di crescita comprensibile
 
-**Tre domande per ogni acquisto**: cosa **cambia a vista**, cosa posso **fare che prima non potevo**, quale opportunità sto rimandando? Se l'upgrade non dà risposta, tagliarlo. **No due valute per obbligare il player a scegliere tra il divertimento e un gestionale.** Una base che uccide tutto senza giocare non deve generare più risorse della persona che esplora e combatte.
+1. **Prima base**: un punto difensivo leggero controlla solo un tratto di fronte. Non è in grado di gestire ogni assedio, e in condizioni normali il giocatore deve combattere.
+2. **Primo investimento**: ne aumenta la capacità operativa, e riesce a respingere da sola **lo stesso tipo di minaccia** che prima richiedeva aiuto.
+3. **Nuovo tipo di zombie**: un corazzato sopravvive al danno leggero; non rende inutile tutto, ma crea un problema tattico.
+4. **Scelta**: vai sul percorso D che rende acquistabile nell'hub un modulo anti-corazza, oppure **torni a intercettare personalmente** i corazzati per guadagnare tempo. Entrambe sono azioni di gioco.
+5. **Base forte**: quando è adeguata alla minaccia corrente, il giocatore può esplorare anche a molta distanza. L'avversario non smette di crescere, ma non esiste una legge che faccia morire il Nucleo se il player rimane assente.
 
-Nella base bastano, come **esempio candidato**, due postazioni chiare: `Armeria / melee` e `Perimetro / torrette`. Una UI in 2–3 passaggi, niente 4 laboratori obbligatori solo perché lo diceva un vecchio documento. Tutto dentro la base, mai portare il player in una schermata di gestionale esterna alla mappa.
+**Attenzione al problema della difficoltà**: non spawnare istantaneamente un assedio impossibile non appena esce il player; deve esserci un feedback anticipato, **motivo fisico del pericolo** e tempo per decidere. Rientrare serve a comprare upgrade, non a riparare ogni 30 secondi o premere `R` su torre passiva.
 
----
+### AI e performance senza magie
 
-## 9. ONDATE O PRESSIONE CONTINUA — due varianti della STESSA partita
-
-L'utente ha proposto entrambe le possibilità, **non ha scelto un sistema definitivo**.
-
-- **A ondate** (più vicino COD Zombies): assalto, respiro breve, prossimo assalto; puoi anche rientrare e comprare **durante** l'ondata. Adatta a imparare apertura della mappa e leggere le nuove minacce.
-- **Continuo**: pressione che sale gradualmente mentre il player è sempre libero di attraversare la mappa/upgrade; nessuno stop artificiale tra round. Più rischiosa per il bilanciamento: evitare che il player non abbia mai tempo per aprire una porta.
-
-**Proposta tecnica comune**: un solo director e stessi zombie/AI/danni/torri, differiscono soltanto gli intervalli di spawn. Non presentare “due modalità complete” finché non sono state progettate/approvate e poi verificate.
-
----
-
-## 10. UN ESITO CHE NON SIA UNA PROMESSA INVENTATA
-
-Non è ancora stato deciso dall'utente se Zombie Defence sia una **run che si azzera** come COD Zombies, una **base che persiste** fra sessioni, un gioco **endless** o una partita con una **uscita finale**. Non dichiarare "10 onde boss = vittoria" né "base permanente" come requisito confermato.
-
-**Due versioni candidate, entrambe giocabili dal menu ai risultati:**
-1. **Sopravvivenza a run**: zone e torri si aprono/potenziano nella partita, l'assalto si intensifica fino a distruggere base/KO; risultati mostrano zone, durata, zombie, armi e kill vere delle torrette. `Riprova` ricomincia la run. Può durare tanto quanto il giocatore resiste.
-2. **Obiettivo oltre il sopravvivere**: aprendo la mappa si raggiunge una zona finale che consente di innescare un confronto conclusivo o scegliere `Continua a resistere`. NON aggiungere un boss o estrazione obbligatoria prima che l'utente scelga questa direzione.
-
-**Quando il player muore** è altrettanto un elemento da decidere: revive in coop, respawn nella base, perdita di una vita, ecc. Per non far saltare il concept, **la base deve comunque continuare a sparare durante un eventuale stato Downed**, e il menu risultati deve dire perché è finita la partita. Non imporre un revive class o un medico.
+- `ZombieActor` vero: destinazione giocatore o perimetro, colpi fisici e stato coerente.
+- `SiegeDirector` usa budget per ondata e assegna obiettivi: quando un assediatore muore, sparisce dal conto, senza un'altra copia finta nel sistema base.
+- `TurretActor` simulato dall'host: rileva, ruota, verifica range/line-of-sight, spara, applica danni reali. I client fuori campo possono saltare VFX/audio lontani **ma non i risultati di combat**.
+- `Core` subisce danni per contatti reali/zombie non contenuti, **mai per countdown arbitrario**.
+- Non promettere `100/200 zombie contemporanei` senza profiling: budget dipende da UE, animation LOD, NavMesh, replicated relevancy, GPU/CPU in una build reale.
 
 ---
 
-## 11. UNA PARTITA PIÙ AVANTI — la tensione deve aumentare per motivi reali
+## 7. ONDATE, CONTINUO, VITTORIA, SCONFITTA
 
-All'inizio il player può restare vicino e la sentry leggera elimina pochi camminatori. Dopo un paio di upgrade quella sentry basta a tenere il cancello iniziale contro lo stesso tipo di nemico. Il player raggiunge Deposito, apre la scorciatoia, prova melee nel Mercato e torna quando riceve un allarme.
+**Ritmo consigliato per la primissima valutazione: ondate come COD Zombies**, per concedere finestre leggibili di scelta tra porta/arma/base. **Pressione continua resta un'alternativa richiesta dall'utente**, non una feature già approvata o esclusa. Entrambe, se scelte, devono usare **lo stesso sistema zombie** e non raddoppiare lo sviluppo.
 
-Più tardi un zombie con armatura può resistere alla sentry che prima bastava. **Non** diventa più forte all'insaputa del player perché una barra “difficoltà 8” rende tutti immortali. La stessa arma della torre continua ad avere gli stessi valori: è il nuovo tipo di attacco, una deviazione dal percorso, la saturazione del bersaglio o un sabotaggio visibile a cambiarne l'efficacia. Il giocatore può:
-- prendere un percorso di ritorno breve e cambiare difesa;
-- intercettare concretamente il gruppo fuori (gli stessi actor assediatori);
-- rischiare ancora esplorazione, sapendo che la base potrebbe perdere.
+**Il gioco deve avere un percorso completo:**
+- si avvia da menu e carica la mappa;
+- la mappa cresce durante la run;
+- la base può reggere o perdere in base alle scelte;
+- il giocatore può continuare finché la pressione lo sopraffà;
+- risultati mostrano zone aperte, tempo, ondate (se presenti), armi usate, morte degli zombie causate realmente da player/tower, causa della sconfitta, scelta `Riprova` o `Menu`.
 
-Questo è **il conflitto divertente del gioco**. Non servono facoltà extrasensoriali e 12 classi, servono vie, armi, zombie e difese che seguono le medesime regole.
+**Proposta minima di sconfitta:** Core distrutto oppure giocatore solo definitivamente KO; in co-op, tutti KO senza possibilità di revive. Non dichiararla definitiva: è una soluzione concreta che permette di descrivere l'intera esperienza senza fissare fin d'ora l'eventuale revival. **Un player KO non disattiva la difesa automatica** finché la sessione è in corso.
+
+**Niente finale inventato a onda 10** e niente finta "estrazione" aggiunta perché serve una cutscene. Una run survival può essere un gioco completo se apertura mappa, assedi, progressione e rigiocabilità reggono. Un eventuale obiettivo finale specifico si sceglie dopo aver visto la qualità del survival loop.
+
+**Persistenza fra sessioni:** l'utente non ha scelto run reset o base permanente. È possibile salvare e **riprendere la stessa run** senza concedere crescita infinita off-game, ma costo e coerenza del save si verificano tecnicamente; non annunciare progressione permanente già pronta.
 
 ---
 
-## 12. COSA VERIFICA CHE NON STIAMO FANTASTICANDO
+## 8. LA PARTITA IN COOP (1–4 come obiettivo precedente, da verificare)
 
-Per ogni sistema della prima versione giocabile, test con risultati osservabili (non affermazioni generiche):
+Non cambiare il gioco in una modalità diversa:
+- entrate tutti nella **stessa mappa** e potete girare insieme o separarvi per esplorare/intercettare gruppi;
+- una zona che viene sbloccata è aperta per tutti, una torre migliorata serve a tutti;
+- una sola base con IA host-authoritative; se il player A è lontano e B in hub, **la torre non si spegne**;
+- per evitare caos negli acquisti, un wallet condiviso è la proposta **più semplice**; in alternativa si separa parte del punteggio personale **solo se** un test dimostra che condividere rende l'esperienza ingiusta;
+- scaling con più giocatori deve aumentare ciò che si combatte in modo leggibile, senza moltiplicare automaticamente HP di zombie/tower a ogni ingresso o usare "spawner magici" dietro il gruppo;
+- KO/revive e disconnessione host devono essere gestiti con regole esplicite prima di poter parlare di co-op completato.
 
-| Prova | Azione nel gioco | Risultato verificabile |
+---
+
+## 9. CONTROLLO DEL DIVERTIMENTO: FALLIMENTI CHE BLOCCANO NUOVE FEATURE
+
+| Test pratico | Se fallisce, cosa si corregge, NON cosa si aggiunge |
+| --- | --- |
+| Prima porta attraversata in pochi minuti | Economia iniziale, percorso visivo o ritmo di spawn; **non** altra missione |
+| Aprendo le prime due porte cambia la circolazione | Layout/grafo, scorciatoie e geometria; **non** altri zombie |
+| Player può giocare melee senza sentirsi punito | Animazioni, portate/hit reactions e spazi di combattimento; **non** skill passive +50% |
+| Base con upgrade corretto vince una vera ondata da sola | IA turret, range/LoS, targeting e danno; **non** autowin scriptato |
+| Base senza upgrade corretto può perdere contro avversari nuovi | Tipi/composizioni/tattica minaccia; **non** HP base scalati artificialmente |
+| Andare lontano dalla base offre un premio concreto | Connessioni, accesso a equip o scelta upgrade; **non** fetch quest |
+| 20 minuti senza menu ripetitivo | Comprensione UI/pacing; **non** quattro stazioni extra |
+| Restare AFK nella base non produce progresso | Punti solo per azioni giocatore, percorso per guadagnare fuori; **non** timer anti-AFK arbitrario |
+| Perf. target e rete misurati su build reale | Pooling, anim LOD, rilevanza network, numero zombie attivi; **non** promesse di 200 zombie senza test |
+| Un principiante può fare una cattiva spesa e recuperare | Prezzi, drop munizioni, melee sempre usabile, zombie raggiungibili; **non** moneta premium |
+
+**Criterio editoriale:** tagliare la feature che richiede un altro sottosistema senza migliorare nessuno di questi test. Non gonfiare il progetto per sembrare originale. La meccanica caratterizzante è già difficile da fare bene: **esplorare una mappa COD-like mentre la base vive, combatte e può cambiare il risultato del match autonomamente**.
+
+---
+
+## 10. COSA SI COSTRUISCE, IN ORDINE, QUANDO IL COMMITTENTE AUTORIZZERÀ IL CODICE
+
+**Adesso: DESIGN ONLY.** Non avviare Codex, non cambiare cpp/Blueprint/asset/build. Quando verrà autorizzata la produzione, lo scope tecnico resta uno per volta:
+
+| Priorità | Incremento che deve essere COMPLETO, non placeholder finale | Dipendenze |
 | --- | --- | --- |
-| Orientamento | un tester apre il menu e avvia senza spiegazione orale | trova uscita, base e primo accesso in 30–60 secondi |
-| Porta vera | spende i punti e apre Mercato | animazione/colonna fisica/collisione/IA aggiornata, il gruppo attraversa |
-| Mappa COD-like | segue due rami e apre una scorciatoia | attraversa un circuito completo senza teletrasporto né dead end obbligato |
-| Base autonoma | host o client attraversa mezza mappa e resta assente da base per un assalto intero | torre intercetta, spara e uccide con danni server veri, senza player vicino |
-| Upgrade utile | potenzia torre in base e torna fuori | stesso tipo di zombie prima superava la difesa e ora può essere fermato, con effetti visibili |
-| Escalation onesta | affronta tipo nemico più pericoloso con la vecchia torre | AI/armatura/numero/abilità rendono la torre insufficiente, non un danno scriptato al Nucleo |
-| Melee vero | arma da mischia contro Nurse | la lama segue il montaggio e la hitbox, la Nurse reagisce; niente colpo attraverso muro o fantasma |
-| Ritorno | allarme mentre player è lontano, scorciatoia già aperta | ritorno leggibile e utile; non game over arbitrario in un istante |
-| Efficacia | un player usa solo armi e un altro prova melee nelle stesse condizioni | entrambi riescono a giocare, a costi e rischi diversi |
-| Pacing | tester gioca senza ricevere spiegazioni per 20 minuti | riesce a capire quale strada può aprire e perché una torre o arma vale la spesa |
+| **P1** | Progetto Unreal/framework funzionante, licenze e modello del player reali | Accesso engine e asset reali verificati |
+| **P2** | Player FPS: movimento, camera, anim 1p/3p, passi, collisione, danni | P1 |
+| **P3** | Prima arma da fuoco completa: sparo, ricarica, recul, suoni/FX/impatti | P2 |
+| **P4** | Primo zombie completo: IA, locomozione, attacco, hit/death, audio/VFX | P3 |
+| **P5** | Primo melee completo su zombie vero, hitbox/reazioni e audio/anim | P4 |
+| **P6** | Interno base e Piazza esterna reali, due strade visibili con porte | P5 |
+| **P7** | Kill reward, primo gate apribile, zona B o C COMPLETA, UI spesa | P6 |
+| **P8** | Zombie Siege attaccano veramente il perimetro/Core, prime ondate | P7 |
+| **P9** | Prima sentry completamente autonoma, acquistabile e upgradabile, test da lontano | P8 |
+| **P10** | Secondo ramo, collegamento D–E, ritorno F–A come primo circuito coerente | P9 |
+| **P11** | Nuove minacce, difese e armi, con asset/anim/FX/AI reali e balancing | P10 |
+| **P12** | Partita completa menu→esito e co-op 1–4 realmente verificato | P11 |
+| **P13** | QA, prestazioni, suoni/anim/performance, Windows Shipping e licenze | P12 |
 
-**Un test tecnico non dimostra automaticamente che il gioco sia divertente.** Registra anche: voglia di aprire altra zona, fastidio per manutenzione, qualità impatti, senso della crescita base, frequenza menu, mortalità ingiusta. Se la torre troppo forte porta AFK o la mappa è una sequenza di corridoi, correggere quelle fondamenta prima di produrre altre armi.
+I blocchi non sono istruzioni per scrivere codice ora, né un backlog approvato. Dicono quale **risultato osservabile** dovrà sostituire il materiale provvisorio. L'ordine P7 → P8 → P9 impedisce il difetto precedente: non si può testare una torre autonoma senza **enemy Siege e un assedio reale**.
 
 ---
 
-## 13. COSA È FATTO, COSA NO — SENZA FINTE COMPLETIONS
+## 11. PERCHÉ NON È COD + TORRETTA INCOLLATA
 
-**CONFERMATO DALL'UTENTE:** COD Zombies come map design aperto a zone progressivamente sbloccate; base visitabile per upgrade con autodifesa automatica; minaccia crescente; armi da fuoco+melee; possibile solo-melee; originalità e vincolo di non complicare, niente classi cliché, tutto il piano dal menu alla partita, produzione a strati, NON toccare codice in questa fase.
+I tre sistemi devono produrre **conseguenze incrociate concrete**:
+1. **Sbloccare mappa** non è cosmetico: trovi percorsi di intercettazione, ritorni più brevi e accesso a scelte d'upgrade.
+2. **Fare combat fuori** non è grind isolato: puoi uccidere gli assediatori **prima** che arrivino al perimetro. Le tue kill hanno effetti sulla base.
+3. **Potenziare la base** non è idle game: ti libera tempo per spingerti nelle aree più lontane; la protezione raggiunta va ripensata contro tipi nuovi.
+4. **Melee** non è un pulsante di emergenza: attraversa il layout delle aree strette con propri vantaggi/rischi, senza 12 classi RPG.
 
-**PROPOSTA DA VALUTARE (non approvata):** nomi/layout di questa mappa, costo porte con punti, due stazioni nella base, comportamento di IA sensibile ai rumori, trappole ambientali, parry, durata del giro iniziale, fine partita e sistemi di reward, modalità finale, numero nemici/torri/armi.
+Questa interazione è il vero nucleo da valutare. Qualsiasi nome di classe, boss, moneta extra, missione, potere soprannaturale o altro elemento non necessario va **escluso dalla prima costruzione**.
 
-**FATTO VERIFICATO:** esistono repository GitHub, documenti di design e un framework esterno candidato; NON abbiamo verificato in questa interazione una build UE che realizzi questo gameplay, asset scaricati/riggati, test di rete, FPS, costi di produzione o fattibilità completa delle animazioni.
+### Ricerche di riferimento (NON copiare asset/testi/mappe proprietari)
+- COD Zombies, fonte ufficiale: [Black Ops 6 Zombies gameplay overview](https://news.blizzard.com/en-us/article/24121368/black-ops-6-zombies-what-you-need-to-know) — le porte competono con equipaggiamento e upgrade per la stessa capacità di spesa, la mappa viene progressivamente esplorata, la circolazione conta.
+- [Call of Duty guide Terminus](https://www.callofduty.com/guides/blackops6/zombies/call-of-duty-guides-black-ops-6-round-based-zombies-terminus) — round, sblocchi aree, scelte di armamenti mentre si apre la mappa.
+- [The Riftbreaker, sito ufficiale](https://www.riftbreaker.com/) — esempio di esplorazione/combattimento che sostiene una base difensiva; **da NON copiare** la sua fabbrica/crafting/resource chain, qui deliberatamente assenti.
 
-**NON FARE:** iniziare Codex o modificare codice su queste proposte, trattare il backlog legacy da 112 task come approvato, chiedere a un artist di produrre 8 ambienti prima che questo gameplay di partenza venga valutato.
-
-**Esito del presente documento:** ora il gioco è **giocabile sulla carta**, in modo controllabile e criticabile; non è ancora un GDD approvato né una build.
+**FINE — DOCUMENTO DA VALUTARE. NON EQUIVALE A UNA BUILD GIOCABILE.**
